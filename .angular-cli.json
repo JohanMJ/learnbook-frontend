@@ -19,9 +19,33 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "assets/resources/css/bootstrap.min.css",
+        "assets/resources/css/font-awesome.min.css",
+        "assets/resources/css/vendors.css",
+        "assets/resources/css/style.css",
+        "assets/resources/css/components.css",
+        "assets/resources/slider-revolution/css/settings.css",
+        "assets/resources/slider-revolution/css/layers.css",
+        "assets/resources/slider-revolution/css/navigation.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/resources/js/jquery.min.js",
+        "assets/resources/js/bootstrap.min.js",
+        "assets/resources/slider-revolution/js/jquery.themepunch.tools.min.js",
+        "assets/resources/slider-revolution/js/jquery.themepunch.revolution.min.js",
+        "assets/resources/slider-revolution/js/extensions/revolution.extension.parallax.min.js",
+        "assets/resources/slider-revolution/js/extensions/revolution.extension.video.min.js",
+        "assets/resources/slider-revolution/js/extensions/revolution.extension.slideanims.min.js",
+        "assets/resources/slider-revolution/js/extensions/revolution.extension.navigation.min.js",
+        "assets/resources/slider-revolution/js/extensions/revolution.extension.layeranimation.min.js",
+        "assets/resources/js/jquery.countdown.min.js",
+        "assets/resources/js/jquery.countTo.js",
+        "assets/resources/js/owl.carousel.min.js",
+        "assets/resources/js/jquery.appear.js",
+        "assets/resources/js/jquery.prettyPhoto.js",
+        "assets/resources/js/parallax.js",
+        "assets/resources/js/main.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
