@@ -1158,6 +1158,65 @@ blockquote footer{
     opacity: 0.90;
 }
 
+/****** Newsletter Custom ******/
+
+.newsletter-custom{
+    background-color: #fff;
+    border: 1px dashed #d7d7d7;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    /* padding-bottom: 100px; */
+    margin-top: 100px;
+    border-top: 2px solid #ff9c00;
+    /* -webkit-transition: 350ms ease all; */
+    /* transition: 350ms ease all; */
+}
+
+.newsletter-custom:hover{
+    /* margin-top: 0; */
+    /* padding-bottom: 150px; */
+}
+
+.newsletter-custom:before{
+    /* content: ""; */
+    position: absolute;
+    height: 800px;
+    width: 400px;
+    bottom: -567px;
+    background-color: #f5f5f5;
+    z-index: 3;
+    -webkit-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+    opacity: 0.90;
+}
+
+.newsletter-custom:after{
+    /* content: ""; */
+    position: absolute;
+    height: 800px;
+    width: 400px;
+    right: 0px;
+    bottom: -544px;
+    background-color: #f2f2f2;
+    z-index: 3;
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg);
+    opacity: 0.90;
+}
+
+/****** Container Custom ******/
+div.container4 {
+    text-align: center; }
+div.container4 p {
+    margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+
 /****** Important Dates ******/
 
 .imp-dates{
