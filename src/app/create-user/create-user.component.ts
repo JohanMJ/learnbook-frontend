@@ -2,6 +2,7 @@ import { User } from '../user';
 import { DataService } from '../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',

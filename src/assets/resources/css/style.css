@@ -3258,4 +3258,11 @@ div.container4 p {
         .lg-center{
         display:initial;
     }
+    
+    .btn-beside {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    margin-left: -10px;
+}
 }
