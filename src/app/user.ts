@@ -6,4 +6,6 @@ export class User {
   dBirUser:    Date;
   bStaUser:    boolean;
   sConPasUser: String;
+  password:   String;
+  confirmPassword: String;
 }

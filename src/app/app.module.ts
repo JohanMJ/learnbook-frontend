@@ -9,7 +9,7 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
 import { DataService } from './data.service';
 import { CreateUserComponent } from './create-user/create-user.component';
-
+import { EqualValidator } from './create-user/create-user.password.match.directive';
 import {enableProdMode} from '@angular/core';
 
 @NgModule({
@@ -17,7 +17,8 @@ import {enableProdMode} from '@angular/core';
     AppComponent,
     UserDetailsComponent,
     UsersComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    EqualValidator
   ],
   imports: [
     BrowserModule,

@@ -6,11 +6,12 @@ import { Directive, forwardRef,
   Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,
   Validators,AbstractControl,ValidatorFn } from '@angular/forms';
+  import { EqualValidator } from './create-user.password.match.directive';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css']
+  styleUrls: ['./create-user.component.css'],
 })
 export class CreateUserComponent implements OnInit {
   user = new User;

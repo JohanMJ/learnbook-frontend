@@ -34,10 +34,10 @@
 
                             <div class="form-group">
                                 <label for="sPasUser">Senha</label>
-                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser" required validateEqual="sConPasUser" reverse="true"
-                                name="sPasUser" #sPasUser="ngModel">
+                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser" required validateEqual="sConPasUser"
+                                    reverse="true" name="sPasUser" #sPasUser="ngModel">
                                 <div [hidden]="sPasUser.valid || sPasUser.pristine" class="alert alert-danger">
-                                    Password is required>
+                                    Password is required
                                 </div>
                             </div>
 
@@ -49,9 +49,10 @@
                                     Passwords did not match
                                 </div>
                             </div>
-                              
+
                             <div class="col-xs-6">
-                                <button type="submit" class="btn btn-primary btn-block pull-right">Submit</button>
+                                <button [disabled]="!sLogUser.valid || !sLogUser.touched || !sPasUser.valid || !sPasUser.touched
+                                    || !sConPasUser.valid || !sConPasUser.touched" type="submit" class="btn btn-primary btn-block pull-right">Submit</button>
                             </div>
 
                             <div class="col-xs-6">
