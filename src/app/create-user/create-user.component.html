@@ -22,19 +22,34 @@
 
                             <div class="form-group">
                                 <label for="sLogUser">E-mail</label>
-                                <input type="text" class="form-control" id="sLogUser" required [(ngModel)]="user.sLogUser" name="sLogUser">
+                                <input type="text" class="form-control" id="sLogUser" required [(ngModel)]="user.sLogUser" name="sLogUser" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                                    #sLogUser="ngModel">
+                                <div [hidden]="sLogUser.valid || sLogUser.pristine" class="alert alert-danger">
+                                    <div [hidden]="!sLogUser.hasError('required')">Email is required</div>
+                                    <div [hidden]="!sLogUser.hasError('pattern')">Email format should be
+                                        <small><b>youarethebest@abc.com</b></small>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="sPasUser">Senha</label>
-                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser" name="sPasUser">
+                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser" required validateEqual="sConPasUser" reverse="true"
+                                name="sPasUser" #sPasUser="ngModel">
+                                <div [hidden]="sPasUser.valid || sPasUser.pristine" class="alert alert-danger">
+                                    Password is required>
+                                </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="sConPasUser">Confirmar senha</label>
-                                <input type="password" class="form-control" id="sConPasUser" name="sConPasUser">
+                                <input type="password" class="form-control" id="sConPasUser" required validateEqual="sPasUser" [(ngModel)]="user.sConPasUser"
+                                    name="sConPasUser" #sConPasUser="ngModel">
+                                <div [hidden]="sConPasUser.valid || sConPasUser.pristine" class="alert alert-danger">
+                                    Passwords did not match
+                                </div>
                             </div>
-
+                              
                             <div class="col-xs-6">
                                 <button type="submit" class="btn btn-primary btn-block pull-right">Submit</button>
                             </div>
@@ -46,8 +61,8 @@
                         </form>
                     </div>
                     <div [hidden]="!submitted">
-                            <h4>You submitted successfully!</h4>
-                            <button class="btn btn-primary btn-block" (click)="goBack()">HOME</button>
+                        <h4>You submitted successfully!</h4>
+                        <button class="btn btn-primary btn-block" (click)="goBack()">HOME</button>
                     </div>
                 </div>
             </div>
@@ -126,7 +141,7 @@
                             <span>45th Floor,<br/> Newzek Estate Building,<br/> United Kingdom</span>
                         </address>
                         <a href="tel:+4525644563" class="phone"><i class="fa fa-phone fa-fw"></i> +452 564 4563</a>
-                        <a href="mailto:test@example.com" class="email"><i class="fa fa-envelope fa-fw"></i> info@company.com</a>
+                        <a href="mailto:test@example.com" class="sLogUser"><i class="fa fa-envelope fa-fw"></i> info@company.com</a>
                     </div>
                 </div>
             </div>

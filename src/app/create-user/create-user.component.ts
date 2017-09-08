@@ -2,7 +2,10 @@ import { User } from '../user';
 import { DataService } from '../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Directive, forwardRef, 
+  Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
+import { NG_VALIDATORS,Validator,
+  Validators,AbstractControl,ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -35,4 +38,6 @@ export class CreateUserComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
+
+  
 }

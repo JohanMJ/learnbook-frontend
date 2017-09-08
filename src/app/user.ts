@@ -5,4 +5,5 @@ export class User {
   sPasUser:    String;
   dBirUser:    Date;
   bStaUser:    boolean;
+  sConPasUser: String;
 }
