@@ -7,6 +7,7 @@ import { Directive, forwardRef,
 import { NG_VALIDATORS,Validator,
   Validators,AbstractControl,ValidatorFn } from '@angular/forms';
   import { EqualValidator } from './create-user.password.match.directive';
+  import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-user',
@@ -17,7 +18,8 @@ export class CreateUserComponent implements OnInit {
   user = new User;
   submitted = false;
   constructor(private dataService: DataService,
-              private location: Location) { }
+              private location: Location,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -34,6 +36,7 @@ export class CreateUserComponent implements OnInit {
  onSubmit() {
    this.submitted = true;
    this.save();
+   this.router.navigate(['/login']);
  }
 
   goBack(): void {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
@@ -7,6 +7,9 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from './user';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DataService {
@@ -58,6 +61,35 @@ export class DataService {
       .then(() => null)
       .catch(this.handleError);
   }
+
+  authenticate(sLogUser: String, sPasUser: String){
+    const url = `${this.usersUrl}/${sLogUser}/${sPasUser}`;
+    return this.http.get(url).map((response: Response) => {
+        // login successful if there's a jwt token in the response
+        let user = response.json();
+        if (user && user.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+    });
+  }
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('currentUser');
+}
+
+
+  private jwt() {
+    // create authorization header with jwt token
+    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.token) {
+        let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+        return new RequestOptions({ headers: headers });
+    }
+}
 
   private handleError(error: any): Promise<any> {
     console.error('Error', error); // for demo purposes only

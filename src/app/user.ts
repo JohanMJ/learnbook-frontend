@@ -8,4 +8,5 @@ export class User {
   sConPasUser: String;
   password:   String;
   confirmPassword: String;
+  username: String;
 }
