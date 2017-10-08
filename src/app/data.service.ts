@@ -14,7 +14,7 @@ import 'rxjs/add/operator/map'
 @Injectable()
 export class DataService {
 
-  private usersUrl = 'http://localhost:8080/dev/user/';  // URL to web API
+  private usersUrl = 'http://localhost:8080/dev/user';  // URL to web API
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
