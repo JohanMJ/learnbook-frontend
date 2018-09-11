@@ -1,31 +1,65 @@
 "use strict";
 
 $(window).on("load",function(){
-   
+
     $(".loader-backdrop").fadeOut();               // Open Modal on Load or after delay
-        if($(".modal").length && ($(".modal").attr("data-open-onload"))=="true"){
-            setTimeout(function(){
-                $(".modal").modal();       
-            }, $(".modal").attr("data-open-delay"));
+    
+    if($(".modal").length){
+        $(".modal").each(function(){
+            var thisModal = $(this);
+            if(thisModal.attr("data-open-onload")=="true"){
+                setTimeout(function(){
+                    thisModal.modal();       
+                }, thisModal.attr("data-open-delay"));
+            }
+        });
     }
 });
 
-jQuery(document).ready(function() {	
-    
-// ************ Function Calls ************//
-    
+jQuery(document).ready(function() { 
+
+    // ************ Function Calls ************//
+
+    if($(".navbar-nav").length){
+        callCurrentMenuItem();                    // Auto Select Current Menu Item
+    }
+
+    if($(".sub-menu").length){
+
+        var rtl = false;                                // If language is not RTL
+        
+        if($("html").attr("dir")=="rtl"){
+            rtl = true;                                 // If language is RTL
+        }
+        
+        callMenuAlign(rtl);                             // For each sub-menu, check if it crosses window
+    }
+
+    if($(".main-image").length){
+        callProductZoom();                        // Product Image Zoom on Product Detail Page
+    }
+
+    $(".open-widget").click(function(e){
+        e.preventDefault();
+        $(this).parent().toggleClass("open");    // Topbar Widgets Toggler
+    });
+
+    if($(".has-menu").length){
+        callMobileMenuToggle();                  // Call to Mobile Menu Toggler
+    }
+
     if($("#slider").length){
         callSliderRevolution();                  // Call to Slider Revolution
     }
 
-    if($("#slider-video").length){
-        callSliderRevolutionVideo();              // Call to Slider Revolution with Video
-    }        
-    
-    if($("#slider-news").length){
-        callSliderRevolutionNews();              // Call to Slider Revolution with News
-    }    
-        
+    if($("#slider-shop").length){
+        callSliderRevolutionShop();              // Call to Slider Revolution Shop
+    }
+
+    if($("#slider-boxed").length){
+        callSliderRevolutionBoxed();             // Call to Slider Revolution Boxed
+    }
+
     if($(".announcement").length){
         callAnnounceToggle();                    // Call to Announcement Slide Up/Down
     }
@@ -35,13 +69,15 @@ jQuery(document).ready(function() {
     }
     
     if($(".timer").length){
-       $(".timer").each(function(){
+        $(".timer").each(function(){
            callCountdown(this);                  // Call to Event Countdown Timer
        });
     }
-    
+
     if($(".testimonials").length){
-        callTestimonial();                       // Call to Testimonials Carousel
+        $(".testimonials").each(function(){
+            callTestimonial(this);               // Call to Testimonials Carousel
+        });
     }
     
     if($(".logo-scroll").length){
@@ -52,21 +88,14 @@ jQuery(document).ready(function() {
         callTweetScroll();                       // Call to Tweet Scroll
     }
     
-    if($(".selectpicker").length){
-        callSelectPicker();                      // Call to Select Box Styler
-    }
-    
     if($(".fact .count").length){          
         $(".fact .count").appear(function() {    // Call function callCountTo() only when the Element is in viewport
-            callCountTo();
+            callCountTo(this);
         });
     }
-    
-    if($(".img-rotate").length){   
-        $(".img-rotate").find("img:first-child").show();
-        $(".img-rotate").mouseenter(function(){    
-            callAlbumHover(this);                       // Call to Album Hover (Gallery Albums Page)
-        });
+
+    if($(".parallax").length && $(window).width() > 960){
+        callBackgroundParallax();                // Call to  background parallax
     }
     
     if($(".youtube").length){    
@@ -76,7 +105,7 @@ jQuery(document).ready(function() {
     }
     
     if($("#gmap").length){
-        
+
         var lat=$("#gmap").attr("data-lat");            // Latitude of the place to be marked
         
         var long=$("#gmap").attr("data-long");          // Longitude of the place to be marked
@@ -86,22 +115,75 @@ jQuery(document).ready(function() {
         callGoogleMapStyle(lat, long, infoWin);         // Call to Google Map Styler
     }
     
-    if($("#back").length){                              // Back To Top Icon
+    if($("#back").length){                              // Back To Top Button
         callBackToTop();
     }
-	
-    if($("a[data-gal^='prettyPhoto']").length){
-		callPrettyPhoto();                              // Pretty Photo
-	}
-    
-    if($("#main-contact-form").length){
-        callFormSubmit();
-    }
-    
-});	
 
+    if($("a[data-gal^='prettyPhoto']").length){
+        callPrettyPhoto();                              // Pretty Photo
+    }
+
+    if($("#main-contact-form").length){
+        callFormSubmit();                               // Contact form Validation and Submission
+    }
+}); 
 
 // ************Definitions of Functions************//
+
+function callCurrentMenuItem(){
+
+    var currentUrl = $(location).attr("href");          // Gets current location of the browser
+
+    $(".navbar-nav .menu-list a").each(function(){      // Traverse each <a> in the menu
+        var checkThisUrl = $(this).attr("href");
+        if((splitUrl(checkThisUrl)) == splitUrl(currentUrl)){       //Check if this <a> matches with the browser location
+            $(this).closest(".nav-item").addClass("active");
+        }
+    });
+
+    function splitUrl(thisUrl){         // Takes URL path and returns only the web page name
+        thisUrl=thisUrl.toString();
+        var urlSplit = thisUrl.split("/");
+        var thisPage = urlSplit[urlSplit.length-1];
+        return thisPage;
+    }
+}
+
+function callMenuAlign(rtol){
+
+    var windowWidth = $(window).width();        // Get Window width
+
+    $('.sub-menu').each(function(){
+
+        var subMenuwidth = $(this).width();         //Get sub-menu width
+        var containerWidth = $(this).closest('.container').width();         //Get Parent Container width 
+        var subMenuOffset = $(this).offset().left;          //Get sub-menu offset from the left
+        var containerOffset = $(this).closest('.container').offset().left;          //Get parent container offset from the left
+        
+        if(rtol==true){
+            subMenuOffset = ( windowWidth - (subMenuOffset + subMenuwidth));        //Get sub-menu offset from right if RTL language
+        }
+
+        var relativeOffset =  subMenuOffset - containerOffset;
+
+        if((relativeOffset + subMenuwidth) > (containerWidth+((windowWidth-containerWidth)/2))){
+            $(this).addClass("sub-menu-reversed");          //Add class to sub-menu if it crosses window
+        }
+    });
+}
+
+function callProductZoom(){
+    $(".main-image, .thumbnail-image").xzoom({
+        position: "inside"
+    });
+}
+
+function callMobileMenuToggle(){
+    $(".has-menu > a").click(function(e){
+        e.preventDefault();
+        $(this).parent().toggleClass("open-menu");
+    });
+}
 
 function callSliderRevolution()
 {
@@ -117,94 +199,51 @@ function callSliderRevolution()
       gridheight:800,
       parallax:{
         type:"scroll"
-        }
-    });
+    }
+});
 }
 
-function callSliderRevolutionVideo()
+function callSliderRevolutionBoxed()
 {
-    jQuery("#slider-video").revolution({
+    jQuery("#slider-boxed").revolution({
       sliderType:"standard",
       sliderLayout:"auto",
       delay:5000,                                       // Delay in Transition from one slide to another in milliseconds
       navigation: {
-         onHoverStop:"off"
+          arrows:{enable:true}
       },
       lazyLoad:"on",
       gridwidth:1200,
-      gridheight:800,
+      gridheight:600,
       parallax:{
         type:"scroll"
-        }
-    });
+    }
+});
 }
 
-function callSliderRevolutionNews()
+function callSliderRevolutionShop()
 {
-    jQuery("#slider-news").revolution({
-        sliderType:"standard",
-        sliderLayout:"fullwidth",
-        dottedOverlay:"none",
-        delay:5000,                                       // Delay in Transition from one slide to another in milliseconds
-        gridwidth:1200,
-        gridheight:800,
-        navigation: {
-            keyboardNavigation:"on",
-            keyboard_direction: "horizontal",
-            mouseScrollNavigation:"off",
-            mouseScrollReverse:"default",
-            onHoverStop:"on",
-            arrows: {
-                style:"gyges",
-                enable:true,
-                hide_onmobile:false,
-                hide_over:778,
-                hide_onleave:false,
-                tmp:'',
-                left: {
-                    h_align:"right",
-                    v_align:"bottom",
-                    h_offset:40,
-                    v_offset:0
-                },
-                right: {
-                    h_align:"right",
-                    v_align:"bottom",
-                    h_offset:0,
-                    v_offset:0
-                }
-            },
-            tabs: {
-                style:"erinyen",
-                enable:true,
-                width:250,
-                height:100,
-                min_width:250,
-                wrapper_padding:0,
-                wrapper_color:"transparent",
-                wrapper_opacity:"0",
-                tmp:'<div class="tp-tab-title">{{title}}</div><div class="tp-tab-desc">{{description}}</div>',
-                visibleAmount: 3,
-                hide_onmobile: true,
-                hide_under:778,
-                hide_onleave:false,
-                hide_delay:200,
-                direction:"vertical",
-                span:false,
-                position:"inner",
-                space:10,
-                h_align:"right",
-                v_align:"center",
-                h_offset:30,
-                v_offset:0
-            }
-        }		
-    });
+    jQuery("#slider-shop").revolution({
+      sliderType:"standard",
+      sliderLayout:"auto",
+      delay:5000,                                       // Delay in Transition from one slide to another in milliseconds
+      navigation: {
+          arrows:{
+            enable:true,
+            style: 'zeus'
+        }
+    },
+    lazyLoad:"on",
+    gridwidth:1200,
+    gridheight:750
+});
 }
 
 function callAnnounceToggle()
 {
-    $(".btn-announce").click(function(){
+    $(".btn-announce").click(function(e){
+        e.preventDefault();
+        $(".btn-announce").toggleClass("open");
         $(".announcement").toggleClass("open");        // Slides Open or Closes the announcement section on Home Page
     });
 }
@@ -223,6 +262,7 @@ function callAnnouncement()
 
     announceCarousel.owlCarousel({
         items:1,
+        //  rtl: true,        Uncomment this line for RTL support
         center:true,
         loop: true,
         autoplay: true,
@@ -241,22 +281,24 @@ function callCountdown(thisTimer)
     });
 }
 
-function callTestimonial()
+function callTestimonial(currentTestimonial)
 {
-    var testiCarousel= $('.testimonials');
+    var testiCarousel= $(currentTestimonial);
     
-    $('.owl-left').click(function() {
+    testiCarousel.next().find('.owl-left').click(function() {
         testiCarousel.trigger('prev.owl.carousel');
     })
     
-    $('.owl-right').click(function() {
+    testiCarousel.next().find('.owl-right').click(function() {
         testiCarousel.trigger('next.owl.carousel');
     })
 
     testiCarousel.owlCarousel({
         items:1,
+        //  rtl: true,        Uncomment this line for RTL support
         loop: true,
         center: true,
+        nav: false,
         margin: 20,
         autoplay: true,
         autoplayTimeout: 4000,                       // Testimonials Carousel transition time from one to another in milliseconds
@@ -264,19 +306,15 @@ function callTestimonial()
     });
 }
 
-function callSelectPicker()
-{
-    $('.selectpicker').selectpicker();
-}
-
-function callCountTo(){
-    $(".fact .count").countTo();                    
+function callCountTo(thisCount){
+    $(thisCount).countTo();
 }
 
 function callLogoScroll()
 {
     $(".logo-scroll").owlCarousel({
         items:5,
+        //  rtl: true,        Uncomment this line for RTL support
         loop: true,
         margin:70,
         center: true,
@@ -301,38 +339,51 @@ function callTweetScroll()
 {
     $(".tweets").owlCarousel({
         items:1,
+        //  rtl: true,        Uncomment this line for RTL support
         loop: true,
         autoplay: true,
         autoplayTimeout: 2500                       // Tweets transition time from one to another in milliseconds
     });
 }
 
-function callAlbumHover(hoverElement)
-{
-    var imgInterval = 750;                          // Change interval between items (in milliseconds)  
-    
-    var imgSelect=$(hoverElement).find("img");
+function callBackgroundParallax(){
 
-    var imgCount = $(imgSelect).length;
+  var $fwindow = $(window);
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    var imgCurrent = 0;
-    
-    var infiniteLoop = setInterval(function(){
-        $(imgSelect).eq(imgCurrent).hide();
+  $fwindow.on('scroll resize', function() {
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+}); 
 
-        if(imgCurrent == imgCount -1){
-            imgCurrent = 0;
-        }else{
-            imgCurrent++;
-        }
-        $(imgSelect).eq(imgCurrent).show();
-    }, imgInterval);
-    
-    $(hoverElement).mouseleave(function(){         // On Mouse Leave, the first Image again shows up
-        clearTimeout(infiniteLoop);
-        $(this).find("img").hide();
-        $(this).find("img").eq(0).show();
-    });
+  $('[data-type="content"]').each(function (index, e) {
+    var $contentObj = $(this);
+    var fgOffset = parseInt($contentObj.offset().top);
+    var yPos;
+    var speed = ($contentObj.data('speed') || 1 );
+
+    $fwindow.on('scroll resize', function (){
+      yPos = fgOffset - scrollTop / speed; 
+
+      $contentObj.css('top', yPos);
+  });
+});
+
+  $(".parallax").each(function(){
+    var $backgroundObj = $(this);
+    var bgOffset = parseInt($backgroundObj.offset().top);
+    var yPos;
+    var coords;
+    var speed = ($backgroundObj.data('speed') || 0 );
+
+    $fwindow.on('scroll resize', function() {
+      yPos = - ((scrollTop - bgOffset) / speed); 
+      coords = '50% '+ yPos + 'px';
+
+      $backgroundObj.css({ backgroundPosition: coords });
+  }); 
+}); 
+
+  $fwindow.trigger('scroll');
 }
 
 function callYoutubeVideo(currentVideo)
@@ -363,43 +414,43 @@ function callGoogleMapStyle(lat, long, infoWin)
         featureType: 'water',                       //Color of the Water Bodies
         elementType: 'geometry.fill',
         stylers: [
-            { color: '#adc9b8' }
+        { color: '#adc9b8' }
         ]
     },{
         featureType: 'landscape.natural',           //Color of the Natural Landscapes
         elementType: 'all',
         stylers: [
-            { hue: '#809f80' },
-            { lightness: -35 }
+        { hue: '#809f80' },
+        { lightness: -35 }
         ]
     },{
         featureType: 'poi',                         //Color of Points of Interest like Business
         elementType: 'geometry',
         stylers: [
-            { hue: '#f9e0b7' },
-            { lightness: 30 }
+        { hue: '#f9e0b7' },
+        { lightness: 30 }
         ]
     },{
         featureType: 'road',                        //Color of Main Roads
         elementType: 'geometry',
         stylers: [
-            { hue: '#d5c18c' },
-            { lightness: 14 }
+        { hue: '#d5c18c' },
+        { lightness: 14 }
         ]
     },{
         featureType: 'road.local',                  //Color Of Local Roads
         elementType: 'all',
         stylers: [
-            { hue: '#ffd7a6' },
-            { saturation: 100 },
-            { lightness: -12 }
+        { hue: '#ffd7a6' },
+        { saturation: 100 },
+        { lightness: -12 }
         ]
     }
-];
+    ];
     
     var options = {
         mapTypeControlOptions: {
-        mapTypeIds: ['Styled']
+            mapTypeIds: ['Styled']
         },
         center: new google.maps.LatLng(lat, long),
         zoom: 16,
@@ -416,6 +467,7 @@ function callGoogleMapStyle(lat, long, infoWin)
     
     var marker = new google.maps.Marker({
         map: map,
+        icon: 'images/map-pin.png',
         position: new google.maps.LatLng(lat, long)             // Set Marker Position of the place
     });
     
@@ -454,75 +506,81 @@ function callPrettyPhoto()
 }
 
 function callFormSubmit(){
-    
+
     var options = 
-	{
-		clearForm : 'false',
-		type : 'POST',
-		url : 'sendemail.php',            // PHP Script for Form Submission
-		cache : 'false',
-		resetForm : 'false',
-		async : 'true',
-		datatype : 'html',
-		timeout : 2400000,		
-		
-		beforeSend:function(){
-			text = "<i class='fa fa-spinner fa-spin'></i>Submitting your message, please wait.";
-			$("#status").empty().html(text);
-		},
-		
-		complete: function(xhr, textStatus)
-		{
-			$("#status").empty().html(xhr.responseText);
-		},
-		
-		error: function(jqXHR, textStatus, errorThrown)
-		{
-			$("#status").empty().html('Error in application : Please try again.');		
-		}				
-	};
-
-	$.validator.setDefaults({
-		submitHandler: function() {
- 			$("#main-contact-form").ajaxSubmit(options);
-		}
-	});
-
-	$("#main-contact-form").validate({
+    {
+      clearForm:false,
+      type:'POST',
+        url:'sendemail.php',            // PHP Script for Form Submission
+        cache:false,
+        resetForm:false,
+        async:true,
+        datatype:'html',
+        timeout:2400000,        
         
-		rules: {
-			name:  {
-				required: true,
-			},		
-			email:  {
-				required: true,
-				email: true,
-			},			
-			subject: {
-				required: true,
-			}, 
-			message: {
-				required: true,
-			}
-		},
-
-		messages: {
-			name: {
-				required: "Please enter your name.",
-			},
-			email: {
-				required: "Please enter a valid email id.",
-			},
-			subject: {
-				required: "Please enter the message subject.",
-			},
-			message: {
-				required: "Please enter your message.",
-			}
-		},
+        beforeSend:function(){
+            var text = "<i class='fa fa-spinner fa-spin'></i>Submitting your message, please wait.";
+            $("#status").empty().html(text);
+        },
         
+        complete: function(xhr, textStatus)
+        {
+            $("#status").empty().html(xhr.responseText);
+        },
+        
+        error: function(jqXHR, textStatus, errorThrown)
+        {
+            $("#status").empty().html('Error in application : Please try again.');      
+        }               
+    };
+
+    $.validator.setDefaults({
+        submitHandler: function() {
+            $("#main-contact-form").ajaxSubmit(options);
+        }
+    });
+
+    $("#main-contact-form").validate({
+
+        rules: {
+            name:  {
+                required: true,
+            },      
+            email:  {
+                required: true,
+                email: true,
+            },          
+            subject: {
+                required: true,
+            }, 
+            purpose: {
+                required: true,             
+            },
+            message: {
+                required: true,
+            }
+        },
+
+        messages: {
+            name: {
+                required: "Please enter your name.",
+            },
+            email: {
+                required: "Please enter a valid email id.",
+            },
+            subject: {
+                required: "Please enter the message subject.",
+            },
+            purpose: {
+                required: "Please select the contact purpose.",
+            },
+            message: {
+                required: "Please enter your message.",
+            }
+        },
+
         errorPlacement: function() {
-             return false;
-           }
-	});
+           return false;
+       }
+   });
 }

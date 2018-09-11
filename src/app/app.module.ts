@@ -52,15 +52,15 @@ import { AuthGuard } from './auth-guard/index';
 import { AlertService, AuthenticationService, UserService } from './services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
-import { RegisterComponent } from './register/index';
+//import { RegisterComponent } from './user-general/register/index';
 
 //Correct
 
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { UsersComponent } from './users/users.component';
+import { UserDetailsComponent } from './/user-general/user-details/user-details.component';
+import { UsersComponent } from './user-general/users/users.component';
 import { DataService } from './data.service';
-import { CreateUserComponent } from './create-user/create-user.component';
-import { EqualValidator } from './create-user/create-user.password.match.directive';
+import { CreateUserComponent } from './user-general/create-user/create-user.component';
+import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
  
 @NgModule({
     imports: [
@@ -74,7 +74,7 @@ import { EqualValidator } from './create-user/create-user.password.match.directi
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent,
+       // RegisterComponent,
         UserDetailsComponent,
         UsersComponent,
         CreateUserComponent,
