@@ -12,15 +12,18 @@ import { LoginComponent } from './login/index';
 import { AuthGuard } from './auth-guard/index';
 
 const routes: Routes = [
-   { path: '', redirectTo: 'home', pathMatch: 'full', canActivate: [AuthGuard] },
+   { path: '', redirectTo: 'home', pathMatch: 'full' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
 
-   { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+   { path: 'home', component: HomeComponent },
    { path: 'login', component: LoginComponent },
   // { path: 'register', component: RegisterComponent },
 ];
+
+// Create the angular router service with the route - directive pairs listed above
+export default RouterModule.forRoot(routes);
 
 @NgModule({
   imports: [ RouterModule.forRoot(routes) ],

@@ -68,8 +68,8 @@ export class LoginComponent implements OnInit {
         // reset login status
         this.authenticationService.logout();
  
-        // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        // // get return url from route parameters or default to '/'
+        // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
  
     login() {
@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.sLogUser, this.model.sPasUser)
             .subscribe(
                 data => {
-                    this.router.navigate(['/home']);
+                    this.router.navigate(['/user']);
                 },
                 error => {
                     this.alertService.error(error);
