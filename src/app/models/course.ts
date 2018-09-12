@@ -1,12 +1,17 @@
+import { User } from "./user";
+import { Category } from "./category";
+
 export class Course {
-  iCodUser:    number;
-  sNamUser:    String;
-  sLogUser:    String;
-  sPasUser:    String;
-  dBirUser:    Date;
-  bStaUser:    boolean;
-  sConPasUser: String;
-  password:   String;
-  confirmPassword: String;
-  username: String;
+  iCodCou: number;
+  sNamCou: String;
+  sDesCou: String;
+  dDatCou: Date;
+  dExpTimCou: Date;
+  fPriCou: String;
+  fHorCou: String;
+  sDifCou: String;
+  sStaCou: String;
+  users: Array<User>;
+  category: Category;
+
 }

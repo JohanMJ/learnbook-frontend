@@ -7,6 +7,8 @@ import { Directive, forwardRef,
 import { NG_VALIDATORS,Validator,
   Validators,AbstractControl,ValidatorFn } from '@angular/forms';
   import { Router } from '@angular/router';
+import { Category } from '../../models/category';
+import { User } from '../../models/user';
   
 
 @Component({
@@ -30,7 +32,19 @@ export class CreateCourseComponent implements OnInit {
   }
 
  private save(): void {
-   this.dataService.create(this.course);
+   console.log(this.course);
+   let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  let  n = new Array<User>();
+  let cat = new Category();
+  cat.iCodCat = 1;
+  cat.sNamCat = "SAP";
+  n.push(currentUser);
+
+    this.course.users = n;
+    this.course.category = cat;
+
+  
+   this.dataService.createCourse(this.course);
  }
 
  onSubmit() {

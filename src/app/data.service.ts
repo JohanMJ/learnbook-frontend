@@ -7,14 +7,17 @@ import { Location } from '@angular/common';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from './models/user';
+import { Course } from './models/course';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import { Category } from './models/category';
 
 @Injectable()
 export class DataService {
 
   private usersUrl = 'http://localhost:8080/dev/user';  // URL to web API
+  private courseUrl = 'http://localhost:8080/dev/course';  // URL to web API
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -95,4 +98,13 @@ export class DataService {
     console.error('Error', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+
+  createCourse(course: Course): Promise<Course> {
+    const url = `${this.courseUrl}/insert`;
+return this.http
+  .post(url, JSON.stringify(course), { headers: this.headers })
+  .toPromise()
+  .then(res => res.json() as Course)
+  .catch(this.handleError);
+}
 }

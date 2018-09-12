@@ -12,53 +12,45 @@
     <div class="row">
         <div class="col-lg-6">
             <h2 class="heading">Novo <span class="text-primary">Curso</span></h2>
-            <form>
+            <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="name">Titulo</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="course.sNamCou" name="sNamCou">
                     <br>
                     <label for="horas">Horas</label>
-                    <input type="number" class="form-control" id="horas">
+                    <input  type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
                     <br>
                     <label for="preco">Preço</label>
-                    <input class="form-control" currencyMask [(ngModel)]="value" />
+                    <input class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou"
+                        name="fPriCou" />
                     <br>
                     <label for="message">Descrição</label>
-                    <textarea id="message" class="form-control"></textarea>
+                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="course.sDesCou"
+                        name="sDesCou"></textarea>
                     <br>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
+                <!-- </div> -->
 
-<section class="container mt-50 mb-50">
-    <!-- <div class="row"> -->
-        <div class="col-lg-6">
-            <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
-            <form>
-                <div class="form-group">
+                <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
+                <!-- <div class="form-group"> -->
                     <label for="categoria">Categoria</label>
-                    <select class="form-control" aria-label="ngSelected demo">
-                        <option id="greet" ng-selected="selected">Greetings</option>
-                        <option id="greet" ng-selected="selected">Greetings!</option>
-                        <option id="greet" ng-selected="selected">Greetings!</option>
-                        <option id="greet" ng-selected="selected">Greetings!</option>
+                    <select [(ngModel)]="course.iCodCat" (change)="onChangeCategorySelect($event)" name="course.iCodCat" class="form-control" required>
+                        <option value="1" >SAP</option>
+                        <option value="2" >Totvs!</option>
                     </select>
                     <br>
-                    <label for="categoria">Dificuldade</label>
-                    <select class="form-control" aria-label="ngSelected demo">
-                        <option id="iniciante" ng-selected="selected">Iniciante</option>
-                        <option id="intermediario" ng-selected="selected">Intermediário</option>
-                        <option id="expert" ng-selected="selected">Avançado</option>
-                    </select>
+                    <label for="dificuldade">Dificuldade</label>
+                    <select type="text" [(ngModel)]="course.sDifCou" (change)="onChangeCategorySelect($event)" name="course.sDifCou" class="form-control" required>
+                            <option value="1" >Iniciante</option>
+                            <option value="2" >Intermediario</option>
+                            <option value="3" >Avançado</option>
+                        </select>
                     <br>
                     <button class="btn btn-primary">Criar Curso</button>
                     <br>
                 </div>
             </form>
         </div>
-    <!-- </div> -->
+    </div>
 </section>
 
 

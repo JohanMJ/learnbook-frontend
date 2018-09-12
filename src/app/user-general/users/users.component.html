@@ -68,7 +68,8 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', u.iCodUser]">
+        <!-- <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', u.iCodUser]"> -->
+        <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', user.iCodUser]">
             <div class="card course-card new">
                 <div class="course-head">
                     <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
