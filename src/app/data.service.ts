@@ -109,4 +109,13 @@ export class DataService {
       .then(response => response.json() as Course[])
       .catch(this.handleError);
   }
+
+  getCourseById(iCodCourse: number): Promise<Course> {
+    const url = `${this.courseUrl}/list/single/${iCodCourse}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course)
+      .catch(this.handleError);
+  }
+
 }

@@ -1,5 +1,6 @@
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
+import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { UserDetailsComponent } from './user-general/user-details/user-details.component';
 import { UsersComponent } from './user-general/users/users.component';
 import { NgModule } from '@angular/core';
@@ -13,6 +14,7 @@ const routes: Routes = [
    { path: 'home/add', component: CreateUserComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
+   { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
 
    { path: 'home', component: HomeComponent },
    { path: 'login', component: LoginComponent },

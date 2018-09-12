@@ -8,7 +8,8 @@
                 <!-- Teste - Current User -->
                 <h1>Hi {{currentUser.sNamUser}}!</h1>
                 <p>Obrigado por trabalhar conosco, vamos crescer juntos.</p>
-                <p>Disponibilizamos os melhores cursos de ERP para preparar você para o mercado, apresentamos cursos com valores que cabe no seu bolso.</p>
+                <p>Disponibilizamos os melhores cursos de ERP para preparar você para o mercado, apresentamos cursos
+                    com valores que cabe no seu bolso.</p>
                 <br />
                 <ul class="list-styled pull-left">
                     <li>Cenários Reais</li>
@@ -17,8 +18,8 @@
                 <div class="clearfix"></div>
                 <br />
                 <!-- Define route to subscribe -->
-                <a routerLink="course/add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar novo curso<i
-                        class="fa fa-long-arrow-right"></i></a>
+                <a routerLink="course/add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar
+                    novo curso<i class="fa fa-long-arrow-right"></i></a>
                 <br />
             </div>
         </div>
@@ -68,23 +69,24 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let course of courses" class="col-lg-4" [routerLink]="['/detail', course.iCodCou]">
-        <a *ngFor="let cour of course" ng-if='typeof(cour.iCodCou)!="undefined"' class="col-lg-4" [routerLink]="['/detail', cour.iCodCou]">
-            <div ng-if= "cour.iCodCou) !== undefined" class="card course-card new">
-                <div ng-if='typeof(cour.iCodCou)!="undefined"' class="course-head">
-                    <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
-                    <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
+        <a *ngFor="let coursex of courses" class="col-lg-4">
+            <a *ngFor="let course of coursex" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+                <div class="card course-card new">
+                    <div class="course-head">
+                        <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
+                        <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                                aria-hidden="true"></i></a>
+                    </div>
+                    <div class="course-detail">
+                        <h4 class="heading">{{course.iCodCou}}</h4>
+                        <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
+                        <ul class="course-features">
+                            <li><i class="fa fa-map-marker"></i> California</li>
+                            <li><i class="fa fa-clock-o"></i> 1 year</li>
+                        </ul>
+                    </div>
                 </div>
-                <div ng-if='typeof(cour.iCodCou)!="undefined"' class="course-detail">
-                    <h4 class="heading">{{cour.iCodCou}}</h4>
-                    <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
-                    <ul class="course-features">
-                        <li><i class="fa fa-map-marker"></i> California</li>
-                        <li><i class="fa fa-clock-o"></i> 1 year</li>
-                    </ul>
-                </div>
-            </div>
-        </a>
+            </a>
         </a>
     </div>
 </section>
