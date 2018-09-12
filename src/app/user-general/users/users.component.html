@@ -4,48 +4,29 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-7 mt-100">
-                <h3 class="heading">Who We <span class="color2">Are</span></h3>
+                <!-- <h3 class="heading">Who We <span class="color2">Are</span></h3> -->
                 <!-- Teste - Current User -->
                 <h1>Hi {{currentUser.sNamUser}}!</h1>
-                <p>EDUComp is a premium education theme. 100% responsive and designed for quick customizations, this is
-                    an ideal theme for Schools, Colleges, Universities and other Educational Insitutions.</p>
-                <p>A huge array of new elements coming your way, enjoy lifetime free updates for EDUComp, Buy Now!</p>
+                <p>Obrigado por trabalhar conosco, vamos trabalhar no nosso crescimento juntos.</p>
+                <p>Disponibilizamos os melhores cursos de ERP para preparar você para o mercado, apresentamos cursos com valores que cabe no seu bolso.</p>
                 <br />
                 <ul class="list-styled pull-left">
-                    <li>Super Easy to Customize</li>
-                    <li>Very Well Documented</li>
-                </ul>
-                <ul class="list-styled pull-left">
-                    <li>Quick Free Email Support</li>
-                    <li>Lifetime Free Updates</li>
+                    <li>Cenários Reais</li>
+                    <li>Preços justos </li>
                 </ul>
                 <div class="clearfix"></div>
                 <br />
                 <!-- Define route to subscribe -->
-                <a routerLink="add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">SUBSCRIBE<i
+                <a routerLink="add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar novo curso<i
                         class="fa fa-long-arrow-right"></i></a>
+                <br />
             </div>
         </div>
-        <!-- <a *ngFor="let u of users" [routerLink]="['/detail', u.iCodUser]" class="col-1-4">
-                <div class="col-sm-4">
-                    <div class="course-card new">
-                        <img src="../assets/resources/images/course-grid-1.jpg" class="img-responsive course-img" alt="">
-                        <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
-                        <div class="course-detail">
-                            <h4 class="heading">{{u.sLogUser}}</h4>
-                            <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
-                            <ul class="course-features">
-                                <li><i class="fa fa-map-marker"></i> California</li>
-                                <li><i class="fa fa-clock-o"></i> 1 year</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </a> -->
     </div>
+    <br />
 </section>
 
-<div class="pt-60 pb-60 bg-light">
+<div class="pt-70 pb-60 bg-light">
     <form>
         <div class="container">
             <div class="row">
@@ -84,149 +65,24 @@
     </form>
 </div>
 
+
 <section class="container mt-60 mb-100">
     <div class="row">
-        <!-- <a *ngFor="let u of users" [routerLink]="['/detail', u.iCodUser]"> -->
-            <a *ngFor="let u of users">
-            <div class="col-lg-4">
-                <div class="card course-card new">
-                    <div class="course-head">                     
-                        <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
-                        <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="course-detail">
-                        <h4 class="heading">{{u.sLogUser}}</h4>
-                        <span class="brief">In this course, you learn all advanced techniques and
-                            methodologies.</span>
-                        <ul class="course-features">
-                            <li><i class="fa fa-map-marker"></i> California</li>
-                            <li><i class="fa fa-clock-o"></i> 1 year</li>
-                        </ul>
-                    </div>
+        <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', u.iCodUser]">
+            <div class="card course-card new">
+                <div class="course-head">
+                    <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
+                    <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
+                </div>
+                <div class="course-detail">
+                    <h4 class="heading">{{user.sLogUser}}</h4>
+                    <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
+                    <ul class="course-features">
+                        <li><i class="fa fa-map-marker"></i> California</li>
+                        <li><i class="fa fa-clock-o"></i> 1 year</li>
+                    </ul>
                 </div>
             </div>
         </a>
     </div>
 </section>
-
-
-<!-- <div class="bgcolor3 pt-100 pb-100">
-    <div class="container">
-        <div class="row">
-           
-                <h2 class="heading text-center">Why buy <span class="color2">EDUComp</span>
-                    <span class="sub-heading">EDUComp is a fully responsive premium education theme for schools,
-                        colleges, insitutions and universities.</span>
-                    <span class="icon-divider"></span>
-                </h2>
-                <a *ngFor="let u of users" [routerLink]="['/detail', u.iCodUser]" class="col-1-4">
-                    <div class="col-sm-2">
-                        <div class="course-card">
-                            <img src="../assets/resources/images/course-grid-1.jpg" class="img-responsive course-img"
-                                alt="">
-                            <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
-                            <div class="course-detail">
-                                <h4 class="heading">{{u.sLogUser}}</h4>
-                                <span class="brief">In this course, you learn all advanced techniques and
-                                    methodologies.</span>
-                                <ul class="course-features">
-                                    <li><i class="fa fa-map-marker"></i> California</li>
-                                    <li><i class="fa fa-clock-o"></i> 1 year</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-   
-
-    </div>
-</div>
-> -->
-
-
-<div class="clearfix"></div>
-
-<div class="event pt-100 pb-100" data-parallax="scroll" data-image-src="../assets/resources/images/event-background.jpg">
-    <div class="container">
-        <h2 class="heading text-center">Upcoming <span class="color2">Event</span>
-            <span class="sub-heading">Countdown timer for upcoming events and a detailed page for events. Allow
-                people
-                to participate and make it a big hit!</span>
-            <span class="icon-divider"></span>
-        </h2>
-        <div class="row">
-            <div class="col-sm-5">
-                <div class="next-event">
-                    <span class="event-date">23</span> Oct, Monday
-                </div>
-            </div>
-            <div class="col-sm-7">
-                <ul class="timer" data-date="2016/10/23 00:00:00">
-                    <!-- Put event Date in YYYY/MM/DD hh:mm:ss format -->
-                    <li><span class="days">0</span>days</li>
-                    <li><span class="hours">0</span>hrs</li>
-                    <li><span class="minutes">00</span>min</li>
-                    <li><span class="seconds">00</span>sec</li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
-            <div class="col-sm-12 mt-20">
-                <div class="event-details">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet,
-                        consectetur
-                        adipiscing elit. Integer posuere erat a ante. Lorem ipsum dolor sit amet, consectetur
-                        adipiscing
-                        elit.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="row mt-40">
-            <div class="col-sm-3">
-                <div class="icon-box-5">
-                    <div class="icon-box-icon">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    </div>
-                    <div class="icon-box-content">
-                        <h5 class="heading">School Grounds</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="icon-box-5">
-                    <div class="icon-box-icon">
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                    </div>
-                    <div class="icon-box-content">
-                        <h5 class="heading">Sharp at 7:00 p.m.</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="icon-box-5">
-                    <div class="icon-box-icon">
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                    </div>
-                    <div class="icon-box-content">
-                        <h5 class="heading">Space for 1000</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="icon-box-5">
-                    <div class="icon-box-icon">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                    </div>
-                    <div class="icon-box-content">
-                        <h5 class="heading">Award Ceremony</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row text-center mt-60">
-            <a href="upcoming-events.html" class="btn btn-primary">View All Events</a>
-        </div>
-    </div>
-</div>
