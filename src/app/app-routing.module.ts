@@ -4,13 +4,8 @@ import { UserDetailsComponent } from './user-general/user-details/user-details.c
 import { UsersComponent } from './user-general/users/users.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-//Authorizatioon
-
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
-//import { RegisterComponent } from './user-general/register/index';
-import { AuthGuard } from './auth-guard/index';
 
 const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,7 +16,6 @@ const routes: Routes = [
 
    { path: 'home', component: HomeComponent },
    { path: 'login', component: LoginComponent },
-  // { path: 'register', component: RegisterComponent },
 ];
 
 // Create the angular router service with the route - directive pairs listed above

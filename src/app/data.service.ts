@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
-
-import { ActivatedRoute, Params } from '@angular/router';
-import { Location } from '@angular/common';
-
 import 'rxjs/add/operator/toPromise';
-
+import 'rxjs/add/operator/map';
 import { User } from './models/user';
 import { Course } from './models/course';
-
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map'
-import { Category } from './models/category';
+import { CourseList } from './models/courseList';
 
 @Injectable()
 export class DataService {
@@ -40,7 +33,7 @@ export class DataService {
   }
 
   create(user: User): Promise<User> {
-        const url = `${this.usersUrl}/insert`;
+    const url = `${this.usersUrl}/insert`;
     return this.http
       .post(url, JSON.stringify(user), { headers: this.headers })
       .toPromise()
@@ -65,34 +58,34 @@ export class DataService {
       .catch(this.handleError);
   }
 
-  authenticate(sLogUser: String, sPasUser: String){
+  authenticate(sLogUser: String, sPasUser: String) {
     const url = `${this.usersUrl}/${sLogUser}/${sPasUser}`;
     return this.http.get(url).map((response: Response) => {
-        // login successful if there's a jwt token in the response
-        let user = response.json();
-        if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
-        }
+      // login successful if there's a jwt token in the response
+      let user = response.json();
+      if (user && user.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+        localStorage.setItem('currentUser', JSON.stringify(user));
+      }
 
-        return user;
+      return user;
     });
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
-}
+  }
 
 
   private jwt() {
     // create authorization header with jwt token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-        let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-        return new RequestOptions({ headers: headers });
+      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      return new RequestOptions({ headers: headers });
     }
-}
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('Error', error); // for demo purposes only
@@ -101,10 +94,19 @@ export class DataService {
 
   createCourse(course: Course): Promise<Course> {
     const url = `${this.courseUrl}/insert`;
-return this.http
-  .post(url, JSON.stringify(course), { headers: this.headers })
-  .toPromise()
-  .then(res => res.json() as Course)
-  .catch(this.handleError);
-}
+    return this.http
+      .post(url, JSON.stringify(course), { headers: this.headers })
+      .toPromise()
+      .then(res => res.json() as Course)
+      .catch(this.handleError);
+  }
+
+
+  getCoursesFromUser(iCodUser: number): Promise<Course[]> {
+    const url = `${this.courseUrl}/list/${iCodUser}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course[])
+      .catch(this.handleError);
+  }
 }

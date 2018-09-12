@@ -68,15 +68,15 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <!-- <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', u.iCodUser]"> -->
-        <a *ngFor="let user of users" class="col-lg-4" [routerLink]="['/detail', user.iCodUser]">
-            <div class="card course-card new">
-                <div class="course-head">
+        <a *ngFor="let course of courses" class="col-lg-4" [routerLink]="['/detail', course.iCodCou]">
+        <a *ngFor="let cour of course" ng-if='typeof(cour.iCodCou)!="undefined"' class="col-lg-4" [routerLink]="['/detail', cour.iCodCou]">
+            <div ng-if= "cour.iCodCou) !== undefined" class="card course-card new">
+                <div ng-if='typeof(cour.iCodCou)!="undefined"' class="course-head">
                     <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
                     <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
                 </div>
-                <div class="course-detail">
-                    <h4 class="heading">{{user.sLogUser}}</h4>
+                <div ng-if='typeof(cour.iCodCou)!="undefined"' class="course-detail">
+                    <h4 class="heading">{{cour.iCodCou}}</h4>
                     <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
                     <ul class="course-features">
                         <li><i class="fa fa-map-marker"></i> California</li>
@@ -84,6 +84,7 @@
                     </ul>
                 </div>
             </div>
+        </a>
         </a>
     </div>
 </section>
