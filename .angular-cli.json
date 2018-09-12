@@ -33,6 +33,7 @@
         "assets/resources/js/popper.min.js",
         "assets/resources/js/bootstrap.min.js",
         "assets/resources/js/parallax.js",
+        "assets/resources/js/polyfiller.js",
         "assets/resources/slider-revolution/js/jquery.themepunch.tools.min.js",
         "assets/resources/slider-revolution/js/jquery.themepunch.revolution.min.js",
         "assets/resources/slider-revolution/js/extensions/revolution.extension.parallax.min.js",

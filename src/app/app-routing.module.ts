@@ -16,7 +16,7 @@ const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
-   { path: 'home/course/add', component: CreateCourseComponent },
+   { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
 
    { path: 'home', component: HomeComponent },
