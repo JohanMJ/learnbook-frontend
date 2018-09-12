@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/toPromise';
 
-import { User } from './user';
+import { User } from './models/user';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'

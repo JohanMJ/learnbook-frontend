@@ -1,0 +1,182 @@
+<section class="page-header">
+        <div class="container">
+            <h1 class="heading">Forms</h1>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active"><a href="#">Forms</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="container mt-100">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="heading">Contact <span class="text-primary">Form</span></h2>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name">
+                        <br>
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email">
+                        <br>
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject">
+                        <br>
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control"></textarea>
+                        <br>
+                        <label class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" checked="">
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Check this custom checkbox</span>
+                        </label>
+                        <br><br>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-100 mb-100">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="heading">Login <span class="text-primary">Form</span></h2>
+                <form>
+                    <label for="name2">Username</label>
+                    <div class="input-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                        <input id="name2" type="text" class="form-control">
+                    </div>
+                    <br>
+                    <label for="pass2">Password</label>
+                    <div class="input-group input-group">
+                        <span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span>
+                        <input id="pass2" type="password" class="form-control">
+                    </div>
+                    <br>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" checked="">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Keep me signed in</span>
+                    </label>
+                    <br><br>
+                    <button class="btn btn-primary">Sign In</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-100 mb-100">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="heading">Inline <span class="text-primary">Form</span></h2>
+                <form class="form-inline">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="inputUsername2" placeholder="Username">
+                    </div>
+                    <div class="form-group mx-lg-3">
+                        <input type="password" class="form-control form-control" id="inputPassword2" placeholder="Password">
+                    </div>
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Remember me</span>
+                    </label>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mt-100 mb-100">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="heading">File <span class="text-primary">Upload</span></h2>
+                <form>
+                    <label for="name2">Upload file</label>
+                    <br>
+                    <label class="custom-file w-100">
+                        <input type="file" id="file" class="custom-file-input" required="">
+                        <span class="custom-file-control"></span>
+                    </label>
+                    <br><br>
+                    <div class="progress">
+                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn btn-primary">Start upload</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+<section class="mt-100 mb-100">
+    <div class="container">
+        <div class="row flex-row justify-content-center">
+            <div class="col-lg-5">
+                <h3>Create your account</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="sNamUser">Nome</label>
+                                <input type="text" class="form-control" id="sNamUser" required [(ngModel)]="user.sNamUser"
+                                    name="sNamUser">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sLogUser">E-mail</label>
+                                <input type="text" class="form-control" id="sLogUser" required [(ngModel)]="user.sLogUser"
+                                    name="sLogUser" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #sLogUser="ngModel">
+                                <div [hidden]="sLogUser.valid || sLogUser.pristine" class="alert alert-danger">
+                                    <div [hidden]="!sLogUser.hasError('required')">Email is required</div>
+                                    <div [hidden]="!sLogUser.hasError('pattern')">Email format should be
+                                        <small><b>youarethebest@abc.com</b></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sPasUser">Senha</label>
+                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser"
+                                    required validateEqual="sConPasUser" reverse="true" name="sPasUser" #sPasUser="ngModel">
+                                <div [hidden]="sPasUser.valid || sPasUser.pristine" class="alert alert-danger">
+                                    Password is required
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sConPasUser">Confirmar senha</label>
+                                <input type="password" class="form-control" id="sConPasUser" required validateEqual="sPasUser"
+                                    [(ngModel)]="user.sConPasUser" name="sConPasUser" #sConPasUser="ngModel">
+                                <div [hidden]="sConPasUser.valid || sConPasUser.pristine" class="alert alert-danger">
+                                    Passwords did not match
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="agree" checked="" id="sTermos">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description"> I accept the <a href="">terms &
+                                            conditions</a>.</span>
+                                </label>
+                            </div>
+
+
+                            <button [disabled]="!sLogUser.valid || !sLogUser.touched || !sPasUser.valid || !sPasUser.touched
+                                        || !sConPasUser.valid || !sConPasUser.touched"
+                                type="submit" class="btn btn-primary btn-block pull-right">Submit</button>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

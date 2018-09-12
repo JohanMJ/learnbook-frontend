@@ -1,4 +1,4 @@
-import { User } from '../../models/user';
+import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
@@ -6,16 +6,15 @@ import { Directive, forwardRef,
   Attribute,OnChanges, SimpleChanges,Input } from '@angular/core';
 import { NG_VALIDATORS,Validator,
   Validators,AbstractControl,ValidatorFn } from '@angular/forms';
-  import { EqualValidator } from './create-user.password.match.directive';
   import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css'],
+  selector: 'app-create-course',
+  templateUrl: './create-course.component.html',
+  styleUrls: ['./create-course.component.css'],
 })
-export class CreateUserComponent implements OnInit {
-  user = new User;
+export class CreateCourseComponent implements OnInit {
+  course = new Course;
   submitted = false;
   constructor(private dataService: DataService,
               private location: Location,
@@ -24,13 +23,13 @@ export class CreateUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  newUser(): void {
+  newCourse(): void {
     this.submitted = false;
-    this.user = new User();
+    this.course = new Course();
   }
 
  private save(): void {
-   this.dataService.create(this.user);
+   this.dataService.create(this.course);
  }
 
  onSubmit() {

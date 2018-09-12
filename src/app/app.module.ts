@@ -60,6 +60,7 @@ import { UserDetailsComponent } from './/user-general/user-details/user-details.
 import { UsersComponent } from './user-general/users/users.component';
 import { DataService } from './data.service';
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
+import { CreateCourseComponent } from './course-general/create-course/create-course.component';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
  
 @NgModule({
@@ -78,6 +79,7 @@ import { EqualValidator } from './user-general/create-user/create-user.password.
         UserDetailsComponent,
         UsersComponent,
         CreateUserComponent,
+        CreateCourseComponent,
         EqualValidator
     ],
     providers: [DataService,
