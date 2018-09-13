@@ -4,13 +4,14 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import { User } from './models/user';
 import { Course } from './models/course';
-import { CourseList } from './models/courseList';
+import { Group } from './models/group';
 
 @Injectable()
 export class DataService {
 
   private usersUrl = 'http://localhost:8080/dev/user';  // URL to web API
   private courseUrl = 'http://localhost:8080/dev/course';  // URL to web API
+  private groupUrl = 'http://localhost:8080/dev/group';  // URL to web API
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -117,5 +118,24 @@ export class DataService {
       .then(response => response.json() as Course)
       .catch(this.handleError);
   }
+
+  getCourses(): Promise<Course[]> {
+    const url = `${this.courseUrl}/listAll`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course[])
+      .catch(this.handleError);
+  }
+
+  
+  createGroup(group: Group): Promise<Group> {
+    const url = `${this.groupUrl}/insert`;
+    return this.http
+      .post(url, JSON.stringify(group), { headers: this.headers })
+      .toPromise()
+      .then(res => res.json() as Group)
+      .catch(this.handleError);
+  }
+
 
 }

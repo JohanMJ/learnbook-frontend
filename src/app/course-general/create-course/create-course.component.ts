@@ -36,7 +36,7 @@ export class CreateCourseComponent implements OnInit {
   }
 
   private save(): void {
-    console.log(this.course);
+    // console.log(this.course);
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let n = new Array<User>();
     let cat = new Category();

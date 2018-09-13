@@ -1,5 +1,5 @@
 import { Course } from '../../models/course';
-import { User } from '../../models/user';
+import { Group } from '../../models/group';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -11,7 +11,7 @@ import {
   Validators, AbstractControl, ValidatorFn
 } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-
+import { Router } from '@angular/router';
 
 
 
@@ -21,29 +21,53 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./create-group.component.css'],
 })
 export class CreateGroupComponent implements OnInit {
-    currentCourse: Course;
-    id: number;
-    categories: User[];
+  id: number;
+  categories: Course[];
+  group;
+  submitted = false;
+  courseOne: string;
+  courseTwo: string;
+  courseThree: string;
 
-    constructor(private dataService: DataService, private route: ActivatedRoute) {
-      this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));
-    }
-  
-    getCourseById() {
-      return this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
-     
-   }
 
-   getUsers() {
-    return this.dataService.getUsers().then(categories => this.categories = categories);
-   
- }
 
-  
-    ngOnInit(): void {
-      this.getUsers();
-      console.log( this.dataService.getUsers().then(categories => this.categories = categories));
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
+    this.group = new Group();
+  }
 
+  getCourses() {
+    console.log(this.dataService.getCourses().then(categories => this.categories = categories));
+    return this.dataService.getCourses().then(categories => this.categories = categories);
+
+  }
+
+  newGroup() {
+
+    let courses = new Array<Course>();
+
+    this.categories.forEach(element => {
+      if (element.iCodCou.toString() === this.courseOne
+        || element.iCodCou.toString() === this.courseTwo
+        || element.iCodCou.toString() === this.courseThree) {
+        console.log(element.iCodCou);
+        courses.push(element);
+      }
+    });
+    console.log(courses);
+    this.group.courses = courses;
+    console.log(this.group);
+    this.dataService.createGroup(this.group);
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.newGroup();
+    this.router.navigate(['/home/add/group']);
+  }
+
+
+  ngOnInit(): void {
+    this.getCourses();
   }
 }
 
