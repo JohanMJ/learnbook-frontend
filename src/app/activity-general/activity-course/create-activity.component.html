@@ -1,0 +1,122 @@
+<section class="page-header">
+    <div class="container">
+        <h1 class="heading">Curso</h1>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><a href="#">Curso</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="container mt-100">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="heading">Novo <span class="text-primary">Curso</span></h2>
+            <form (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="name">Titulo</label>
+                    <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="course.sNamCou" name="sNamCou">
+                    <br>
+                    <label for="horas">Horas</label>
+                    <input  type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
+                    <br>
+                    <label for="preco">Preço</label>
+                    <input class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou"
+                        name="fPriCou" />
+                    <br>
+                    <label for="message">Descrição</label>
+                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="course.sDesCou"
+                        name="sDesCou"></textarea>
+                    <br>
+                <!-- </div> -->
+
+                <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
+                <!-- <div class="form-group"> -->
+                    <label for="categoria">Categoria</label>
+                    <select [(ngModel)]="course.iCodCat" (change)="onChangeCategorySelect($event)" name="course.iCodCat" class="form-control" required>
+                        <option value="1" >SAP</option>
+                        <option value="2" >Totvs!</option>
+                    </select>
+                    <br>
+                    <label for="dificuldade">Dificuldade</label>
+                    <select type="text" [(ngModel)]="course.sDifCou" (change)="onChangeCategorySelect($event)" name="course.sDifCou" class="form-control" required>
+                            <option value="1" >Iniciante</option>
+                            <option value="2" >Intermediario</option>
+                            <option value="3" >Avançado</option>
+                        </select>
+                    <br>
+                    <button class="btn btn-primary">Criar Curso</button>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- <section class="mt-100 mb-100">
+    <div class="container">
+        <div class="row flex-row justify-content-center">
+            <div class="col-lg-5">
+                <h3>Create your account</h3>
+                <div class="card">
+                    <div class="card-body">
+                        <form (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="sNamUser">Nome</label>
+                                <input type="text" class="form-control" id="sNamUser" required [(ngModel)]="user.sNamUser"
+                                    name="sNamUser">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sLogUser">E-mail</label>
+                                <input type="text" class="form-control" id="sLogUser" required [(ngModel)]="user.sLogUser"
+                                    name="sLogUser" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #sLogUser="ngModel">
+                                <div [hidden]="sLogUser.valid || sLogUser.pristine" class="alert alert-danger">
+                                    <div [hidden]="!sLogUser.hasError('required')">Email is required</div>
+                                    <div [hidden]="!sLogUser.hasError('pattern')">Email format should be
+                                        <small><b>youarethebest@abc.com</b></small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sPasUser">Senha</label>
+                                <input type="password" class="form-control" id="sPasUser" required [(ngModel)]="user.sPasUser"
+                                    required validateEqual="sConPasUser" reverse="true" name="sPasUser" #sPasUser="ngModel">
+                                <div [hidden]="sPasUser.valid || sPasUser.pristine" class="alert alert-danger">
+                                    Password is required
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sConPasUser">Confirmar senha</label>
+                                <input type="password" class="form-control" id="sConPasUser" required validateEqual="sPasUser"
+                                    [(ngModel)]="user.sConPasUser" name="sConPasUser" #sConPasUser="ngModel">
+                                <div [hidden]="sConPasUser.valid || sConPasUser.pristine" class="alert alert-danger">
+                                    Passwords did not match
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="agree" checked="" id="sTermos">
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description"> I accept the <a href="">terms &
+                                            conditions</a>.</span>
+                                </label>
+                            </div>
+
+
+                            <button [disabled]="!sLogUser.valid || !sLogUser.touched || !sPasUser.valid || !sPasUser.touched
+                                        || !sConPasUser.valid || !sConPasUser.touched"
+                                type="submit" class="btn btn-primary btn-block pull-right">Submit</button>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
