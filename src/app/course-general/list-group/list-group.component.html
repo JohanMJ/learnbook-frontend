@@ -1,0 +1,28 @@
+
+<section class="page-header">
+    <div class="container">
+        <h1 class="heading">Lista de Grupo</h1>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><a href="#">Grupos</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="container mt-100 mb-100">
+    <div class="row">
+        <a *ngFor="let group of groups" class="col-lg-4" [routerLink]="['/detail/group/', group.iCodGru]">
+            <div class="card card-no-border course-category">
+                <img src="../assets/resources/images/subject-1.jpg" class="img-fluid" alt="">
+                <div class="course-detail">
+                    <a href="">
+                        <h2 class="heading text-white">{{group.sNamGru}}</h2>
+                    </a>
+                    <span class="course-count">{{group.sPriGru}}</span>
+                    <br><br>
+                    <a href="course-grid.html" class="btn btn-secondary">Apply</a>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>

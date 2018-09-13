@@ -62,7 +62,7 @@ export class CreateGroupComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.newGroup();
-    this.router.navigate(['/home/add/group']);
+    this.router.navigate(['/group/listAll']);
   }
 
 

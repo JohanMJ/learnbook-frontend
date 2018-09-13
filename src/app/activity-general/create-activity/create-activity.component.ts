@@ -1,7 +1,8 @@
 import { Course } from '../../models/course';
+import { Activity } from '../../models/activity';
+import { User } from '../../models/user';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import {
   Directive, forwardRef,
   Attribute, OnChanges, SimpleChanges, Input
@@ -10,65 +11,61 @@ import {
   NG_VALIDATORS, Validator,
   Validators, AbstractControl, ValidatorFn
 } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
-import { Category } from '../../models/category';
-import { User } from '../../models/user';
+
 
 
 @Component({
-  selector: 'app-create-course',
-  templateUrl: './create-course.component.html',
-  styleUrls: ['./create-course.component.css'],
+  selector: 'app-create-activity',
+  templateUrl: './create-activity.component.html',
+  styleUrls: ['./create-activity.component.css'],
 })
-export class CreateCourseComponent implements OnInit {
-  course = new Course;
+export class CreateActivityComponent implements OnInit {
+  id: number;
+  courses: Course[];
+  activity;
   submitted = false;
-  constructor(private dataService: DataService,
-    private location: Location,
-    private router: Router) { }
+  courseOne: string;
+  currentUser: User;
 
-  ngOnInit() {
+
+
+  constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
+    this.activity = new Activity();
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
-  newCourse(): void {
-    this.submitted = false;
-    this.course = new Course();
+  getCourses() {
+    console.log(this.dataService.getCourses().then(courses => this.courses = courses));
+    return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
+
   }
 
-  private save(): void {
-    console.log(this.course);
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    let n = new Array<User>();
-    let cat = new Category();
-    cat.iCodCat = 1;
-    cat.sNamCat = "SAP";
+  newGroup() {
 
-    if(this.course.sDifCou == "1"){
-      this.course.sDifCou = "Iniciante";
-    }
-    n.push(currentUser);
+    let course = new Course();
 
-    this.course.users = n;
-    this.course.category = cat;
-
-    this.dataService.createCourse(this.course);
+    this.courses.forEach(element => {
+      if (element.iCodCou.toString() === this.courseOne) {
+          course = element;
+      }
+    });
+    console.log(course);
+    this.activity.course = course;
+    console.log(this.activity);
+    this.dataService.createActivity(this.activity);
   }
 
   onSubmit() {
     this.submitted = true;
-    this.save();
-    this.router.navigate(['/user']);
-  }
-
-  goBack(): void {
-    this.location.back();
+    this.newGroup();
+    this.router.navigate(['user']);
   }
 
 
-
-
-
-
-
-
+  ngOnInit(): void {
+    this.getCourses();
+  }
 }
+

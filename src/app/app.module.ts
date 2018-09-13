@@ -65,6 +65,9 @@ import { DataService } from './data.service';
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
+import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
+import { ListGroupComponent } from './course-general/list-group/list-group.component';
+import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
  
@@ -90,6 +93,9 @@ import { EqualValidator } from './user-general/create-user/create-user.password.
         CreateUserComponent,
         CreateCourseComponent,
         CreateGroupComponent,
+        CreateActivityComponent,
+        ListGroupComponent,
+        ListCourseComponent,
         DetailCourseComponent,
         EqualValidator
     ],

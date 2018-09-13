@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { User } from './models/user';
 import { Course } from './models/course';
 import { Group } from './models/group';
+import { Activity } from './models/activity';
 
 @Injectable()
 export class DataService {
@@ -12,6 +13,7 @@ export class DataService {
   private usersUrl = 'http://localhost:8080/dev/user';  // URL to web API
   private courseUrl = 'http://localhost:8080/dev/course';  // URL to web API
   private groupUrl = 'http://localhost:8080/dev/group';  // URL to web API
+  private activityUrl = 'http://localhost:8080/dev/activity';  // URL to web API
   private headers = new Headers({ 'Content-Type': 'application/json' });
 
   constructor(private http: Http) { }
@@ -136,6 +138,26 @@ export class DataService {
       .then(res => res.json() as Group)
       .catch(this.handleError);
   }
+
+    // Get all users
+    getGroups(): Promise<Group[]> {
+      const url = `${this.groupUrl}/listAll`;
+      return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as Group[])
+        .catch(this.handleError);
+    }
+
+    createActivity(activity: Activity): Promise<Activity> {
+      const url = `${this.activityUrl}/insert`;
+      return this.http
+        .post(url, JSON.stringify(activity), { headers: this.headers })
+        .toPromise()
+        .then(res => res.json() as Activity)
+        .catch(this.handleError);
+    }
+
+
 
 
 }

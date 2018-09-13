@@ -1,0 +1,80 @@
+<section class="page-header">
+    <div class="container">
+        <h1 class="heading">Lista de Grupo</h1>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><a href="#">Grupos</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="container mt-100 mb-100">
+    <div class="row">
+            <div class="col-lg-4">
+                    <div class="card course-card new">
+                        <div class="course-head">
+                            <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
+                            <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="course-detail">
+                            <h4 class="heading">Diploma in Marketing</h4>
+                            <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
+                            <ul class="course-features">
+                                <li><i class="fa fa-map-marker"></i> California</li>
+                                <li><i class="fa fa-clock-o"></i> 1 year</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card course-card">
+                        <div class="course-head">
+                            <img src="../assets/resources/images/course-grid-2.jpg" class="img-fluid course-img" alt="">
+                            <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="course-detail">
+                            <h4 class="heading">Masters in Marketing</h4>
+                            <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
+                            <ul class="course-features">
+                                <li><i class="fa fa-map-marker"></i> America</li>
+                                <li><i class="fa fa-clock-o"></i> 1 year</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card course-card new">
+                        <div class="course-head">
+                            <img src="../assets/resources/images/course-grid-3.jpg" class="img-fluid course-img" alt="">
+                            <a href="course-detail.html" class="course-link"><i class="fa fa-link" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="course-detail">
+                            <h4 class="heading">Diploma in Engineering</h4>
+                            <span class="brief">In this course, you learn all advanced techniques and methodologies.</span>
+                            <ul class="course-features">
+                                <li><i class="fa fa-map-marker"></i> Paris</li>
+                                <li><i class="fa fa-clock-o"></i> 1 year</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+        <a *ngFor="let course of courses" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+            <div class="card course-card new">
+                <div class="course-head">
+                    <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
+                    <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                            aria-hidden="true"></i></a>
+                </div>
+                <div class="course-detail">
+                    <h4 class="heading">{{course.sNamCou}}</h4>
+                    <!-- <h5 class="heading"><span class="text-primary">R$:</span>{{course.fPriCou}},00</h5> -->
+                    <span class="brief">Nesse curso você irá aprender técnicas e metodologias para {{course.sDifCou}}.</span>
+                    <ul class="course-features">
+                        <li><i class="fa fa-map-marker"></i>{{course.category.sNamCat}}</li>
+                        <li><i class="fa fa-clock-o"></i> {{course.fHorCou}}</li>
+                    </ul>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
