@@ -1,0 +1,47 @@
+<section class="page-header">
+    <div class="container">
+        <h1 class="heading">Grupos</h1>
+        <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active"><a href="#">Novo Grupo</a></li>
+        </ul>
+    </div>
+</section>
+
+<section class="container mt-100">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2 class="heading">Novo <span class="text-primary">Grupo</span></h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Titulo</label>
+                    <!-- <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="course.sNamCou" name="sNamCou"> -->
+                    <br>
+                    <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
+                    <label for="categoria">Curso 1</label>
+                    <select name="category" class="form-control" required>
+                        <option value="default">Select category</option>
+                        <option *ngFor="let category of categories" [value]="category.iCodUser">{{ category.sLogUser }}</option>
+                    </select>
+                    <br>
+                    <label for="categoria">Curso 2</label>
+                    <select name="category" class="form-control" required>
+                        <option value="default">Select category</option>
+                        <option *ngFor="let category1 of categories" [value]="category1.iCodUser">{{ category1.sLogUser}}</option>
+                    </select>
+                    <br>
+                    <br>
+                    <label for="categoria">Curso 3</label>
+                    <select name="category" class="form-control" required>
+                        <option value="default">Select category</option>
+                        <option *ngFor="let category2 of categories" [value]="category2.iCodUser">{{ category2.sLogUser}}</option>
+                    </select>
+                    <br>
+                    <br>
+                    <button class="btn btn-primary">Criar Grupo</button>
+                    <br>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

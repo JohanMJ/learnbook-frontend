@@ -1,5 +1,6 @@
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
+import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { UserDetailsComponent } from './user-general/user-details/user-details.component';
 import { UsersComponent } from './user-general/users/users.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
+   { path: 'home/add/group', component: CreateGroupComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },

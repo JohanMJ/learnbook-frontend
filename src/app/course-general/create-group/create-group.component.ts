@@ -1,4 +1,5 @@
 import { Course } from '../../models/course';
+import { User } from '../../models/user';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -15,13 +16,14 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
-  selector: 'app-detail-course',
-  templateUrl: './detail-course.component.html',
-  styleUrls: ['./detail-course.component.css'],
+  selector: 'app-create-group',
+  templateUrl: './create-group.component.html',
+  styleUrls: ['./create-group.component.css'],
 })
-export class DetailCourseComponent implements OnInit {
+export class CreateGroupComponent implements OnInit {
     currentCourse: Course;
     id: number;
+    categories: User[];
 
     constructor(private dataService: DataService, private route: ActivatedRoute) {
       this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));
@@ -31,9 +33,17 @@ export class DetailCourseComponent implements OnInit {
       return this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
      
    }
+
+   getUsers() {
+    return this.dataService.getUsers().then(categories => this.categories = categories);
+   
+ }
+
   
     ngOnInit(): void {
-       console.log(this.getCourseById());
+      this.getUsers();
+      console.log( this.dataService.getUsers().then(categories => this.categories = categories));
+
   }
 }
 

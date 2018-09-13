@@ -64,6 +64,7 @@ import { UsersComponent } from './user-general/users/users.component';
 import { DataService } from './data.service';
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
+import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
  
@@ -88,6 +89,7 @@ import { EqualValidator } from './user-general/create-user/create-user.password.
         UsersComponent,
         CreateUserComponent,
         CreateCourseComponent,
+        CreateGroupComponent,
         DetailCourseComponent,
         EqualValidator
     ],
