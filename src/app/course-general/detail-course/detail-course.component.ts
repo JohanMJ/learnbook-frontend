@@ -1,7 +1,6 @@
 import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 import {
   Directive, forwardRef,
   Attribute, OnChanges, SimpleChanges, Input
@@ -10,10 +9,9 @@ import {
   NG_VALIDATORS, Validator,
   Validators, AbstractControl, ValidatorFn
 } from '@angular/forms';
-import { User } from '../../models/user';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscribable } from 'rxjs/Observable';
-import { Subscription } from 'rxjs';
+
+
 
 
 @Component({
@@ -31,6 +29,7 @@ export class DetailCourseComponent implements OnInit {
   
     getCourseById() {
       return this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
+     
    }
   
     ngOnInit(): void {
