@@ -90,15 +90,15 @@
                 <ul class="nav nav-pills flex-column" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" href="#t3body1" aria-controls="t3body1" role="tab" data-toggle="tab"><i
-                            class="fa fa-graduation-cap fa-fw"></i>Atividade 1</a>
+                                class="fa fa-graduation-cap fa-fw"></i>Atividade 1</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#t3body2" aria-controls="t3body2" role="tab" data-toggle="tab"><i
-                            class="fa fa-graduation-cap fa-fw"></i> Atividade 2</a>
+                                class="fa fa-graduation-cap fa-fw"></i> Atividade 2</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#t3body3" aria-controls="t3body3" role="tab" data-toggle="tab"><i
-                            class="fa fa-graduation-cap fa-fw"></i> Atividade 3</a>
+                                class="fa fa-graduation-cap fa-fw"></i> Atividade 3</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#t3body4" aria-controls="t3body4" role="tab" data-toggle="tab"><i
@@ -125,6 +125,8 @@
                             trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among
                             the tall grass by the trickling stream; and, as I lie close to the earth, a thousand
                             unknown plants are noticed by me.</p>
+                        <button type="button" class="btn btn-success mt-20">Success</button>
+
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="t3body2">
                         <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
@@ -153,18 +155,15 @@
                             unknown plants are noticed by me.</p>
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="t3body4">
-                            <div *ngIf="isLoaded" style="text-align: center;">
-                                    <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
-                                    <span>{{ page }} / {{ totalPages }}</span>
-                                    <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
-                                  </div>
-                                  
-                                  <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf"
-                                              [show-all]="false"
-                                              [page]="page"
-                                              (after-load-complete)="afterLoadComplete($event)"
-                                  ></pdf-viewer>
-                            <!-- <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf"></pdf-viewer> -->
+                        <div *ngIf="isLoaded" style="text-align: center;">
+                            <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
+                            <span>{{ page }} / {{ totalPages }}</span>
+                            <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
+                        </div>
+
+                        <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf" [show-all]="false"
+                            [page]="page" (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
+                        <!-- <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf"></pdf-viewer> -->
                     </div>
                     <div role="tabpanel" class="tab-pane fade" id="t3body5">
                         <section class="container mt-40 mb-40">
