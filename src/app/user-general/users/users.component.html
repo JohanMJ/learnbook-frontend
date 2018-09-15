@@ -43,7 +43,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="form-group">
-                        <input id="search-1" type="text" class="form-control" placeholder="Start typing...">
+                        <input id="search-1" type="text" [(ngModel)]="searchTerm" class="form-control" placeholder="Start typing...">
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -80,7 +80,7 @@
 <section class="container mt-60 mb-100">
     <div class="row">
         <a *ngFor="let coursex of courses" class="col-lg-4">
-            <a *ngFor="let course of coursex" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+            <a *ngFor="let course of coursex | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
                 <div class="card course-card new">
                     <div class="course-head">
                         <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">

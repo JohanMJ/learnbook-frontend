@@ -71,6 +71,7 @@ import { ListGroupComponent } from './course-general/list-group/list-group.compo
 import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
+import { SearchPipe } from './user-general/users/search-pipe.pipe';
  
 @NgModule({
     imports: [
@@ -99,7 +100,8 @@ import { EqualValidator } from './user-general/create-user/create-user.password.
         ListGroupComponent,
         ListCourseComponent,
         DetailCourseComponent,
-        EqualValidator
+        EqualValidator,
+        SearchPipe
     ],
     providers: [DataService,
         AuthGuard,
