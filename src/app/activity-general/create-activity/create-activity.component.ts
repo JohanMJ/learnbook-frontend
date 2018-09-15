@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
 })
 export class CreateActivityComponent implements OnInit {
   id: number;
-  courses: Course[];
+  categories: Course[];
   activity;
   submitted = false;
   courseOne: string;
@@ -33,27 +33,26 @@ export class CreateActivityComponent implements OnInit {
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
     this.activity = new Activity();
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+     this.dataService.getCourses().then(categories => this.categories = categories);
+
   }
 
   getCourses() {
-    console.log(this.dataService.getCourses().then(courses => this.courses = courses));
-    return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
-
+    console.log(this.dataService.getCourses().then(categories => this.categories = categories));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return this.dataService.getCourses().then(categories => this.categories = categories);
   }
 
   newGroup() {
 
-    let course = new Course();
+    let coursex = new Course();
 
-    this.courses.forEach(element => {
+    this.categories.forEach(element => {
       if (element.iCodCou.toString() === this.courseOne) {
-          course = element;
+          coursex = element;
       }
     });
-    console.log(course);
-    this.activity.course = course;
-    console.log(this.activity);
+    this.activity.course = coursex;
     this.dataService.createActivity(this.activity);
   }
 
