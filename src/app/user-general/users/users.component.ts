@@ -15,13 +15,14 @@ export class UsersComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
   getCourses() {
     return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
 
   ngOnInit(): void {
-    this.getCourses();
+    console.log(this.getCourses());
   }
 
 
