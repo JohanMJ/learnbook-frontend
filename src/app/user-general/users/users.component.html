@@ -41,35 +41,13 @@
     <form>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <input id="search-1" type="text" class="form-control" placeholder="Start typing...">
+                <div class="col-12 input-group input-group-transparent">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search fa-2x pr-2"></i>
+                        </span>
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <select class="form-control">
-                            <option>1 year</option>
-                            <option>2 years</option>
-                            <option>4 years</option>
-                            <option>6 years</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <select class="form-control">
-                            <option>Ontario</option>
-                            <option>London</option>
-                            <option>New York</option>
-                            <option>Amsterdam</option>
-                        </select>
-                    </div>
-                </div>                    
-                <div class="col-lg-3">
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Search</button>
-                    </div>
+                    <input type="text" class="form-control" id="search-1" name="search" [(ngModel)]="searchTerm" type="text" placeholder="Start typing..." />
                 </div>
             </div>
         </div>
@@ -80,7 +58,7 @@
 <section class="container mt-60 mb-100">
     <div class="row">
         <a *ngFor="let coursex of courses" class="col-lg-4">
-            <a *ngFor="let course of coursex" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+            <a *ngFor="let course of coursex | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
                 <div class="card course-card new">
                     <div class="course-head">
                         <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">

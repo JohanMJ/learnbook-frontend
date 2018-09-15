@@ -1,18 +1,10 @@
 import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
-import {
-  Directive, forwardRef,
-  Attribute, OnChanges, SimpleChanges, Input
-} from '@angular/core';
-import {
-  NG_VALIDATORS, Validator,
-  Validators, AbstractControl, ValidatorFn
-} from '@angular/forms';
+import { Directive, forwardRef, Attribute, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-list-course',
@@ -21,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ListCourseComponent implements OnInit {
   courses: Course[];
+  searchTerm: any;
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
     this.courses = new Array<Course>();
@@ -29,7 +22,6 @@ export class ListCourseComponent implements OnInit {
   getCourses() {
     return this.dataService.getCourses().then(courses => this.courses = courses);
   }
-
 
   ngOnInit(): void {
     this.getCourses();
