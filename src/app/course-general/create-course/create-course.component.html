@@ -15,7 +15,13 @@
             <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="name">Titulo</label>
-                    <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="course.sNamCou" name="sNamCou">
+                    <input type="text" class="form-control" id="sNamCou" maxlength="50" required [(ngModel)]="course.sNamCou" name="sNamCou">
+                    <div *ngIf="!sNamCou.valid" class="alert alert-danger">
+                        <div [hidden]="!sNamCou.hasError('required')">Email is required</div>
+                        <div [hidden]="!sNamCou.length === 50">
+                            <span class="text-muted">Título apenas pode atingir 50 caracteres.</span>
+                        </div>
+                    </div>
                     <br>
                     <label for="horas">Horas</label>
                     <input  type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
