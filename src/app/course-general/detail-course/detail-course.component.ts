@@ -1,10 +1,8 @@
 import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
-import { Directive, forwardRef, Attribute, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { Activity } from '../../models/activity';
 
 @Component({
   selector: 'app-detail-course',
@@ -12,7 +10,9 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   styleUrls: ['./detail-course.component.css'],
 })
 export class DetailCourseComponent implements OnInit {
-    currentCourse: Course;
+    currentCourse ;
+    activities;
+    progress: number;
     id: number;
 
     page: number = 1;
@@ -34,11 +34,33 @@ export class DetailCourseComponent implements OnInit {
 
     constructor(private dataService: DataService, private route: ActivatedRoute) {
       this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));
+      this.currentCourse = new Course();
+      this.activities = new Array<Activity>();
+  
     }
 
     getCourseById() {
+      console.log("Curso");
+      console.log( this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse));
       return this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
 
+    }
+
+    getActivitiesFromCourse() {
+      console.log("Atividades");
+      console.log(this.dataService.getActivitiesFromCourse(this.id).then(activities => this.activities = activities));
+      return this.dataService.getActivitiesFromCourse(this.id).then(activities => this.activities = activities);
+
+    }
+
+    getProgress(){
+      console.log("Progresso");
+      console.log(this.dataService.getProgress(this.id).then(progress => this.progress = progress));
+      return this.dataService.getProgress(this.id).then(progress => this.progress = progress);
+    }
+    
+    updateActivity(){
+      return this.dataService.getProgress(this.id).then(progress => this.progress = progress);
     }
 
     accomplishTask() {
@@ -46,7 +68,9 @@ export class DetailCourseComponent implements OnInit {
     }
 
     ngOnInit(): void {
-       console.log(this.getCourseById());
+       this.getCourseById();
+       this.getActivitiesFromCourse();
+       this.getProgress();
   }
 }
 
