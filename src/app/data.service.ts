@@ -183,6 +183,16 @@ export class DataService {
         .catch(this.handleError);
     }
 
+    updateCourse(course: Course): Promise<Course> {
+      const url = `${this.usersUrl}/update/${course.iCodCou}`;
+      return this.http
+        .put(url, JSON.stringify(course), { headers: this.headers })
+        .toPromise()
+        .then(response => response.json() as Course)
+        .catch(this.handleError);
+    }
+  
+
 
 
 

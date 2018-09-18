@@ -2,6 +2,7 @@ import { CreateUserComponent } from './user-general/create-user/create-user.comp
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
+import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
 import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
    { path: 'home/add', component: CreateUserComponent },
    { path: 'user/add/group', component: CreateGroupComponent },
    { path: 'user/add/activity', component: CreateActivityComponent },
+   { path: 'user/course/add', component: CreateCourseComponent },
+   { path: 'user/course/update', component: UpdateCourseComponent },
+   { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },

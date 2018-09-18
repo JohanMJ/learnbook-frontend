@@ -13,26 +13,30 @@ import {
 import { Router } from '@angular/router';
 import { Category } from '../../models/category';
 import { User } from '../../models/user';
+import { ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
-  selector: 'app-create-course',
-  templateUrl: './create-course.component.html',
-  styleUrls: ['./create-course.component.css'],
+  selector: 'app-update-course',
+  templateUrl: './update-course.component.html',
+  styleUrls: ['./update-course.component.css'],
 })
-export class CreateCourseComponent implements OnInit {
+export class UpdateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
-  currentUser = new User;
+  currentUser;
+  currentCourse;
+  id;
 
-  constructor(private dataService: DataService,
-    private location: Location,
-    private router: Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private dataService: DataService, private location: Location, private router: Router, private actRouter: ActivatedRoute) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser')); 
+      this.id = this.actRouter.snapshot.paramMap.get('iCodCou');
+      this.currentCourse = this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
      }
 
 
   ngOnInit() {
+
   }
 
   newCourse(): void {
@@ -41,8 +45,6 @@ export class CreateCourseComponent implements OnInit {
   }
 
   private save(): void {
-    // console.log(this.course);
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let n = new Array<User>();
     let cat = new Category();
     cat.iCodCat = 1;
@@ -51,12 +53,12 @@ export class CreateCourseComponent implements OnInit {
     if(this.course.sDifCou == "1"){
       this.course.sDifCou = "Iniciante";
     }
-    n.push(currentUser);
+    n.push(this.currentUser);
 
     this.course.users = n;
     this.course.category = cat;
 
-    this.dataService.createCourse(this.course);
+    this.dataService.updateCourse(this.course);
   }
 
   onSubmit() {
