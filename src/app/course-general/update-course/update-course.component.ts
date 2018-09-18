@@ -22,49 +22,42 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./update-course.component.css'],
 })
 export class UpdateCourseComponent implements OnInit {
-  course = new Course;
+  courses: Course[];
   submitted = false;
-  currentUser;
-  currentCourse;
+  currentUser: User;
+  selectedCourse: string;
+  currentCourse: Course;
   id;
 
   constructor(private dataService: DataService, private location: Location, private router: Router, private actRouter: ActivatedRoute) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser')); 
-      this.id = this.actRouter.snapshot.paramMap.get('iCodCou');
-      this.currentCourse = this.dataService.getCourseById(this.id).then(currentCourse => this.currentCourse = currentCourse);
-     }
-
-
-  ngOnInit() {
 
   }
 
-  newCourse(): void {
-    this.submitted = false;
-    this.course = new Course();
+  getCourses() {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
 
-  private save(): void {
-    let n = new Array<User>();
-    let cat = new Category();
-    cat.iCodCat = 1;
-    cat.sNamCat = "SAP";
+  newDetails() {
 
-    if(this.course.sDifCou == "1"){
-      this.course.sDifCou = "Iniciante";
-    }
-    n.push(this.currentUser);
+    let course = new Course();
 
-    this.course.users = n;
-    this.course.category = cat;
-
-    this.dataService.updateCourse(this.course);
+    this.courses.forEach(element => {
+      if (element.iCodCou.toString() === this.selectedCourse) {
+        course = element;
+      }
+    });
+    this.currentCourse = course;
   }
 
   onSubmit() {
     this.submitted = true;
-    this.save();
-    this.router.navigate(['/user']);
+    this.newDetails();
+    this.router.navigate(['/user/course/update/details/' + this.currentCourse.iCodCou]);
+  }
+
+  ngOnInit(): void {
+    this.getCourses();
   }
 
   goBack(): void {

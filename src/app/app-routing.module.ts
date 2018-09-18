@@ -3,6 +3,7 @@ import { CreateCourseComponent } from './course-general/create-course/create-cou
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
 import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
+import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
 import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
@@ -17,14 +18,16 @@ const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
-   { path: 'user/add/group', component: CreateGroupComponent },
-   { path: 'user/add/activity', component: CreateActivityComponent },
+   { path: 'user/group/add', component: CreateGroupComponent },
+   { path: 'user/activity/add', component: CreateActivityComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'user/course/update', component: UpdateCourseComponent },
+   { path: 'user/course/update/details/:iCodCou', component: UpdateDetailsCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
+   { path: 'user/course/update/:iCodCou', component: UpdateCourseComponent },
    { path: 'group/listAll', component: ListGroupComponent },
    { path: 'home/course/listAll', component: ListCourseComponent },
 

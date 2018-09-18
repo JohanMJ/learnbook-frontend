@@ -74,6 +74,9 @@ import { ListCourseComponent } from './course-general/list-course/list-course.co
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
 import { SearchPipe } from './user-general/users/search-pipe.pipe';
+
+import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
+
  
 @NgModule({
     imports: [
@@ -100,6 +103,7 @@ import { SearchPipe } from './user-general/users/search-pipe.pipe';
         CreateGroupComponent,
         CreateActivityComponent,
         UpdateCourseComponent,
+        UpdateDetailsCourseComponent,
         ListGroupComponent,
         ListCourseComponent,
         DetailCourseComponent,
