@@ -148,14 +148,42 @@ export class DataService {
         .catch(this.handleError);
     }
 
-    createActivity(activity: Activity): Promise<Activity> {
+    createActivity(activity: Activity) {
       const url = `${this.activityUrl}/insert`;
+      let body = JSON.stringify(activity);
       return this.http
-        .post(url, JSON.stringify(activity), { headers: this.headers })
+        .post(url, body, { headers: this.headers })
         .toPromise()
         .then(res => res.json() as Activity)
         .catch(this.handleError);
     }
+
+    getActivitiesFromCourse(iCodCou: number) {
+      const url = `${this.activityUrl}/list/${iCodCou}`;
+      return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as Activity[])
+        .catch(this.handleError);
+    }
+
+    getProgress(iCodCou: number) {
+      const url = `${this.courseUrl}/progress/${iCodCou}`;
+      return this.http.get(url)
+        .toPromise()
+        .then(response => response.json() as number)
+        .catch(this.handleError);
+    }
+
+    updateActivity(activity: Activity): Promise<Activity> {
+      const url = `${this.usersUrl}/finish`;
+      return this.http
+        .put(url, JSON.stringify(activity), { headers: this.headers })
+        .toPromise()
+        .then(response => response.json() as Activity)
+        .catch(this.handleError);
+    }
+
+
 
 
 

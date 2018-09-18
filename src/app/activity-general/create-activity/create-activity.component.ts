@@ -23,42 +23,39 @@ import { Router } from '@angular/router';
 })
 export class CreateActivityComponent implements OnInit {
   id: number;
-  categories: Course[];
+  courses: Course[];
   activity;
   submitted = false;
-  courseOne: string;
+  selectedCourse: string;
   currentUser: User;
 
 
 
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
     this.activity = new Activity();
-     this.dataService.getCourses().then(categories => this.categories = categories);
-
   }
 
   getCourses() {
-    console.log(this.dataService.getCourses().then(categories => this.categories = categories));
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    return this.dataService.getCourses().then(categories => this.categories = categories);
+    return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
 
-  newGroup() {
+  newActivity() {
 
-    let coursex = new Course();
+    let course = new Course();
 
-    this.categories.forEach(element => {
-      if (element.iCodCou.toString() === this.courseOne) {
-          coursex = element;
+    this.courses.forEach(element => {
+      if (element.iCodCou.toString() === this.selectedCourse) {
+          course = element;
       }
     });
-    this.activity.course = coursex;
+    this.activity.course = course;
     this.dataService.createActivity(this.activity);
   }
 
   onSubmit() {
     this.submitted = true;
-    this.newGroup();
+    this.newActivity();
     this.router.navigate(['user']);
   }
 

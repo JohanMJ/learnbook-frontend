@@ -47,7 +47,8 @@
                             <i class="fa fa-search fa-2x pr-2"></i>
                         </span>
                     </div>
-                    <input type="text" class="form-control" id="search-1" name="search" [(ngModel)]="searchTerm" type="text" placeholder="Start typing..." />
+                    <input type="text" class="form-control" id="search-1" name="search" [(ngModel)]="searchTerm" type="text"
+                        placeholder="Start typing..." />
                 </div>
             </div>
         </div>
@@ -56,24 +57,22 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let coursex of courses" class="col-lg-4">
-            <a *ngFor="let course of coursex | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
-                <div class="card course-card new">
-                    <div class="course-head">
-                        <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
-                        <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
-                                aria-hidden="true"></i></a>
-                    </div>
-                    <div class="course-detail">
-                        <h4 class="heading">{{course.sNamCou}}</h4>
-                        <h5 class="heading"><span class="text-primary">R$:</span>{{course.fPriCou}},00</h5>
-                        <ul class="course-features">
-                            <!-- <li><i class="fa fa-map-marker"></i>{{course.category.sNamCat}}</li> -->
-                            <li><i class="fa fa-clock-o"></i> {{course.fHorCou}}</li>
-                        </ul>
-                    </div>
+        <a *ngFor="let course of courses | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+            <div class="card course-card new">
+                <div class="course-head">
+                    <img src="../assets/resources/images/course-grid-1.jpg" class="img-fluid course-img" alt="">
+                    <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                            aria-hidden="true"></i></a>
                 </div>
-            </a>
+                <div class="course-detail">
+                    <h4 class="heading">{{course.sNamCou}}</h4>
+                    <h5 class="heading"><span class="text-primary">R$:</span>{{course.fPriCou}},00</h5>
+                    <ul class="course-features">
+                        <li><i class="fa fa-map-marker"></i>{{course.category.sNamCat}}</li>
+                        <li><i class="fa fa-clock-o"></i> {{course.fHorCou}}</li>
+                    </ul>
+                </div>
+            </div>
         </a>
     </div>
     <div class="row mt-20">
@@ -96,7 +95,7 @@
                         <a class="page-link" href="#">Next</a>
                     </li>
                 </ul>
-            </nav>                
+            </nav>
         </div>
     </div>
 </section>
