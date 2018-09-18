@@ -65,6 +65,8 @@ import { UsersComponent } from './user-general/users/users.component';
 import { DataService } from './data.service';
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
+import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
+
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
@@ -74,6 +76,8 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
 import { SearchPipe } from './user-general/users/search-pipe.pipe';
+
+import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
 
 @NgModule({
     imports: [
@@ -101,6 +105,8 @@ import { SearchPipe } from './user-general/users/search-pipe.pipe';
         CreateCourseComponent,
         CreateGroupComponent,
         CreateActivityComponent,
+        UpdateCourseComponent,
+        UpdateDetailsCourseComponent,
         ListGroupComponent,
         ListCourseComponent,
         DetailCourseComponent,
