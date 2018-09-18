@@ -34,13 +34,13 @@
 // })
 // export class AppModule { }
 
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { FormsModule }    from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
  
 // used to create fake backend
@@ -48,8 +48,8 @@ import { fakeBackendProvider } from './fake-backend/index';
 import { MockBackend, MockConnection } from '@angular/http/testing';
 import { BaseRequestOptions } from '@angular/http';
  
-import { AppComponent }  from './app.component';
-import { AppRoutingModule }        from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
  
 import { AlertComponent } from './alert/index';
 import { AuthGuard } from './auth-guard/index';
@@ -70,9 +70,11 @@ import { CreateActivityComponent } from './activity-general/create-activity/crea
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
 import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
+import { NgxCurrencyModule } from 'ngx-currency';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
 import { SearchPipe } from './user-general/users/search-pipe.pipe';
- 
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -83,6 +85,8 @@ import { SearchPipe } from './user-general/users/search-pipe.pipe';
         IntlModule,
         GridModule,
         PdfViewerModule,
+        NgxCurrencyModule,
+        NgxPaginationModule
 
     ],
     declarations: [
