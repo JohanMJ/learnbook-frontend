@@ -154,7 +154,7 @@
     <form>
         <div class="container">
             <div class="row">
-                <div class="col-12 input-group input-group-transparent">
+                <div class="col-12 input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">
                             <i class="fa fa-search fa-2x pr-2"></i>
@@ -168,10 +168,9 @@
     </form>
 </div>
 
-
-<section class="container mt-20 mb-100">
+<section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let course of courses | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+        <a *ngFor="let course of courses | paginate: { itemsPerPage: 6, currentPage: pageNumber, totalItems: courses.length } | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
             <div class="card course-card new">
                 <div class="course-head">
                     <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
@@ -194,7 +193,18 @@
     </div>
     <div class="row mt-20">
         <div class="col-lg-12">
-            <nav>
+            <pagination-controls (pageChange)="pageNumber = $event" 
+                maxSize="9"
+                directionLinks="true"
+                autoHide="true"
+                responsive="true"
+                previousLabel="Previous"
+                nextLabel="Next"
+                screenReaderPaginationLabel="Pagination"
+                screenReaderPageLabel="page"
+                screenReaderCurrentLabel="You're on page">
+            </pagination-controls>
+            <!-- <nav>
                 <ul class="pagination justify-content-center">
                     <li class="page-item">
                         <a class="page-link" href="#">Previous</a>
@@ -212,7 +222,7 @@
                         <a class="page-link" href="#">Next</a>
                     </li>
                 </ul>
-            </nav>
+            </nav> -->
         </div>
     </div>
 </section>
