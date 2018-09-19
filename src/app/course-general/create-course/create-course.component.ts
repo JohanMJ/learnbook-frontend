@@ -35,6 +35,7 @@ export class CreateCourseComponent implements OnInit {
     let cat = new Category();
     cat.iCodCat = 1;
     cat.sNamCat = "SAP";
+    const maxPrice = 5000;
 
     if(this.course.sDifCou == "1"){
       this.course.sDifCou = "Iniciante";
@@ -45,6 +46,13 @@ export class CreateCourseComponent implements OnInit {
     this.course.category = cat;
 
     this.dataService.createCourse(this.course);
+  }
+
+  onChangePrice(price) {
+    console.log(price);
+    if (price > maxPrice) {
+        price = 5000;
+    }
   }
 
   onSubmit() {
