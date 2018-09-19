@@ -16,9 +16,14 @@ import { User } from '../../models/user';
 export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
+  currentUser = new User;
+
   constructor(private dataService: DataService,
     private location: Location,
-    private router: Router) { }
+    private router: Router) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+     }
+
 
   ngOnInit() {
   }
