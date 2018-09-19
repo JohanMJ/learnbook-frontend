@@ -11,8 +11,10 @@ import { DataService } from '../../data.service';
 
 export class UsersComponent implements OnInit {
   currentUser: User;
-  courses: Course[];
+  courses= [];
   searchTerm: any;
+  pageNumber: number = 1;
+  index: number = 0;
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));

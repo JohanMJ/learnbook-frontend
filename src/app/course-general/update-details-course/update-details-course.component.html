@@ -132,31 +132,23 @@
             <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="name">Titulo</label>
-                    <input type="text" class="form-control" id="sNamCou" maxlength="30" required [(ngModel)]="course.sNamCou" name="sNamCou" #sNamCou="ngModel">
-                    <!-- <div *ngIf="sNamCou.valid" class="alert alert-danger">
-                        <div [hidden]="!sNamCou.hasError('required')">Email is required</div> 
-                         <div [hidden]="sNamCou.toString().length === 30">
-                            <span class="text-muted">Título apenas pode atingir 50 caracteres.</span>
-                        </div>
-                    </div> -->
+                    <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="currentCourse.sNamCou" name="sNamCou" value="{{currentCourse.sNamCou}}">
                     <br>
                     <label for="horas">Horas</label>
-                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
+                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="currentUser.fHorCou" name="fHorCou">
                     <br>
                     <label for="preco">Preço</label>
-    	            
-    	             <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,allowNegative: false }" class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou" name="fPriCou" />
-    	            <!-- <input class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou" name="fPriCou" /> -->
-    	                             <br>
+                    <input class="form-control" id="fPriCou" required [(ngModel)]="currentUser.fPriCou" name="fPriCou" />
+                    <br>
                     <label for="message">Descrição</label>
-                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="course.sDesCou" name="sDesCou"></textarea>
+                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="currentUser.sDesCou" name="sDesCou"></textarea>
                     <br>
                     <!-- </div> -->
 
                     <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
                     <!-- <div class="form-group"> -->
                     <label for="categoria">Categoria</label>
-                    <select [(ngModel)]="course.iCodCat" (change)="onChangeCategorySelect($event)" name="course.iCodCat"
+                    <select [(ngModel)]="currentUser.iCodCat" (change)="onChangeCategorySelect($event)" name="currentUser.iCodCat"
                         class="form-control" required>
                         <option value="1">SAP</option>
                         <option value="2">Totvs!</option>
@@ -166,6 +158,8 @@
                     <select type="text" [(ngModel)]="course.sDifCou" (change)="onChangeCategorySelect($event)" name="course.sDifCou"
                         class="form-control" required>
                         <option value="1">Iniciante</option>
+                        <option value="1">Iniciante Jorge</option>
+                        <option value="1">Iniciante Test</option>
                         <option value="2">Intermediario</option>
                         <option value="3">Avançado</option>
                     </select>

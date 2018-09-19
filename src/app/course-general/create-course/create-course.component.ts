@@ -2,18 +2,11 @@ import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {
-  Directive, forwardRef,
-  Attribute, OnChanges, SimpleChanges, Input
-} from '@angular/core';
-import {
-  NG_VALIDATORS, Validator,
-  Validators, AbstractControl, ValidatorFn
-} from '@angular/forms';
+import { Directive, forwardRef, Attribute, OnChanges, SimpleChanges, Input } from '@angular/core';
+import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../../models/category';
 import { User } from '../../models/user';
-
 
 @Component({
   selector: 'app-create-course',
@@ -23,9 +16,14 @@ import { User } from '../../models/user';
 export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
+  currentUser = new User;
+
   constructor(private dataService: DataService,
     private location: Location,
-    private router: Router) { }
+    private router: Router) {
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+     }
+
 
   ngOnInit() {
   }
