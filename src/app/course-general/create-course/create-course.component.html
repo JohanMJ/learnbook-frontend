@@ -144,10 +144,8 @@
                     <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
                     <br>
                     <label for="preco">Preço</label>
-    	            
-    	             <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,allowNegative: false }" class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou" name="fPriCou" />
-    	            <!-- <input class="form-control" id="fPriCou" required [(ngModel)]="course.fPriCou" name="fPriCou" /> -->
-    	                             <br>
+                    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,allowNegative: false }" class="form-control" id="fPriCou" (change)="onChangePrice(course.fPriCou)" required [(ngModel)]="course.fPriCou" name="fPriCou" />
+                    <br>
                     <label for="message">Descrição</label>
                     <textarea class="form-control" id="sDesCou" required [(ngModel)]="course.sDesCou" name="sDesCou"></textarea>
                     <br>
