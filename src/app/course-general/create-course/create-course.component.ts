@@ -17,6 +17,7 @@ export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
   currentUser = new User;
+  maxPrice = 5000;
 
   constructor(private dataService: DataService,
     private location: Location,
@@ -55,7 +56,7 @@ export class CreateCourseComponent implements OnInit {
 
   onChangePrice(price) {
     console.log(price);
-    if (price > maxPrice) {
+    if (price > this.maxPrice) {
         price = 5000;
     }
   }
