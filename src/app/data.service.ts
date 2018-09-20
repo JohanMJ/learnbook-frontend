@@ -184,13 +184,23 @@ export class DataService {
     }
 
     updateCourse(course: Course): Promise<Course> {
-      const url = `${this.usersUrl}/update/${course.iCodCou}`;
+      const url = `${this.courseUrl}/update`;
       return this.http
         .put(url, JSON.stringify(course), { headers: this.headers })
         .toPromise()
         .then(response => response.json() as Course)
         .catch(this.handleError);
     }
+
+    removeCourse(course: Course): Promise<Course> {
+      const url = `${this.courseUrl}/remove`;
+      return this.http
+        .put(url, JSON.stringify(course), { headers: this.headers })
+        .toPromise()
+        .then(response => response.json() as Course)
+        .catch(this.handleError);
+    }
+  
   
 
 

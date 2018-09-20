@@ -17,6 +17,7 @@ export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
   currentUser = new User;
+  maxPrice : 5000;
 
   constructor(private dataService: DataService,
     private location: Location,
@@ -40,7 +41,7 @@ export class CreateCourseComponent implements OnInit {
     let cat = new Category();
     cat.iCodCat = 1;
     cat.sNamCat = "SAP";
-    const maxPrice = 5000;
+   
 
     if(this.course.sDifCou == "1"){
       this.course.sDifCou = "Iniciante";
@@ -55,8 +56,8 @@ export class CreateCourseComponent implements OnInit {
 
   onChangePrice(price) {
     console.log(price);
-    if (price > maxPrice) {
-        price = 5000;
+    if (price > this.maxPrice) {
+        price = 500;
     }
   }
 

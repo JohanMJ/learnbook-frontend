@@ -138,11 +138,40 @@
                         <option *ngFor="let course of courses" [value]="course.iCodCou">{{ course.sNamCou }}</option>
                     </select>
                     <br>
-                    <button class="btn btn-primary">Criar Curso</button>
+                    <button class="btn btn-primary">Atualizar Curso</button>
                     <br>
                 </div>
             </form>
         </div>
+        <!-- <div class="example-block">
+            <div class="example-block__item">
+                <ngx-select [formControl]="ngxControl"
+                            [allowClear]="true"
+                            [defaultValue]="doNgxDefault()"
+                            [items]="items"
+                            placeholder="No city selected"
+                            (typed)="inputTyped('ngx-select', $event)"
+                            (focus)="doFocus()"
+                            (blur)="doBlur()"
+                            (open)="doOpen()"
+                            (close)="doClose()"
+                            (select)="doSelect($event)"
+                            (remove)="doRemove($event)"
+                            (selectionChanges)="doSelectOptions($event)">
+                </ngx-select>
+                <p></p>
+                <div class="alert alert-secondary">
+                    <pre>{{ngxControl.value | json}}</pre>
+                </div>
+                <br>
+                <button class="btn btn-primary">Atualizar Curso</button>
+                <br>
+            </div>
+  
+    </div> -->
+        <!-- </form> -->
+    <!-- </div> -->
     </div>
-</section>
 
+
+</section>
