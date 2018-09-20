@@ -8,6 +8,7 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
 import { ListCourseComponent } from './course-general/list-course/list-course.component';
 import { DetailCourseComponent } from './course-general/detail-course/detail-course.component';
+import { DinamicCourseComponent } from './course-general/dinamic-course/dinamic-course.component';
 import { UserDetailsComponent } from './user-general/user-details/user-details.component';
 import { UsersComponent } from './user-general/users/users.component';
 import { NgModule } from '@angular/core';
@@ -29,6 +30,7 @@ const routes: Routes = [
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
+   { path: 'dinamic/course/:iCodCou', component: DinamicCourseComponent },
    { path: 'user/course/update/:iCodCou', component: UpdateCourseComponent },
    { path: 'group/listAll', component: ListGroupComponent },
    { path: 'home/course/listAll', component: ListCourseComponent },

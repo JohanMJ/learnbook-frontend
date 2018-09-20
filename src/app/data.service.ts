@@ -174,12 +174,14 @@ export class DataService {
         .catch(this.handleError);
     }
 
-    updateActivity(activity: Activity): Promise<Activity> {
-      const url = `${this.usersUrl}/finish`;
+    updateActivity(activity: Activity): Promise<void> {
+      console.log(activity);
+      const url = `${this.activityUrl}/finish`;
+      console.log(url);
       return this.http
         .put(url, JSON.stringify(activity), { headers: this.headers })
         .toPromise()
-        .then(response => response.json() as Activity)
+        .then(() => null)
         .catch(this.handleError);
     }
 

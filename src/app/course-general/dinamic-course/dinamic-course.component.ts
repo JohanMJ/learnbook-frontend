@@ -5,17 +5,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Activity } from '../../models/activity';
 
 @Component({
-  selector: 'app-detail-course',
-  templateUrl: './detail-course.component.html',
-  styleUrls: ['./detail-course.component.css'],
+  selector: 'app-dinamic-course',
+  templateUrl: './dinamic-course.component.html',
+  styleUrls: ['./dinamic-course.component.css'],
 })
-export class DetailCourseComponent implements OnInit {
+export class DinamicCourseComponent implements OnInit {
     currentCourse ;
-    activities: Activity[];
+    activities;
     progress: number;
     id: number;
-    currentActivity;
-  
 
     page: number = 1;
     totalPages: number;
@@ -69,16 +67,8 @@ export class DetailCourseComponent implements OnInit {
     }
   
     accomplishTask(id) {
-      let act = new Activity();
-
-      this.activities.forEach(element => {
-        if(element.iCodAct == id){
-          act = element;
-        }
-      });
-      this.dataService.updateActivity(act).then(currentActivity => this.currentActivity = currentActivity);
-      this.getProgress();
-    }    
+      // set task accomplished
+    }
 
     ngOnInit(): void {
        this.getCourseById();

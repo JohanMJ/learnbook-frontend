@@ -79,6 +79,9 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
 import { SearchPipe } from './user-general/users/search-pipe.pipe';
+import { DinamicCourseComponent } from './course-general/dinamic-course/dinamic-course.component';
+
+
 
 import { NgxSelectModule } from 'ngx-select-ex';
 
@@ -119,7 +122,8 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
         ListCourseComponent,
         DetailCourseComponent,
         EqualValidator,
-        SearchPipe
+        SearchPipe,
+        DinamicCourseComponent
     ],
     providers: [DataService,
         AuthGuard,

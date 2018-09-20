@@ -3,7 +3,6 @@ import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Directive, forwardRef, Attribute, OnChanges, SimpleChanges, Input } from '@angular/core';
-import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 //import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../../models/category';
@@ -18,9 +17,6 @@ export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
   currentUser = new User;
-<<<<<<< HEAD
-  maxPrice : 5000;
-=======
   maxPrice = 500;
 
   // Aux variables
@@ -37,17 +33,16 @@ export class CreateCourseComponent implements OnInit {
   showDescRequiredError: boolean = false;
   showCategoryRequiredError: boolean = false;
   showDifRequiredError: boolean = false;
->>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
 
   constructor(private dataService: DataService,
     private location: Location,
     private router: Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-     }
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
 
   ngOnInit() {
-    this.course.category.iCodCat = null;
+    // this.course.category.iCodCat = null;
     this.course.sDifCou = null;
   }
 
@@ -57,21 +52,25 @@ export class CreateCourseComponent implements OnInit {
   }
 
   private save(): void {
-    // console.log(this.course);
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let n = new Array<User>();
     let cat = new Category();
-    cat.iCodCat = 1;
-    cat.sNamCat = "SAP";
-<<<<<<< HEAD
-   
-=======
->>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
 
-    if(this.course.sDifCou == "1"){
+    if (this.course.sDifCou == "1") {
       this.course.sDifCou = "Iniciante";
     }
+
     n.push(currentUser);
+
+    if (this.category == "1") {
+      cat.iCodCat = 1;
+      cat.sNamCat = "SAP";
+    }
+
+    if (this.category == "2") {
+      cat.iCodCat = 2;
+      cat.sNamCat = "ORACLE";
+    }
 
     this.course.users = n;
     this.course.category = cat;
@@ -81,28 +80,22 @@ export class CreateCourseComponent implements OnInit {
     this.course.fPriCou = this.price;
     this.course.fHorCou = this.hours;
     this.course.sDifCou = this.difficult;
-    this.course.category = this.category;
+    this.course.category = cat;
 
     this.dataService.createCourse(this.course);
   }
 
   onChangePrice(price) {
-<<<<<<< HEAD
-    console.log(price);
     if (price > this.maxPrice) {
-        price = 500;
-=======
-    if (price > this.maxPrice) {
-        this.price = 500;
->>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
+      this.price = 500;
     }
   }
 
   onSubmit() {
     if (this.isValidForm()) {
-        this.submitted = true;
-        this.save();
-        this.router.navigate(['/user']);      
+      this.submitted = true;
+      this.save();
+      this.router.navigate(['/user']);
     }
   }
 
@@ -114,33 +107,33 @@ export class CreateCourseComponent implements OnInit {
     let valid = true;
 
     if (this.title === null || this.title === 'null') {
-        valid = false;
-        this.showTitleRequiredError = true;
+      valid = false;
+      this.showTitleRequiredError = true;
     }
 
     if (this.hours === null || this.hours === 'null') {
-        valid = false;
-        this.showHoursRequiredError = true;
+      valid = false;
+      this.showHoursRequiredError = true;
     }
 
     if (this.price === null || this.price === 'null') {
-        valid = false;
-        this.showPriceRequiredError = true;
+      valid = false;
+      this.showPriceRequiredError = true;
     }
 
     if (this.description === null || this.description === 'null') {
-        valid = false;
-        this.showDescRequiredError = true;
+      valid = false;
+      this.showDescRequiredError = true;
     }
 
     if (this.category === null || this.category === 'null') {
-        valid = false;
-        this.showCategoryRequiredError = true;
+      valid = false;
+      this.showCategoryRequiredError = true;
     }
 
     if (this.difficult === null || this.difficult === 'null') {
-        valid = false;
-        this.showDifRequiredError = true;
+      valid = false;
+      this.showDifRequiredError = true;
     }
 
     return valid;

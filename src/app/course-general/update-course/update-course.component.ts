@@ -94,7 +94,7 @@ export class UpdateCourseComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.newDetails();
-    // this.router.navigate(['/user/course/update/details/' + this.currentCourse.iCodCou]);
+    this.router.navigate(['/user/course/update/details/' + this.currentCourse.iCodCou]);
   }
 
   ngOnInit(): void {
