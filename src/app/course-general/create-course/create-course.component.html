@@ -125,10 +125,11 @@
     </div>
 </section>
 
-<section class="container mt-60">
-    <div class="row">
-        <div class="col-lg-6">
+<div class="row">
+    <div class="form-container col-lg-12">
+        <section class="data-container pl-5">  
             <h2 class="heading">Novo <span class="text-primary">Curso</span></h2>
+<<<<<<< HEAD
             <form >
                 <div class="form-group">
                     <label for="name">Titulo</label>
@@ -140,41 +141,83 @@
                         <div *ngIf="sNamCou.hasError('required')">Title is required</div> 
                     </div> -->
                     <br>
+=======
+            <form class="mb-5">
+                <div class="form-group row col-lg-6">
+                    <label for="name">Titulo</label>
+                    <span style="color: red;">*</span>
+                    <input class="form-control" id="sNamCourse" type="text" maxlength="50" [(ngModel)]="title" name="sNamCou">
+                    <span style="color: red;" *ngIf="title.length === 50">Tamanho máximo para título é 50 caracteres.</span>
+                    <span style="color: red;" *ngIf="showTitleRequiredError">Título é obrigatório.</span>
+                </div>
+
+                <div class="form-group row col-lg-6">
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
                     <label for="horas">Horas</label>
-                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="course.fHorCou" name="fHorCou">
-                    <br>
+                    <span style="color: red;">*</span>
+                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="hours" name="fHorCou">
+                    <span style="color: red;" *ngIf="showHoursRequiredError">Horas é obrigatório.</span>
+                </div>
+
+                <div class="form-group row col-lg-6">
                     <label for="preco">Preço</label>
+<<<<<<< HEAD
                     <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,allowNegative: false }" class="form-control" id="fPriCou" (ngModelChange)="onChangePrice(course.fPriCou)" required [(ngModel)]="course.fPriCou" name="fPriCou" />
                     <br>
+=======
+                    <span style="color: red;">*</span>
+                    <input currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' ,allowNegative: false }" class="form-control" id="fPriCou" (ngModelChange)="onChangePrice(price)" required [(ngModel)]="price" name="fPriCou" />
+                    <span *ngIf="showPriceRequiredError" style="color: red;">Preço é obrigatório.</span>
+                </div>
+                
+                <div class="form-group row col-lg-6">
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
                     <label for="message">Descrição</label>
-                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="course.sDesCou" name="sDesCou"></textarea>
-                    <br>
-                    <!-- </div> -->
+                    <span style="color: red;">*</span>
+                    <textarea class="form-control" id="sDesCou" maxlength="3999" required [(ngModel)]="description" name="sDesCou"></textarea>
+                    <span style="color: red;" *ngIf="description.length === 3999">Limite máximo de 3999 caracteres atingido.</span>
+                    <span style="color: red;" *ngIf="showDescRequiredError">Descrição é obrigatório.</span>
+                </div>
 
-                    <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
-                    <!-- <div class="form-group"> -->
+                <h2 class="heading mt-3 mb-3">Categorização do <span class="text-primary">Curso</span></h2>
+                <div class="form-group row col-lg-6">
                     <label for="categoria">Categoria</label>
-                    <select [(ngModel)]="course.iCodCat" (change)="onChangeCategorySelect($event)" name="course.iCodCat"
+                    <span style="color: red;">*</span>
+                    <select [(ngModel)]="category" (change)="onChangeCategorySelect($event)" name="category"
                         class="form-control" required>
+                        <option selected value="null">Selecione uma opção...</option>
                         <option value="1">SAP</option>
                         <option value="2">Totvs!</option>
                     </select>
-                    <br>
+                    <span *ngIf="showCategoryRequiredError" style="color: red;">Categoria é obrigatório.</span>
+                </div>
+                
+                <div class="form-group row col-lg-6">
                     <label for="dificuldade">Dificuldade</label>
-                    <select type="text" [(ngModel)]="course.sDifCou" (change)="onChangeCategorySelect($event)" name="course.sDifCou"
+                    <span style="color: red;">*</span>
+                    <select type="text" [(ngModel)]="difficult" (change)="onChangeCategorySelect($event)" name="difficulty"
                         class="form-control" required>
+                        <option selected value="null">Selecione uma opção...</option>
                         <option value="1">Iniciante</option>
                         <option value="2">Intermediario</option>
                         <option value="3">Avançado</option>
                     </select>
+<<<<<<< HEAD
                     <br>
                     <button (click)="onSubmit()" class="btn btn-primary">Criar Curso</button>
                     <br>
+=======
+                    <span *ngIf="showDifRequiredError" style="color: red;">Dificuldade é obrigatório.</span>
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
                 </div>
+                
+                <button class="btn btn-primary" (click)="onSubmit()">Criar Curso</button>
+                
             </form>
-        </div>
+        </section>
     </div>
-</section>
+</div>
+
 
 
 <!-- <section class="mt-100 mb-100">

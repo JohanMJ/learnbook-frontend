@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Directive, forwardRef, Attribute, OnChanges, SimpleChanges, Input } from '@angular/core';
 import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+//import { NG_VALIDATORS, Validator, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Category } from '../../models/category';
 import { User } from '../../models/user';
@@ -17,7 +18,26 @@ export class CreateCourseComponent implements OnInit {
   course = new Course;
   submitted = false;
   currentUser = new User;
+<<<<<<< HEAD
   maxPrice : 5000;
+=======
+  maxPrice = 500;
+
+  // Aux variables
+  title: string = '';
+  hours: any;
+  price: any;
+  description: string = '';
+  category: any;
+  difficult: any;
+
+  showHoursRequiredError: boolean = false;
+  showPriceRequiredError: boolean = false;
+  showTitleRequiredError: boolean = false;
+  showDescRequiredError: boolean = false;
+  showCategoryRequiredError: boolean = false;
+  showDifRequiredError: boolean = false;
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
 
   constructor(private dataService: DataService,
     private location: Location,
@@ -27,6 +47,8 @@ export class CreateCourseComponent implements OnInit {
 
 
   ngOnInit() {
+    this.course.category.iCodCat = null;
+    this.course.sDifCou = null;
   }
 
   newCourse(): void {
@@ -41,7 +63,10 @@ export class CreateCourseComponent implements OnInit {
     let cat = new Category();
     cat.iCodCat = 1;
     cat.sNamCat = "SAP";
+<<<<<<< HEAD
    
+=======
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
 
     if(this.course.sDifCou == "1"){
       this.course.sDifCou = "Iniciante";
@@ -51,31 +76,74 @@ export class CreateCourseComponent implements OnInit {
     this.course.users = n;
     this.course.category = cat;
 
+    this.course.sNamCou = this.title;
+    this.course.sDesCou = this.description;
+    this.course.fPriCou = this.price;
+    this.course.fHorCou = this.hours;
+    this.course.sDifCou = this.difficult;
+    this.course.category = this.category;
+
     this.dataService.createCourse(this.course);
   }
 
   onChangePrice(price) {
+<<<<<<< HEAD
     console.log(price);
     if (price > this.maxPrice) {
         price = 500;
+=======
+    if (price > this.maxPrice) {
+        this.price = 500;
+>>>>>>> b8057f5c386b787e2d78e5a517d305136b816344
     }
   }
 
   onSubmit() {
-    this.submitted = true;
-    this.save();
-    this.router.navigate(['/user']);
+    if (this.isValidForm()) {
+        this.submitted = true;
+        this.save();
+        this.router.navigate(['/user']);      
+    }
   }
 
   goBack(): void {
     this.location.back();
   }
 
+  isValidForm() {
+    let valid = true;
 
+    if (this.title === null || this.title === 'null') {
+        valid = false;
+        this.showTitleRequiredError = true;
+    }
 
+    if (this.hours === null || this.hours === 'null') {
+        valid = false;
+        this.showHoursRequiredError = true;
+    }
 
+    if (this.price === null || this.price === 'null') {
+        valid = false;
+        this.showPriceRequiredError = true;
+    }
 
+    if (this.description === null || this.description === 'null') {
+        valid = false;
+        this.showDescRequiredError = true;
+    }
 
+    if (this.category === null || this.category === 'null') {
+        valid = false;
+        this.showCategoryRequiredError = true;
+    }
 
+    if (this.difficult === null || this.difficult === 'null') {
+        valid = false;
+        this.showDifRequiredError = true;
+    }
+
+    return valid;
+  }
 
 }

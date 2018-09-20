@@ -135,7 +135,7 @@
                     <h2 class="heading">Selecione <span class="text-primary">Curso</span></h2>
                     <label for="selectedCourse">Curso</label>
                     <select [(ngModel)]="selectedCourse" name="selectedCourse" class="form-control" required>
-                        <option *ngFor="let course of courses" [value]="course.iCodCou">{{ course.sNamCou }}</option>
+                        <option *ngFor="let course of courses | searchPipe: selectedCourse" [value]="course.iCodCou">{{ course.sNamCou }}</option>
                     </select>
                     <br>
                     <button class="btn btn-primary">Atualizar Curso</button>
