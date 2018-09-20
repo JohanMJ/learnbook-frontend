@@ -35,7 +35,7 @@
                         <strong class="text-primary">R${{currentCourse.fPriCou}}</strong>
                     </div>
                     <div>
-                        <button kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
+                        <button [disabled]="progress !== 100" kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
                             Certificado</button>
 
                     </div>
@@ -61,7 +61,7 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0"
                         aria-valuemax="100" [style.width]="progress">
-                        {{progress}}
+                        {{progress}}%
                     </div>
                 </div>
             </div>
