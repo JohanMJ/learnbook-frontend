@@ -60,14 +60,13 @@ export class DetailCourseComponent implements OnInit {
     }
     
     updateActivity(){
-    //  return this.dataService.updateActivity(activity).then(progress => this.progress = progress);
+      //return this.dataService.updateActivity(activity).then(progress => this.progress = progress);
     }
+
     onSubmit() {
-      
     }
   
-
-    accomplishTask() {
+    accomplishTask(id) {
       // set task accomplished
     }
 

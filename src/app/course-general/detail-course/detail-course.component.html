@@ -35,7 +35,7 @@
                         <strong class="text-primary">R${{currentCourse.fPriCou}}</strong>
                     </div>
                     <div>
-                        <button kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
+                        <button [disabled]="progress !== 100" kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
                             Certificado</button>
 
                     </div>
@@ -61,7 +61,7 @@
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0"
                         aria-valuemax="100" [style.width]="progress">
-                        {{progress}}
+                        {{progress}}%
                     </div>
                 </div>
             </div>
@@ -117,14 +117,14 @@
                         <form (ngSubmit)="onSubmit()">
                     <div *ngIf="x == 0"  >
                             <p>{{x}}</p>
-                                <button type="button" class="btn btn-success mt-20">Success</button>
+                                <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
                         </div>
        
               
                         <div *ngIf="x > 0"  >
                             <p>{{activity.sDesAct}}</p>
                             <p>{{x}}</p>
-                            <button type="button" class="btn btn-success mt-20">Success</button>
+                            <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
 
                         </div>
                     </form>
