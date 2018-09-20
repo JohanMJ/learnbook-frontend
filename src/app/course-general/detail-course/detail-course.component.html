@@ -117,14 +117,14 @@
                         <form (ngSubmit)="onSubmit()">
                     <div *ngIf="x == 0"  >
                             <p>{{x}}</p>
-                                <button type="button" class="btn btn-success mt-20">Success</button>
+                                <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
                         </div>
        
               
                         <div *ngIf="x > 0"  >
                             <p>{{activity.sDesAct}}</p>
                             <p>{{x}}</p>
-                            <button type="button" class="btn btn-success mt-20">Success</button>
+                            <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
 
                         </div>
                     </form>
