@@ -20,25 +20,32 @@ export class CreateCourseComponent implements OnInit {
   maxPrice = 500;
 
   // Aux variables
-  title: string = '';
+  title: string;
   hours: any;
   price: any;
-  description: string = '';
+  description: string;
   category: any;
   difficult: any;
 
-  showHoursRequiredError: boolean = false;
-  showPriceRequiredError: boolean = false;
-  showTitleRequiredError: boolean = false;
-  showDescRequiredError: boolean = false;
-  showCategoryRequiredError: boolean = false;
-  showDifRequiredError: boolean = false;
+  showHoursRequiredError = false;
+  showPriceRequiredError = false;
+  showTitleRequiredError = false;
+  showDescRequiredError = false;
+  showCategoryRequiredError = false;
+  showDifRequiredError = false;
 
   constructor(private dataService: DataService,
     private location: Location,
     private router: Router) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-     }
+
+      this.title = 'null';
+      this.description = 'null';
+      this.hours = null;
+      this.price = null;
+      this.category = null;
+      this.difficult = null;
+    }
 
 
   ngOnInit() {
@@ -87,7 +94,7 @@ export class CreateCourseComponent implements OnInit {
     if (this.isValidForm()) {
         this.submitted = true;
         this.save();
-        this.router.navigate(['/user']);      
+        this.router.navigate(['/user']);
     }
   }
 
