@@ -26,6 +26,8 @@ export class CreateCourseComponent implements OnInit {
   description: string = '';
   category: any;
   difficult: any;
+  dataInicial: Date;
+  dataFim: Date;
 
   showHoursRequiredError: boolean = false;
   showPriceRequiredError: boolean = false;
@@ -33,6 +35,8 @@ export class CreateCourseComponent implements OnInit {
   showDescRequiredError: boolean = false;
   showCategoryRequiredError: boolean = false;
   showDifRequiredError: boolean = false;
+  showDateIniRequiredError: boolean = false;
+  showDateFinRequiredError: boolean = false;
 
   constructor(private dataService: DataService,
     private location: Location,
@@ -80,6 +84,8 @@ export class CreateCourseComponent implements OnInit {
     this.course.fPriCou = this.price;
     this.course.fHorCou = this.hours;
     this.course.sDifCou = this.difficult;
+    this.course.dDatCou = this.dataInicial;
+    this.course.dExpTimCou = this.dataFim;
     this.course.category = cat;
 
     this.dataService.createCourse(this.course);
@@ -135,6 +141,19 @@ export class CreateCourseComponent implements OnInit {
       valid = false;
       this.showDifRequiredError = true;
     }
+
+    // if(this.course.dDateIni >= this.course.dDateFin){
+    //   valid = false;
+    //   this.showDateIniRequiredError = true;
+    // }
+    // if (this.dateIni === null ) {
+    //   valid = false;
+    //   this.showDateIniRequiredError = true;
+    // }
+    // if (this.dateFin === null ) {
+    //   valid = false;
+    //   this.showDateFinRequiredError = true;
+    // }
 
     return valid;
   }
