@@ -34,19 +34,19 @@ export class CreateCourseComponent implements OnInit {
   showCategoryRequiredError = false;
   showDifRequiredError = false;
 
-  constructor(private dataService: DataService,
+  constructor(
+    private dataService: DataService,
     private location: Location,
     private router: Router) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-      this.title = 'null';
-      this.description = 'null';
-      this.hours = null;
-      this.price = null;
-      this.category = null;
-      this.difficult = null;
-    }
-
+    this.title = 'null';
+    this.description = 'null';
+    this.hours = null;
+    this.price = null;
+    this.category = null;
+    this.difficult = null;
+  }
 
   ngOnInit() {
     this.course.category.iCodCat = null;

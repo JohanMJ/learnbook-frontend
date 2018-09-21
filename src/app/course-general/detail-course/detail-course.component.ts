@@ -65,8 +65,10 @@ export class DetailCourseComponent implements OnInit {
     }
 
     setDefaultActiveTask() {
-      const element = document.getElementById('act-1');
-      element.classList.add('active');
+      const element1 = document.getElementById('act-1');
+      element1.classList.add('active');
+      const element2 = document.getElementById('act-desc-1');
+      element2.classList.add('active');
     }
 
     ngOnInit(): void {
