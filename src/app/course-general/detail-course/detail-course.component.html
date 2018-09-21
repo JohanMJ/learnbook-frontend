@@ -36,7 +36,8 @@
                     </div>
                     <div>
                         <button [disabled]="progress !== 100" kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
-                            Certificado</button>
+                            Certificado
+                        </button>
 
                     </div>
                 </div>
@@ -45,135 +46,52 @@
         </div>
     </div>
 
-    <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
-        <div class="row mt-60">
-            <div class="col-lg-4">
-                <p>Dificuldade</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
-                        style="width: 90%;">
-                        90%
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <p>Progresso</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0"
-                        aria-valuemax="100" [style.width]="progress">
-                        {{progress}}%
-                    </div>
-                </div>
-            </div>
-            <!-- <div class="col-lg-4">
-            <p>Average Score</p>
+<kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+    <div class="row mt-60">
+        <div class="col-lg-4">
+            <p>Dificuldade</p>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                    style="width: 60%;">
-                    60%
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"
+                    style="width: 90%;">
+                    90%
                 </div>
             </div>
-        </div> -->
         </div>
-    </kendo-pdf-export>
-
-
-
-    <!-- única parte que ainda não está dinâmica -->
-
-    <section class="container mt-100 mb-100">
-        <div class="row">
-            <div class="col-lg-12">
-                <!-- <h2 class="heading">Atividades <span class="text-primary">{{currentCourse.category.sNamCat}}</span></h2> -->
+        <div class="col-lg-4">
+            <p>Progresso</p>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" attr.aria-valuenow="{{progress}}" aria-valuemin="0"
+                    aria-valuemax="100" [style.width]="progress">
+                    {{progress}}%
+                </div>
             </div>
-            <div class="col-lg-3">
-                <ul class="nav nav-pills flex-column"  role="tablist">
-                        <a *ngFor="let activity of activities; let z=index">
-                                <li  *ngIf="z == 0" class="nav-item">
-                    <a   *ngFor="let activity of activities; let i=index" attr.href="#t3body{{i}}" attr.aria-controls="t3body{{i}}" role="tab"
-                    data-toggle="tab" class="nav-link" >
+        </div>
+    </div>
+</kendo-pdf-export>
 
-                    <li *ngIf="i == 0"  >
-                            <a class="nav-link active" >
-                                <i class="fa fa-graduation-cap fa-fw"></i>Fun at School
-                            </a>
-                        </li>
+<section class="container mt-100 mb-100">
+    <div class="col-lg-12">
+        <h2 class="heading">Atividades <span class="text-primary">{{currentCourse.category.sNamCat}}</span></h2>
+    </div>
 
-                        <li *ngIf="i > 0" class="nav-link" >
-                            <!-- <a class="nav-link" > -->
-                                <i class="fa fa-graduation-cap fa-fw"></i> {{activity.sDesAct}} INDEX {{i}}
-                            <!-- </a> -->
-                        </li>
+    <div *ngFor="let act of activities; let i = index;" class="row">
+        <div class="col-lg-3">
+            <ul class="nav nav-pills flex-column" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link" id="act-{{i}}" href="#t3body-{{act.iCodAct}}" aria-controls="t3body-{{act.iCodAct}}" role="tab" data-toggle="tab">
+                        <i class="fa fa-pencil"></i> 
+                        <span>{{act.sNamAct}}</span>
                     </a>
                 </li>
-                </a>
+            </ul>
+        </div>
 
-                </ul>
-            </div>
-
-            <div class="col-lg-9">
-                     <div class="tab-content">
-                <a *ngFor="let activity of activities; let x=index" role="tabpanel"  class="tab-pane fade" id="t3body{{x}}" >
-                        <form (ngSubmit)="onSubmit()">
-                    <div *ngIf="x == 0"  >
-                            <p>{{x}}</p>
-                                <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
-                        </div>
-       
-              
-                        <div *ngIf="x > 0"  >
-                            <p>{{activity.sDesAct}}</p>
-                            <p>{{x}}</p>
-                            <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
-
-                        </div>
-                    </form>
-                    
-                </a>
-                <!-- <div role="tabpanel" class="tab-pane fade" id="t3body3">
-                        <p>3A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
-                            spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in
-                            this spot, which was created for the bliss of souls like mine. I am so happy, my dear
-                            friend, so absorbed in the exquisite sense of mere tranquil existence, that I neglect my
-                            talents.</p>
-                        <p>I should be incapable of drawing a single stroke at the present moment; and yet I feel that
-                            I never was a greater artist than now. When, while the lovely valley teems with vapour
-                            around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my
-                            trees, and but a few stray gleams steal into the inner sanctuary, I throw myself down among
-                            the tall grass by the trickling stream; and, as I lie close to the earth, a thousand
-                            unknown plants are noticed by me.</p>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="t3body4">
-                        <div *ngIf="isLoaded" style="text-align: center;">
-                            <button (click)="prevPage()" [disabled]="page === 1">Prev</button>
-                            <span>{{ page }} / {{ totalPages }}</span>
-                            <button (click)="nextPage()" [disabled]="page === totalPages">Next</button>
-                        </div>
-
-                        <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf" [show-all]="false"
-                            [page]="page" (after-load-complete)="afterLoadComplete($event)"></pdf-viewer>
-                        <pdf-viewer src="../../assets/pdf/reading_sample_sappress_1601_sap_hana_xsa.pdf"></pdf-viewer> 
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="t3body5">
-                        <section class="container mt-40 mb-40">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <h2 class="heading text-center">Atividade Exemplo<span class="text-primary"> Video</span>
-                                        <span class="sub-heading">Seamlessly embed videos wherever you like. Give your
-                                            custom height or width and see the videos adapt themselves. Its that easy!</span>
-                                        <span class="icon-divider"></span>
-                                    </h2>
-                                    <div class="youtube" data-video-id="LCRoZ7qWGWA">
-                                        Replace video id with your video id 
-                                        <div class="btn-play">
-                                            <i class="fa fa-youtube-play"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div> -->
+        <div class="col-lg-9">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade show" id="t3body-{{act.iCodAct}}">
+                    <p>{{act.sDesAct}}</p>
+                </div>
             </div>
         </div>
-        </div>
-    </section>
+    </div>
+</section>

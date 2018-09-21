@@ -14,29 +14,23 @@ export class DetailCourseComponent implements OnInit {
     activities;
     progress: number;
     id: number;
-
-    page: number = 1;
+    isLoaded = false;
     totalPages: number;
-    isLoaded: boolean = false;
+
+    // Pagination control
+    pageNumber = 1;
 
     afterLoadComplete(pdfData: any) {
       this.totalPages = pdfData.numPages;
       this.isLoaded = true;
     }
 
-    nextPage() {
-      this.page++;
-    }
-
-    prevPage() {
-      this.page--;
-    }
-
     constructor(private dataService: DataService, private route: ActivatedRoute) {
       this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));
       this.currentCourse = new Course();
       this.activities = new Array<Activity>();
-  
+
+      this.setDefaultActiveTask();
     }
 
     getCourseById() {
@@ -58,16 +52,21 @@ export class DetailCourseComponent implements OnInit {
       console.log(this.dataService.getProgress(this.id).then(progress => this.progress = progress));
       return this.dataService.getProgress(this.id).then(progress => this.progress = progress);
     }
-    
+
     updateActivity(){
       //return this.dataService.updateActivity(activity).then(progress => this.progress = progress);
     }
 
     onSubmit() {
     }
-  
+
     accomplishTask(id) {
       // set task accomplished
+    }
+
+    setDefaultActiveTask() {
+      const element = document.getElementById('act-1');
+      element.classList.add('active');
     }
 
     ngOnInit(): void {

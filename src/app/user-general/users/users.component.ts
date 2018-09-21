@@ -13,8 +13,10 @@ export class UsersComponent implements OnInit {
   currentUser: User;
   courses= [];
   searchTerm: any;
-  pageNumber: number = 1;
-  index: number = 0;
+  index = 0;
+
+  // Pagination control
+  pageNumber = 1;
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -25,8 +27,6 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.getCourses());
+    this.getCourses();
   }
-
-
 }
