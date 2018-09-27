@@ -40,8 +40,8 @@ export class CreateCourseComponent implements OnInit {
     private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
-    this.title = 'null';
-    this.description = 'null';
+    this.title = '';
+    this.description = '';
     this.hours = null;
     this.price = null;
     this.category = null;
@@ -105,7 +105,7 @@ export class CreateCourseComponent implements OnInit {
   isValidForm() {
     let valid = true;
 
-    if (this.title === null || this.title === 'null') {
+    if (this.title === null || this.title === 'null' || this.title === '') {
         valid = false;
         this.showTitleRequiredError = true;
     }
@@ -120,7 +120,7 @@ export class CreateCourseComponent implements OnInit {
         this.showPriceRequiredError = true;
     }
 
-    if (this.description === null || this.description === 'null') {
+    if (this.description === null || this.description === 'null' || this.title === '') {
         valid = false;
         this.showDescRequiredError = true;
     }
