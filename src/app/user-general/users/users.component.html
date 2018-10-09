@@ -172,11 +172,21 @@
     <div class="row">
         <a *ngFor="let course of courses | paginate: { itemsPerPage: 6, currentPage: pageNumber } | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
             <div class="card course-card new">
-                <div class="course-head">
+                <div *ngIf="i == 0" class="course-head">
+                    <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
+                    <a [routerLink]="['/dinamic/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                            aria-hidden="true"></i></a>
+                </div>
+                <div *ngIf="i > 0" class="course-head">
                     <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
                     <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
                             aria-hidden="true"></i></a>
                 </div>
+                <div *ngIf="course.category.sNamCat == 'ORACLE'" class="course-head">
+                        <img src="../assets/resources/images/course-grid_oracle.jpg" class="img-fluid course-img" alt="">
+                        <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                                aria-hidden="true"></i></a>
+                    </div>
                 <div class="course-detail">
                     <h4 class="heading">{{course.sNamCou}}</h4>
                     <h5 class="brief">Valor total do curso de nível {{course.sDifCou}} R$ {{course.fPriCou}}</h5>

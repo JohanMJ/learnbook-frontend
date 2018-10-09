@@ -26,6 +26,8 @@ export class CreateCourseComponent implements OnInit {
   description: string;
   category: any;
   difficult: any;
+  dataInicial: Date;
+  dataFim: Date;
 
   showHoursRequiredError = false;
   showPriceRequiredError = false;
@@ -49,7 +51,7 @@ export class CreateCourseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.course.category.iCodCat = null;
+    // this.course.category.iCodCat = null;
     this.course.sDifCou = null;
   }
 
@@ -59,17 +61,25 @@ export class CreateCourseComponent implements OnInit {
   }
 
   private save(): void {
-    // console.log(this.course);
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     let n = new Array<User>();
     let cat = new Category();
-    cat.iCodCat = 1;
-    cat.sNamCat = "SAP";
 
-    if(this.course.sDifCou == "1"){
+    if (this.course.sDifCou == "1") {
       this.course.sDifCou = "Iniciante";
     }
+
     n.push(currentUser);
+
+    if (this.category == "1") {
+      cat.iCodCat = 1;
+      cat.sNamCat = "SAP";
+    }
+
+    if (this.category == "2") {
+      cat.iCodCat = 2;
+      cat.sNamCat = "ORACLE";
+    }
 
     this.course.users = n;
     this.course.category = cat;
@@ -79,14 +89,16 @@ export class CreateCourseComponent implements OnInit {
     this.course.fPriCou = this.price;
     this.course.fHorCou = this.hours;
     this.course.sDifCou = this.difficult;
-    this.course.category = this.category;
+    this.course.dDatCou = this.dataInicial;
+    this.course.dExpTimCou = this.dataFim;
+    this.course.category = cat;
 
     this.dataService.createCourse(this.course);
   }
 
   onChangePrice(price) {
     if (price > this.maxPrice) {
-        this.price = 500;
+      this.price = 500;
     }
   }
 
@@ -111,13 +123,13 @@ export class CreateCourseComponent implements OnInit {
     }
 
     if (this.hours === null || this.hours === 'null') {
-        valid = false;
-        this.showHoursRequiredError = true;
+      valid = false;
+      this.showHoursRequiredError = true;
     }
 
     if (this.price === null || this.price === 'null') {
-        valid = false;
-        this.showPriceRequiredError = true;
+      valid = false;
+      this.showPriceRequiredError = true;
     }
 
     if (this.description === null || this.description === 'null' || this.title === '') {
@@ -126,14 +138,27 @@ export class CreateCourseComponent implements OnInit {
     }
 
     if (this.category === null || this.category === 'null') {
-        valid = false;
-        this.showCategoryRequiredError = true;
+      valid = false;
+      this.showCategoryRequiredError = true;
     }
 
     if (this.difficult === null || this.difficult === 'null') {
-        valid = false;
-        this.showDifRequiredError = true;
+      valid = false;
+      this.showDifRequiredError = true;
     }
+
+    // if(this.course.dDateIni >= this.course.dDateFin){
+    //   valid = false;
+    //   this.showDateIniRequiredError = true;
+    // }
+    // if (this.dateIni === null ) {
+    //   valid = false;
+    //   this.showDateIniRequiredError = true;
+    // }
+    // if (this.dateFin === null ) {
+    //   valid = false;
+    //   this.showDateFinRequiredError = true;
+    // }
 
     return valid;
   }

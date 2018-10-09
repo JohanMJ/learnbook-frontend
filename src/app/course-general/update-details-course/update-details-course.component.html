@@ -119,7 +119,7 @@
     <div class="container">
         <h1 class="heading">Curso</h1>
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="/user">User</a></li>
             <li class="breadcrumb-item active"><a href="#">Curso</a></li>
         </ul>
     </div>
@@ -128,43 +128,41 @@
 <section class="container mt-60">
     <div class="row">
         <div class="col-lg-6">
-            <h2 class="heading">Novo <span class="text-primary">Curso</span></h2>
+            <h2 class="heading">Editar <span class="text-primary">Curso</span></h2>
             <form (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="name">Titulo</label>
                     <input type="text" class="form-control" id="sNamCou" required [(ngModel)]="currentCourse.sNamCou" name="sNamCou" value="{{currentCourse.sNamCou}}">
                     <br>
                     <label for="horas">Horas</label>
-                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="currentUser.fHorCou" name="fHorCou">
+                    <input type="text" class="form-control" id="fHorCou" required [(ngModel)]="currentCourse.fHorCou" name="fHorCou" value="{{currentCourse.fHorCou}}">
                     <br>
                     <label for="preco">Preço</label>
-                    <input class="form-control" id="fPriCou" required [(ngModel)]="currentUser.fPriCou" name="fPriCou" />
+                    <input class="form-control" id="fPriCou" required [(ngModel)]="currentCourse.fPriCou" name="fPriCou" value="{{currentCourse.fPriCou}}" />
                     <br>
                     <label for="message">Descrição</label>
-                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="currentUser.sDesCou" name="sDesCou"></textarea>
+                    <textarea class="form-control" id="sDesCou" required [(ngModel)]="currentCourse.sDesCou" name="sDesCou" value="{{currentCurse.sDesCou}}"></textarea>
                     <br>
                     <!-- </div> -->
 
                     <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
                     <!-- <div class="form-group"> -->
                     <label for="categoria">Categoria</label>
-                    <select [(ngModel)]="currentUser.iCodCat" (change)="onChangeCategorySelect($event)" name="currentUser.iCodCat"
+                    <select [(ngModel)]="currentCourse.category.iCodCat" (change)="onChangeCategorySelect($event)" name="currentCourse.category.iCodCat" value="{{currentCourse.category.iCodCat}}"
                         class="form-control" required>
                         <option value="1">SAP</option>
-                        <option value="2">Totvs!</option>
+                        <option value="2">Totvs</option>
                     </select>
                     <br>
                     <label for="dificuldade">Dificuldade</label>
-                    <select type="text" [(ngModel)]="course.sDifCou" (change)="onChangeCategorySelect($event)" name="course.sDifCou"
+                    <select type="text" [(ngModel)]="currentCourse.sDifCou" (change)="onChangeCategorySelect($event)" name="currentCourse.sDifCou"  value="{{currentCurse.sDifCou}}"
                         class="form-control" required>
                         <option value="1">Iniciante</option>
-                        <option value="1">Iniciante Jorge</option>
-                        <option value="1">Iniciante Test</option>
                         <option value="2">Intermediario</option>
                         <option value="3">Avançado</option>
                     </select>
                     <br>
-                    <button class="btn btn-primary">Criar Curso</button>
+                    <button class="btn btn-primary">Editar Curso</button>
                     <br>
                 </div>
             </form>

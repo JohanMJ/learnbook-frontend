@@ -35,12 +35,14 @@
 // export class AppModule { }
 
 import { NgModule } from '@angular/core';
+
+
 import { BrowserModule } from '@angular/platform-browser';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
  
 // used to create fake backend
@@ -66,6 +68,7 @@ import { DataService } from './data.service';
 import { CreateUserComponent } from './user-general/create-user/create-user.component';
 import { CreateCourseComponent } from './course-general/create-course/create-course.component';
 import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
+import { RemoveCourseComponent } from './course-general/remove-course/remove-course.component';
 
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
@@ -76,6 +79,11 @@ import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { EqualValidator } from './user-general/create-user/create-user.password.match.directive';
 import { SearchPipe } from './user-general/users/search-pipe.pipe';
+import { DinamicCourseComponent } from './course-general/dinamic-course/dinamic-course.component';
+
+
+
+import { NgxSelectModule } from 'ngx-select-ex';
 
 import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
 
@@ -83,6 +91,7 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
     imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
         PDFExportModule,
@@ -90,7 +99,8 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
         GridModule,
         PdfViewerModule,
         NgxCurrencyModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        NgxSelectModule,
 
     ],
     declarations: [
@@ -107,11 +117,13 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
         CreateActivityComponent,
         UpdateCourseComponent,
         UpdateDetailsCourseComponent,
+        RemoveCourseComponent,
         ListGroupComponent,
         ListCourseComponent,
         DetailCourseComponent,
         EqualValidator,
-        SearchPipe
+        SearchPipe,
+        DinamicCourseComponent
     ],
     providers: [DataService,
         AuthGuard,

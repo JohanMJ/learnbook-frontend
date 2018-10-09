@@ -5,32 +5,38 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Activity } from '../../models/activity';
 
 @Component({
-  selector: 'app-detail-course',
-  templateUrl: './detail-course.component.html',
-  styleUrls: ['./detail-course.component.css'],
+  selector: 'app-dinamic-course',
+  templateUrl: './dinamic-course.component.html',
+  styleUrls: ['./dinamic-course.component.css'],
 })
-export class DetailCourseComponent implements OnInit {
+export class DinamicCourseComponent implements OnInit {
     currentCourse ;
-    activities: Activity[];
+    activities;
     progress: number;
     id: number;
-    isLoaded = false;
-    totalPages: number;
 
-    // Pagination control
-    pageNumber = 1;
+    page: number = 1;
+    totalPages: number;
+    isLoaded: boolean = false;
 
     afterLoadComplete(pdfData: any) {
       this.totalPages = pdfData.numPages;
       this.isLoaded = true;
     }
 
+    nextPage() {
+      this.page++;
+    }
+
+    prevPage() {
+      this.page--;
+    }
+
     constructor(private dataService: DataService, private route: ActivatedRoute) {
       this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));
       this.currentCourse = new Course();
       this.activities = new Array<Activity>();
-
-      this.setDefaultActiveTask();
+  
     }
 
     getCourseById() {
@@ -52,31 +58,16 @@ export class DetailCourseComponent implements OnInit {
       console.log(this.dataService.getProgress(this.id).then(progress => this.progress = progress));
       return this.dataService.getProgress(this.id).then(progress => this.progress = progress);
     }
-
+    
     updateActivity(){
       //return this.dataService.updateActivity(activity).then(progress => this.progress = progress);
     }
 
     onSubmit() {
     }
-
+  
     accomplishTask(id) {
-      let act = new Activity();
-
-      this.activities.forEach(element => {
-        if(element.iCodAct == id){
-          act = element;
-        }
-      });
-      this.dataService.updateActivity(act).then(currentActivity => this.currentActivity = currentActivity);
-      this.getProgress();
-    }    
-
-    setDefaultActiveTask() {
-      const element1 = document.getElementById('act-1');
-      element1.classList.add('active');
-      const element2 = document.getElementById('act-desc-1');
-      element2.classList.add('active', 'show');
+      // set task accomplished
     }
 
     ngOnInit(): void {

@@ -119,7 +119,7 @@
     <div class="container">
         <h1 class="heading">Curso</h1>
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="user">User</a></li>
+            <li class="breadcrumb-item"><a href="user">Home</a></li>
             <li class="breadcrumb-item active"><a href="#">Curso</a></li>
         </ul>
     </div>
@@ -135,43 +135,14 @@
                     <h2 class="heading">Selecione <span class="text-primary">Curso</span></h2>
                     <label for="selectedCourse">Curso</label>
                     <select [(ngModel)]="selectedCourse" name="selectedCourse" class="form-control" required>
-                        <option *ngFor="let course of courses | searchPipe: selectedCourse" [value]="course.iCodCou">{{ course.sNamCou }}</option>
+                        <option *ngFor="let course of courses" [value]="course.iCodCou">{{ course.sNamCou }}</option>
                     </select>
                     <br>
-                    <button class="btn btn-primary">Atualizar Curso</button>
+                    <button class="btn btn-primary">Remover Curso</button>
                     <br>
                 </div>
             </form>
         </div>
-        <!-- <div class="example-block">
-            <div class="example-block__item">
-                <ngx-select [formControl]="ngxControl"
-                            [allowClear]="true"
-                            [defaultValue]="doNgxDefault()"
-                            [items]="items"
-                            placeholder="No city selected"
-                            (typed)="inputTyped('ngx-select', $event)"
-                            (focus)="doFocus()"
-                            (blur)="doBlur()"
-                            (open)="doOpen()"
-                            (close)="doClose()"
-                            (select)="doSelect($event)"
-                            (remove)="doRemove($event)"
-                            (selectionChanges)="doSelectOptions($event)">
-                </ngx-select>
-                <p></p>
-                <div class="alert alert-secondary">
-                    <pre>{{ngxControl.value | json}}</pre>
-                </div>
-                <br>
-                <button class="btn btn-primary">Atualizar Curso</button>
-                <br>
-            </div>
-  
-    </div> -->
-        <!-- </form> -->
-    <!-- </div> -->
     </div>
-
-
 </section>
+
