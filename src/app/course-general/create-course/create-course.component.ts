@@ -71,8 +71,7 @@ export class CreateCourseComponent implements OnInit {
       cat.iCodCat = 2;
       cat.sNamCat = "ORACLE";
     }
-
-    this.course.users = n;
+    
     this.course.category = cat;
 
     this.course.sNamCou = this.title;

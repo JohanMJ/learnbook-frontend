@@ -28,10 +28,18 @@ export class DataService {
   }
 
   getUser(iCodUser: number): Promise<User> {
-    const url = `${this.usersUrl}/${iCodUser}`;
+    const url = `${this.usersUrl}/get/${iCodUser}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as User)
+      .catch(this.handleError);
+  }
+
+  getGroup(iCodGru: number): Promise<Group> {
+    const url = `${this.groupUrl}/get/${iCodGru}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Group)
       .catch(this.handleError);
   }
 
@@ -45,9 +53,9 @@ export class DataService {
   }
 
   update(user: User): Promise<User> {
-    const url = `${this.usersUrl}/${user.iCodUser}`;
+    const url = `${this.usersUrl}/update`;
     return this.http
-      .put(url, JSON.stringify(user), { headers: this.headers })
+      .post(url, JSON.stringify(user), { headers: this.headers })
       .toPromise()
       .then(() => user)
       .catch(this.handleError);
@@ -104,9 +112,16 @@ export class DataService {
       .catch(this.handleError);
   }
 
-
   getCoursesFromUser(iCodUser: number): Promise<Course[]> {
-    const url = `${this.courseUrl}/list/${iCodUser}`;
+    const url = `${this.courseUrl}/list/group/${iCodUser}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course[])
+      .catch(this.handleError);
+  }
+
+  getCoursesByGroup(iCodGru: number): Promise<Course[]> {
+    const url = `${this.courseUrl}/list/group/${iCodGru}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Course[])
@@ -129,7 +144,6 @@ export class DataService {
       .catch(this.handleError);
   }
 
-  
   createGroup(group: Group): Promise<Group> {
     const url = `${this.groupUrl}/insert`;
     return this.http
@@ -139,75 +153,95 @@ export class DataService {
       .catch(this.handleError);
   }
 
-    // Get all users
-    getGroups(): Promise<Group[]> {
-      const url = `${this.groupUrl}/listAll`;
-      return this.http.get(url)
-        .toPromise()
-        .then(response => response.json() as Group[])
-        .catch(this.handleError);
-    }
+  // Get all users
+  getGroups(): Promise<Group[]> {
+    const url = `${this.groupUrl}/listAll`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Group[])
+      .catch(this.handleError);
+  }
 
-    createActivity(activity: Activity) {
-      const url = `${this.activityUrl}/insert`;
-      let body = JSON.stringify(activity);
-      return this.http
-        .post(url, body, { headers: this.headers })
-        .toPromise()
-        .then(res => res.json() as Activity)
-        .catch(this.handleError);
-    }
+  listAllByCompany(iCodUser: Number): Promise<User[]> {
+    const url = `${this.usersUrl}/listAll/${iCodUser}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as User[])
+      .catch(this.handleError);
+  }
 
-    getActivitiesFromCourse(iCodCou: number) {
-      const url = `${this.activityUrl}/list/${iCodCou}`;
-      return this.http.get(url)
-        .toPromise()
-        .then(response => response.json() as Activity[])
-        .catch(this.handleError);
-    }
-
-    getProgress(iCodCou: number) {
-      const url = `${this.courseUrl}/progress/${iCodCou}`;
-      return this.http.get(url)
-        .toPromise()
-        .then(response => response.json() as number)
-        .catch(this.handleError);
-    }
-
-    updateActivity(activity: Activity): Promise<void> {
-      console.log(activity);
-      const url = `${this.activityUrl}/finish`;
-      console.log(url);
-      return this.http
-        .put(url, JSON.stringify(activity), { headers: this.headers })
-        .toPromise()
-        .then(() => null)
-        .catch(this.handleError);
-    }
-
-    updateCourse(course: Course): Promise<Course> {
-      const url = `${this.courseUrl}/update`;
-      return this.http
-        .put(url, JSON.stringify(course), { headers: this.headers })
-        .toPromise()
-        .then(response => response.json() as Course)
-        .catch(this.handleError);
-    }
-
-    removeCourse(course: Course): Promise<Course> {
-      const url = `${this.courseUrl}/remove`;
-      return this.http
-        .put(url, JSON.stringify(course), { headers: this.headers })
-        .toPromise()
-        .then(response => response.json() as Course)
-        .catch(this.handleError);
-    }
+  getGroupsByUser(iCodUser: number): Promise<Group[]> {
+    const url = `${this.groupUrl}/listAll/${iCodUser}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Group[])
+      .catch(this.handleError);
+  }
   
-  
+  createActivity(activity: Activity) {
+    const url = `${this.activityUrl}/insert`;
+    let body = JSON.stringify(activity);
+    return this.http
+      .post(url, body, { headers: this.headers })
+      .toPromise()
+      .then(res => res.json() as Activity)
+      .catch(this.handleError);
+  }
 
+  getActivitiesFromCourse(iCodCou: number) {
+    const url = `${this.activityUrl}/list/${iCodCou}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Activity[])
+      .catch(this.handleError);
+  }
 
+  getProgress(iCodCou: number) {
+    const url = `${this.courseUrl}/progress/${iCodCou}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as number)
+      .catch(this.handleError);
+  }
 
+  updateActivity(activity: Activity): Promise<void> {
+    console.log(activity);
+    const url = `${this.activityUrl}/finish`;
+    console.log(url);
+    return this.http
+      .put(url, JSON.stringify(activity), { headers: this.headers })
+      .toPromise()
+      .then(() => null)
+      .catch(this.handleError);
+  }
 
+  updateCourse(course: Course): Promise<Course> {
+    const url = `${this.courseUrl}/update`;
+    return this.http
+      .put(url, JSON.stringify(course), { headers: this.headers })
+      .toPromise()
+      .then(response => response.json() as Course)
+      .catch(this.handleError);
+  }
 
+  removeCourse(course: Course): Promise<Course> {
+    const url = `${this.courseUrl}/remove`;
+    return this.http
+      .put(url, JSON.stringify(course), { headers: this.headers })
+      .toPromise()
+      .then(response => response.json() as Course)
+      .catch(this.handleError);
+  }
+
+  buyCourse(course: Course): Promise<String> {
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const url = `http://localhost:8080/dev/course/buy/${currentUser.iCodUser}`;
+
+    return this.http
+      .post(url, JSON.stringify(course), { headers: this.headers })
+      .toPromise()
+      .then(res => res.text() as String)
+      .catch(this.handleError);
+  }
 
 }

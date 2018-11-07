@@ -86,6 +86,11 @@ import { DinamicCourseComponent } from './course-general/dinamic-course/dinamic-
 import { NgxSelectModule } from 'ngx-select-ex';
 
 import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
+import { CoursesPaidComponent } from './course-general/paid-course/paid.component';
+import { DetailPaidCourseComponent } from './course-general/detail-paid-course/detail-paid-course.component';
+import { CompanyCreateUserComponent } from './user-general/company-create-user/company-create-user.component';
+import { CompanyUsersComponent } from './user-general/company-user/company-user.component';
+import { DetailGroupComponent } from './course-general/detail-group/detail-group.component';
 
 @NgModule({
     imports: [
@@ -105,14 +110,19 @@ import { UpdateDetailsCourseComponent } from './course-general/update-details-co
     ],
     declarations: [
         AppComponent,
+        DetailGroupComponent,
         AlertComponent,
         HomeComponent,
         LoginComponent,
+        CompanyUsersComponent,
        // RegisterComponent,
+        CompanyCreateUserComponent,
         UserDetailsComponent,
         UsersComponent,
         CreateUserComponent,
         CreateCourseComponent,
+        CoursesPaidComponent,
+        DetailPaidCourseComponent,
         CreateGroupComponent,
         CreateActivityComponent,
         UpdateCourseComponent,

@@ -5,11 +5,11 @@ import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  templateUrl: './paid.component.html',
+  styleUrls: ['./paid.component.css'],
 })
 
-export class UsersComponent implements OnInit {
+export class CoursesPaidComponent implements OnInit {
   currentUser: User;
   courses= [];
   searchTerm: any;
@@ -18,10 +18,10 @@ export class UsersComponent implements OnInit {
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.dataService.getCourses().then(courses => this.courses = courses);
+    this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
   getCourses() {
-    return this.dataService.getCourses().then(courses => this.courses = courses);
+    return this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
 
   ngOnInit(): void {

@@ -11,15 +11,19 @@ import { NG_VALIDATORS,Validator,
 
 @Component({
   selector: 'app-create-user',
-  templateUrl: './create-user.component.html',
-  styleUrls: ['./create-user.component.css'],
+  templateUrl: './company-create-user.component.html',
+  styleUrls: ['./company-create-user.component.css'],
 })
-export class CreateUserComponent implements OnInit {
+export class CompanyCreateUserComponent implements OnInit {
   user = new User;
   submitted = false;
+  currentUser: User;
+
   constructor(private dataService: DataService,
               private location: Location,
-              private router: Router) { }
+              private router: Router) { 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
   }
@@ -30,6 +34,7 @@ export class CreateUserComponent implements OnInit {
   }
 
  private save(): void {
+   this.user.companyId = this.currentUser.iCodUser;
    this.user.type = "ALUNO";
    this.dataService.create(this.user);
  }
@@ -37,12 +42,11 @@ export class CreateUserComponent implements OnInit {
  onSubmit() {
    this.submitted = true;
    this.save();
-   this.router.navigate(['/login']);
+   this.router.navigate(['/user']);
  }
 
   goBack(): void {
     this.location.back();
   }
 
-  
 }

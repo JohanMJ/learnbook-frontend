@@ -29,8 +29,6 @@ export class CreateActivityComponent implements OnInit {
   selectedCourse: string;
   currentUser: User;
 
-
-
   constructor(private dataService: DataService, private route: ActivatedRoute, private router: Router) {
     this.activity = new Activity();
   }

@@ -1,5 +1,6 @@
 export class User {
   iCodUser:    number;
+  companyId:    number;
   sNamUser:    String;
   sLogUser:    String;
   sPasUser:    String;
@@ -9,4 +10,5 @@ export class User {
   password:   String;
   confirmPassword: String;
   username: String;
+  type: String;
 }

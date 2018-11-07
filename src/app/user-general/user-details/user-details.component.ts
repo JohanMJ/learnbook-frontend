@@ -27,9 +27,9 @@ export class UserDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params
-      .switchMap((params: Params) => this.dataService.getUser(+params['id']))
-      .subscribe(user => this.user = user);
+    var id = Number(this.route.snapshot.paramMap.get('iCodUser'));
+    this.dataService.getUser(id).then(user => this.user = user);
+    this.user.password = '';
   }
 
   onSubmit(): void {

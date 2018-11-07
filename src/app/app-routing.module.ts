@@ -15,13 +15,22 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
+import { CoursesPaidComponent } from './course-general/paid-course/paid.component';
+import { DetailPaidCourseComponent } from './course-general/detail-paid-course/detail-paid-course.component';
+import { CompanyCreateUserComponent } from './user-general/company-create-user/company-create-user.component';
+import { CompanyUsersComponent } from './user-general/company-user/company-user.component';
+import { DetailGroupComponent } from './course-general/detail-group/detail-group.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
+   { path: 'user/add', component: CompanyCreateUserComponent },
+   { path: 'user/listAll', component: CompanyUsersComponent },
    { path: 'user/group/add', component: CreateGroupComponent },
    { path: 'user/activity/add', component: CreateActivityComponent },
+   { path: 'user/course/paid', component: CoursesPaidComponent },
+   { path: 'user/course/paid/detail/course/:iCodCou', component: DetailPaidCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'user/course/update', component: UpdateCourseComponent },
    { path: 'user/course/remove', component: RemoveCourseComponent },
@@ -30,9 +39,10 @@ const routes: Routes = [
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
+   { path: 'detail/group/:iCodGru', component: DetailGroupComponent },
    { path: 'dinamic/course/:iCodCou', component: DinamicCourseComponent },
    { path: 'user/course/update/:iCodCou', component: UpdateCourseComponent },
-   { path: 'group/listAll', component: ListGroupComponent },
+   { path: 'user/group/listAll', component: ListGroupComponent },
    { path: 'home/course/listAll', component: ListCourseComponent },
 
    { path: 'home', component: HomeComponent },

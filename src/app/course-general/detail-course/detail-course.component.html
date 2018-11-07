@@ -34,13 +34,9 @@
                         <br>
                         <strong class="text-primary">R${{currentCourse.fPriCou}}</strong>
                     </div>
-                    <div>
-                        <button [disabled]="progress !== 100" kendo-button (click)="pdf.saveAs('Certificado.pdf')" class="btn btn-primary">Gerar
-                            Certificado</button>
-
-                    </div>
                 </div>
                 <p>{{currentCourse.sDesCou}}</p>
+                <button class="btn btn-primary" (click)="onSubmit()">Comprar curso</button>
             </div>
         </div>
     </div>
@@ -77,8 +73,6 @@
         </div>
     </kendo-pdf-export>
 
-
-
     <!-- única parte que ainda não está dinâmica -->
 
     <section class="container mt-100 mb-100">
@@ -112,23 +106,16 @@
             </div>
 
             <div class="col-lg-9">
-                     <div class="tab-content">
-                <a *ngFor="let activity of activities; let x=index" role="tabpanel"  class="tab-pane fade" id="t3body{{x}}" >
-                        <form (ngSubmit)="onSubmit()">
-                    <div *ngIf="x == 0"  >
+                <div class="tab-content">
+                    <a *ngFor="let activity of activities; let x=index" role="tabpanel"  class="tab-pane fade" id="t3body{{x}}" >
+                        <div *ngIf="x == 0">
                             <p>{{activity.sDesAct}}</p>
-                                <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
                         </div>
        
-              
-                        <div *ngIf="x > 0"  >
+                        <div *ngIf="x > 0">
                             <p>{{activity.sDesAct}}</p>
-                            <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
-
                         </div>
-                    </form>
-                    
-                </a>
+                    </a>
                 <!-- <div role="tabpanel" class="tab-pane fade" id="t3body3">
                         <p>3A wonderful serenity has taken possession of my entire soul, like these sweet mornings of
                             spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in
@@ -172,7 +159,7 @@
                             </div>
                         </section>
                     </div> -->
+                </div>
             </div>
-        </div>
         </div>
     </section>

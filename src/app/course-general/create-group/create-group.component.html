@@ -17,24 +17,6 @@
                     <label for="name">Titulo</label>
                     <input type="text" class="form-control" id="sNamGru" required [(ngModel)]="group.sNamGru" name="sNamGru">
                     <br>
-                    <h2 class="heading">Categorização do <span class="text-primary">Curso</span></h2>
-                    <label for="categoria">Curso 1</label>
-                    <select [(ngModel)]="courseOne" name="category" class="form-control" required>
-                        <option *ngFor="let category of categories" [value]="category.iCodCou">{{ category.sNamCou }}</option>
-                    </select>
-                    <br>
-                    <label for="categoria">Curso 2</label>
-                    <select [(ngModel)]="courseTwo" name="category" class="form-control" required>
-                        <option *ngFor="let category1 of categories" [value]="category1.iCodCou">{{ category1.sNamCou}}</option>
-                    </select>
-                    <br>
-                    <br>
-                    <label for="categoria">Curso 3</label>
-                    <select [(ngModel)]="courseThree" name="category" class="form-control" required>
-                        <option *ngFor="let category2 of categories" [value]="category2.iCodCou">{{ category2.sNamCou}}</option>
-                    </select>
-                    <br>
-                    <br>
                     <button class="btn btn-primary">Criar Grupo</button>
                     <br>
                 </div>

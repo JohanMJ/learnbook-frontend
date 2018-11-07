@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng server --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.config.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -32,10 +32,14 @@
     "@progress/kendo-data-query": "^1.5.0",
     "@progress/kendo-drawing": "^1.5.7",
     "core-js": "^2.4.1",
+    "jstoxml": "^1.4.3",
     "ng2-pdf-viewer": "^5.1.2",
     "ng4-currency-mask": "^1.0.3",
     "ngx-currency": "^1.5.0",
     "ngx-pagination": "^3.2.0",
+    "ngx-select-ex": "^3.5.2-ng4",
+    "pagseguro": "^0.1.0",
+    "request": "^2.88.0",
     "rxjs": "^5.5.12",
     "zone.js": "^0.8.4"
   },

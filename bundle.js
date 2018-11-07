@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module 'C:\\Users\\Felipe\\Documents\\GitHub\\learnbook-frontend\\stripe.js' from 'C:\\Users\\Felipe\\Documents\\GitHub\\learnbook-frontend'");

@@ -5,27 +5,28 @@ import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css'],
+  templateUrl: './company-user.component.html',
+  styleUrls: ['./company-user.component.css'],
 })
 
-export class UsersComponent implements OnInit {
+export class CompanyUsersComponent implements OnInit {
   currentUser: User;
-  courses= [];
+  users = [];
   searchTerm: any;
   pageNumber: number = 1;
   index: number = 0;
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.dataService.getCourses().then(courses => this.courses = courses);
+    this.dataService.listAllByCompany(this.currentUser.iCodUser).then(users => this.users = users);
   }
-  getCourses() {
-    return this.dataService.getCourses().then(courses => this.courses = courses);
+
+  getUsers() {
+    return this.dataService.listAllByCompany(this.currentUser.iCodUser).then(users => this.users = users);
   }
 
   ngOnInit(): void {
-    console.log(this.getCourses());
+    console.log(this.getUsers());
   }
 
 }

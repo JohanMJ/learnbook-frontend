@@ -70,7 +70,7 @@
                                         <li><a href="user/group/add" routerLink="group/add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar Grupo</a></li>
                                         <li><a href="user/group/update" routerLink="group/update"  role="button" routerLinkActive="active">Editar Grupo</a></li>
                                         <li><a href="user/group/remove" routerLink="group/remove"  role="button" routerLinkActive="active">Excluir Grupo</a></li>
-                                        <li><a href="user/group/listAll" routerLink="group/listAll"  role="button" routerLinkActive="active">Visualizar Grupos</a></li>
+                                        <li><a href="user/group/list/all" routerLink="group/list/all"  role="button" routerLinkActive="active">Visualizar Grupos</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -78,8 +78,6 @@
                                 <div class="sub-menu">          <!-- Sub Menu -->
                                     <ul class="menu-list">
                                         <li><a href="user/update" routerLink="user/upate"  role="button" routerLinkActive="active">Editar Perfil</a></li>
-                                        <li><a href="listAll" routerLink="listAll"  role="button" routerLinkActive="active">Meus Perfis</a></li>
-                                        <li><a href="add" routerLink="add/"  role="button" routerLinkActive="active">Criar Perfil</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -144,8 +142,6 @@
         <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
                 <h1 class="heading">Olá <span class="text-primary">{{currentUser.sNamUser}}!</span></h1>
-                <p class="lead">Disponibilizamos os melhores cursos de ERP para preparar você para o mercado, apresentamos cursos
-                    com valores que cabe no seu bolso.</p>
             </div>
         </div>
     </div>
@@ -173,7 +169,7 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let course of courses | paginate: { itemsPerPage: 6, currentPage: pageNumber, totalItems: courses.length } | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['/detail/course/', course.iCodCou]">
+        <a *ngFor="let course of courses | paginate: { itemsPerPage: 6, currentPage: pageNumber, totalItems: courses.length } | searchPipe: searchTerm; let i = index" class="col-lg-4" [routerLink]="['detail/course/', course.iCodCou]">
             <div class="card course-card new">
                 <div *ngIf="i == 0" class="course-head">
                     <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
@@ -182,12 +178,12 @@
                 </div>
                 <div *ngIf="i > 0" class="course-head">
                     <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
-                    <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                    <a [routerLink]="['user/', course.iCodCou]" class="course-link"><i class="fa fa-link"
                             aria-hidden="true"></i></a>
                 </div>
                 <div *ngIf="course.category.sNamCat == 'ORACLE'" class="course-head">
                         <img src="../assets/resources/images/course-grid_oracle.jpg" class="img-fluid course-img" alt="">
-                        <a [routerLink]="['/detail/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
+                        <a [routerLink]="['user/', course.iCodCou]" class="course-link"><i class="fa fa-link"
                                 aria-hidden="true"></i></a>
                     </div>
                 <div class="course-detail">

@@ -6,11 +6,11 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Activity } from '../../models/activity';
 
 @Component({
-  selector: 'app-detail-course',
-  templateUrl: './detail-course.component.html',
-  styleUrls: ['./detail-course.component.css'],
+  selector: 'app-detail-paid-course',
+  templateUrl: './detail-paid-course.component.html',
+  styleUrls: ['./detail-paid-course.component.css'],
 })
-export class DetailCourseComponent implements OnInit {
+export class DetailPaidCourseComponent implements OnInit {
     currentCourse ;
     activities: Activity[];
     currentUser: User;
