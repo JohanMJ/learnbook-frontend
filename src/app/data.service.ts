@@ -113,7 +113,7 @@ export class DataService {
   }
 
   getCoursesFromUser(iCodUser: number): Promise<Course[]> {
-    const url = `${this.courseUrl}/list/group/${iCodUser}`;
+    const url = `${this.courseUrl}/list/${iCodUser}`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Course[])

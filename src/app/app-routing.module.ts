@@ -23,6 +23,7 @@ import { DetailGroupComponent } from './course-general/detail-group/detail-group
 
 const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
+   { path: '#', redirectTo: 'user' },
    { path: 'user',  component: UsersComponent },
    { path: 'home/add', component: CreateUserComponent },
    { path: 'user/add', component: CompanyCreateUserComponent },
@@ -32,6 +33,7 @@ const routes: Routes = [
    { path: 'user/course/paid', component: CoursesPaidComponent },
    { path: 'user/course/paid/detail/course/:iCodCou', component: DetailPaidCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
+   { path: 'user/course/update/course/add', component: CreateCourseComponent },
    { path: 'user/course/update', component: UpdateCourseComponent },
    { path: 'user/course/remove', component: RemoveCourseComponent },
    { path: 'user/course/update/details/:iCodCou', component: UpdateDetailsCourseComponent },

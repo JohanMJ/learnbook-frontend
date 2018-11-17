@@ -2,18 +2,10 @@ import { Course } from '../../models/course';
 import { DataService } from '../../data.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {
-  Directive, forwardRef,
-  Attribute, OnChanges, SimpleChanges, Input
-} from '@angular/core';
-import {
-  NG_VALIDATORS, Validator,
-  Validators, AbstractControl, ValidatorFn
-} from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../models/user';
-import { ActivatedRoute, Params } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
+import { toArray } from 'rxjs/operator/toArray';
 
 @Component({
   selector: 'app-remove-course',
@@ -21,7 +13,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./remove-course.component.css'],
 })
 export class RemoveCourseComponent implements OnInit {
-  courses: Course[];
+  courses: Course[] = [];
   submitted = false;
   currentUser: User;
   selectedCourse: string;
@@ -29,7 +21,8 @@ export class RemoveCourseComponent implements OnInit {
   id;
 
   constructor(private dataService: DataService, private location: Location, private router: Router, private actRouter: ActivatedRoute) {
-
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => this.courses = courses);
   }
 
   getCourses() {
@@ -59,6 +52,9 @@ export class RemoveCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCourses();
+    console.log(this.courses);
+    console.log(this.currentCourse);
+
   }
 
   goBack(): void {

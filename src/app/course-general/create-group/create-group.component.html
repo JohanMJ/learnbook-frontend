@@ -1,8 +1,126 @@
+<header class="header-1">
+    <!-- Header = Topbar + Navigation Bar -->
+    <div class="topbar-wrapper">
+        <div class="container">
+            <!-- Dark Blue Topbar -->
+            <div class="topbar">
+                <div>
+                    <!-- Change Topbar Contact Number here -->
+                </div>
+                <div>
+                    <ul class="topbar-widgets">
+                        <!-- Topbar Widgets - Cart, Language Select & Login Signup -->
+                        <li>
+                            <span data-toggle="modal" data-target="#cart-modal">
+                                <i class="fa fa-shopping-cart"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <span data-toggle="modal" data-target="#lang-modal">
+                                <i class="fa fa-globe"></i>
+                            </span>
+                        </li>
+                        <li>
+                            <span data-toggle="modal" data-target="#login-modal">
+                                {{currentUser.sLogUser}}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg">
+        <!-- Navigation Bar -->
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="../assets/resources/images/logo.png" alt=""> <!-- Replace with your Logo -->
+            </a>
+
+            <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#main-navigation"
+                aria-expanded="false">
+                <span class="navbar-toggler-icon">
+                    <i class="fa fa-bars"></i> <!-- Mobile Navigation Toggler Icon -->
+                </span>
+            </button>
+
+            <div class="navbar-collapse collapse" id="main-navigation">
+                <!-- Main Menu -->
+                <ul class="navbar-nav">
+                    <li class="nav-item has-menu"><a href="#" class="nav-link">Cursos</a>
+                        <div class="sub-menu">
+                            <!-- Sub Menu -->
+                            <ul class="menu-list">
+                                <li><a href="user/course/add" routerLink="course/add" class="btn btn-primary btn-sm"
+                                        role="button" routerLinkActive="active">Criar Curso</a></li>
+                                <li><a href="user/course/update" routerLink="course/update" role="button"
+                                        routerLinkActive="active">Editar Curso</a></li>
+                                <li><a href="user/course/remove" routerLink="course/remove" role="button"
+                                        routerLinkActive="active">Excluir Curso</a></li>
+                                <li><a href="user/course/list/all" routerLink="course/list/all" role="button"
+                                        routerLinkActive="active">Visualizar Cursos</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item has-menu"><a href="#" class="nav-link">Atividades</a>
+                        <div class="sub-menu">
+                            <!-- Sub Menu -->
+                            <ul class="menu-list">
+                                <li><a href="user/activity/add" routerLink="activity/add" class="btn btn-primary btn-sm"
+                                        role="button" routerLinkActive="active">Criar Atividade</a></li>
+                                <li><a href="user/activity/update" routerLink="activity/update" role="button"
+                                        routerLinkActive="active">Editar Atividade</a></li>
+                                <li><a href="user/activity/remove" routerLink="activity/remove" role="button"
+                                        routerLinkActive="active">Excluir Atividade</a></li>
+                                <li><a href="user/activity/list/all" routerLink="activity/list/all" role="button"
+                                        routerLinkActive="active">Visualizar Atividades</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item has-menu"><a href="#" class="nav-link">Grupos</a>
+                        <div class="sub-menu">
+                            <!-- Sub Menu -->
+                            <ul class="menu-list">
+                                <li><a href="user/group/add" routerLink="group/add" class="btn btn-primary btn-sm" role="button"
+                                        routerLinkActive="active">Criar Grupo</a></li>
+                                <li><a href="user/group/update" routerLink="group/update" role="button"
+                                        routerLinkActive="active">Editar Grupo</a></li>
+                                <li><a href="user/group/remove" routerLink="group/remove" role="button"
+                                        routerLinkActive="active">Excluir Grupo</a></li>
+                                <li><a href="user/group/list/all" routerLink="group/list/all" role="button"
+                                        routerLinkActive="active">Visualizar Grupos</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item has-menu"><a href="#" class="nav-link">Perfil</a>
+                        <div class="sub-menu">
+                            <!-- Sub Menu -->
+                            <ul class="menu-list">
+                                <li><a href="user/update" routerLink="user/upate" role="button" routerLinkActive="active">Editar
+                                        Perfil</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- Slider Revolution -->
+<div class="rev_slider_wrapper fullwidthbanner-container">
+    <div id="slider" class="rev_slider fullwidthbanner" data-version="5.0.7">
+    </div>
+</div>
+<!-- Revolution Slider Ends -->
+
+
 <section class="page-header">
     <div class="container">
         <h1 class="heading">Grupos</h1>
         <ul class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="../../../user">User</a></li>
             <li class="breadcrumb-item active"><a href="#">Novo Grupo</a></li>
         </ul>
     </div>
