@@ -3,6 +3,16 @@ import { CreateCourseComponent } from './course-general/create-course/create-cou
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
 import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
+import { PortfolioStudents } from './portfolio/students/students.component';
+import { PortfolioCompanies } from './portfolio/companies/companies.component';
+
+import { PrePortfolio } from './portfolio/pre-portfolio/pre-portfolio.component';
+import { Dashboards } from './portfolio/dashboard/dashboard.component';
+
+
+import { PrePortfolioCompanies } from './portfolio/pre-portfolio-companies/pre-portfolio-companies.component';
+
+
 import { RemoveCourseComponent } from './course-general/remove-course/remove-course.component';
 import { UpdateDetailsCourseComponent } from './course-general/update-details-course/update-details-course.component';
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
@@ -41,6 +51,7 @@ const routes: Routes = [
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
+
    { path: 'detail/group/:iCodGru', component: DetailGroupComponent },
    { path: 'dinamic/course/:iCodCou', component: DinamicCourseComponent },
    { path: 'user/course/update/:iCodCou', component: UpdateCourseComponent },
@@ -49,6 +60,16 @@ const routes: Routes = [
 
    { path: 'home', component: HomeComponent },
    { path: 'login', component: LoginComponent },
+
+   { path: 'portfolio/student/:iCodUser', component: PortfolioStudents },
+   { path: 'portfolio/companies/:iCodUser', component: PortfolioCompanies },
+
+   { path: 'preportfolio', component: PrePortfolio },
+   { path: 'preportfolio/companies', component: PrePortfolioCompanies},
+   {path: 'dashboard', component: Dashboards},
+
+
+
 ];
 
 // Create the angular router service with the route - directive pairs listed above

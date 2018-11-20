@@ -70,6 +70,15 @@ import { CreateCourseComponent } from './course-general/create-course/create-cou
 import { UpdateCourseComponent } from './course-general/update-course/update-course.component';
 import { RemoveCourseComponent } from './course-general/remove-course/remove-course.component';
 
+import { PortfolioStudents } from './portfolio/students/students.component';
+import { PortfolioCompanies } from './portfolio/companies/companies.component';
+
+import { PrePortfolio } from './portfolio/pre-portfolio/pre-portfolio.component';
+
+import { PrePortfolioCompanies } from './portfolio/pre-portfolio-companies/pre-portfolio-companies.component';
+
+import { Dashboards } from './portfolio/dashboard/dashboard.component';
+
 import { CreateGroupComponent } from './course-general/create-group/create-group.component';
 import { CreateActivityComponent } from './activity-general/create-activity/create-activity.component';
 import { ListGroupComponent } from './course-general/list-group/list-group.component';
@@ -133,7 +142,13 @@ import { DetailGroupComponent } from './course-general/detail-group/detail-group
         DetailCourseComponent,
         EqualValidator,
         SearchPipe,
-        DinamicCourseComponent
+        DinamicCourseComponent,
+        PortfolioCompanies,
+        PortfolioStudents,
+        PrePortfolio,
+        PrePortfolioCompanies,
+        Dashboards,
+        
     ],
     providers: [DataService,
         AuthGuard,

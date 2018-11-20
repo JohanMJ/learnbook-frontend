@@ -170,6 +170,14 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  listAllCompanies(): Promise<User[]> {
+    const url = `${this.usersUrl}/listAllCompanies`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as User[])
+      .catch(this.handleError);
+  }
+
   getGroupsByUser(iCodUser: number): Promise<Group[]> {
     const url = `${this.groupUrl}/listAll/${iCodUser}`;
     return this.http.get(url)
@@ -243,5 +251,13 @@ export class DataService {
       .then(res => res.text() as String)
       .catch(this.handleError);
   }
+  getCoursesByQtdUser(): Promise<Course[]> {
+    const url = `${this.courseUrl}/required`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course[])
+      .catch(this.handleError);
+  }
+
 
 }

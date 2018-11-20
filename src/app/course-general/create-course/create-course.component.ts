@@ -77,7 +77,7 @@ export class CreateCourseComponent implements OnInit {
     this.course.fPriCou = this.price;
     this.course.fHorCou = this.hours;
     this.course.sDifCou = this.difficult;
-    this.course.category = this.category;
+    this.course.category = cat;
 
     this.dataService.createCourse(this.course);
   }

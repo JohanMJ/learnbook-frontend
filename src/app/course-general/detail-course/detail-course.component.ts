@@ -94,5 +94,8 @@ export class DetailCourseComponent implements OnInit {
        this.getActivitiesFromCourse();
        this.getProgress();
     }
+
+    
+   
 }
 
