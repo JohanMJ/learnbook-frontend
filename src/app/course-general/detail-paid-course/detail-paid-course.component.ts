@@ -18,6 +18,7 @@ export class DetailPaidCourseComponent implements OnInit {
     retorno: String;
     id: number;
     currentActivity;
+    Logo: string;
 
     page: number = 1;
     totalPages: number;
@@ -35,6 +36,18 @@ export class DetailPaidCourseComponent implements OnInit {
     prevPage() {
       this.page--;
     }
+
+    handleUpload(e, act : Activity):void{
+      this.Logo = e.target.files[0].name;
+      act.sPatPDFAct = "C:\\Users\\Felipe\\Documents\\img\\" + this.Logo;
+      act.idAluno = this.currentUser.iCodUser;
+      act.corrigido = true;
+      this.dataService.updateActivity(act).then();
+   }
+
+   download() {
+    window.open("http://127.0.0.1:8887/gestao_ambiental.txt");
+   }
 
     constructor(private dataService: DataService, private route: ActivatedRoute) {
       this.id = Number (this.route.snapshot.paramMap.get('iCodCou'));

@@ -13,7 +13,7 @@ import { Group } from 'app/models/group';
 })
 export class DetailGroupComponent implements OnInit {
     currentGroup ;
-    courses;
+    coursesGroup = [];
     currentUser: User;
     progress: number;
     retorno: String;
@@ -41,6 +41,7 @@ export class DetailGroupComponent implements OnInit {
       this.id = Number (this.route.snapshot.paramMap.get('iCodGru'));
       this.currentGroup = new Group();
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.dataService.getCoursesByGroup(Number (this.route.snapshot.paramMap.get('iCodGru'))).then(coursesGroup => this.coursesGroup = coursesGroup);
     }
 
     getCourseById() {
@@ -50,10 +51,25 @@ export class DetailGroupComponent implements OnInit {
     }
 
     getCoursesByGroup() {
-        console.log( this.dataService.getCoursesByGroup(this.id).then(courses => this.courses = courses));
-        
-        return this.dataService.getCoursesByGroup(this.id).then(courses => this.courses = courses);
-      }
+      console.log("Cursos");
+      return this.dataService.getCoursesByGroup(this.id).then(coursesGroup => this.coursesGroup = coursesGroup);
+    }
+
+    addStudent() {
+      window.location.href = "http://localhost:4200/detail/group/adduser/" + this.currentGroup.iCodGru;
+    }
+
+    removeStudent() {
+      window.location.href = "http://localhost:4200/detail/group/removeuser/" + this.currentGroup.iCodGru;
+    }
+
+    addCourse() {
+      window.location.href = "http://localhost:4200/detail/group/addcourse/" + this.currentGroup.iCodGru;
+    }
+
+    removeCourse() {
+      window.location.href = "http://localhost:4200/detail/group/removecourse/" + this.currentGroup.iCodGru;
+    }
 
     onSubmit() {
       //https://pagseguro.uol.com.br/v2/checkout/payment.html?code=8CF4BE7DCECEF0F004A6DFA0A8243412
@@ -66,9 +82,10 @@ export class DetailGroupComponent implements OnInit {
     }  
 
     ngOnInit(): void {
-       this.getCourseById();
-       this.getCoursesByGroup();
-       console.log("cursos(num): " + this.courses);
+      console.log(this.getCoursesByGroup());
+      this.getCourseById();
+      console.log("cursos(num): " + this.coursesGroup);
+      console.log("grupo: " + this.currentGroup);
     }
 }
 

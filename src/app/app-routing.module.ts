@@ -20,6 +20,11 @@ import { DetailPaidCourseComponent } from './course-general/detail-paid-course/d
 import { CompanyCreateUserComponent } from './user-general/company-create-user/company-create-user.component';
 import { CompanyUsersComponent } from './user-general/company-user/company-user.component';
 import { DetailGroupComponent } from './course-general/detail-group/detail-group.component';
+import { AddUserComponent } from './user-general/add-user/add-user.component';
+import { RemoveUserComponent } from './user-general/remove-user/remove-user.component';
+import { AddCourseComponent } from './course-general/add-course/add-course.component';
+import { ListActivityComponent } from './course-general/list-activity/list-activity.component';
+import { DetailActivityComponent } from './course-general/detail-activity/detail-activity.component';
 
 const routes: Routes = [
    { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,6 +35,7 @@ const routes: Routes = [
    { path: 'user/listAll', component: CompanyUsersComponent },
    { path: 'user/group/add', component: CreateGroupComponent },
    { path: 'user/activity/add', component: CreateActivityComponent },
+   { path: 'user/activity/list/all', component: ListActivityComponent },
    { path: 'user/course/paid', component: CoursesPaidComponent },
    { path: 'user/course/paid/detail/course/:iCodCou', component: DetailPaidCourseComponent },
    { path: 'user/course/add', component: CreateCourseComponent },
@@ -41,7 +47,12 @@ const routes: Routes = [
    { path: 'user/course/add', component: CreateCourseComponent },
    { path: 'detail/:iCodUser', component: UserDetailsComponent },
    { path: 'detail/course/:iCodCou', component: DetailCourseComponent },
+   { path: 'detail/activity/:iCodAct', component: DetailActivityComponent },
    { path: 'detail/group/:iCodGru', component: DetailGroupComponent },
+   { path: 'detail/group/adduser/:iCodGru', component: AddUserComponent },
+   { path: 'detail/group/removeuser/:iCodGru', component: RemoveUserComponent },
+   { path: 'detail/group/addcourse/:iCodGru', component: AddCourseComponent },
+   { path: 'detail/group/removecourse/:iCodGru', component: RemoveCourseComponent },
    { path: 'dinamic/course/:iCodCou', component: DinamicCourseComponent },
    { path: 'user/course/update/:iCodCou', component: UpdateCourseComponent },
    { path: 'user/group/listAll', component: ListGroupComponent },

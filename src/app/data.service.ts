@@ -120,6 +120,14 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  getCoursesFromUserGroup(iCodGru: number): Promise<Course[]> {
+    const url = `${this.courseUrl}/listgroup/${iCodGru}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Course[])
+      .catch(this.handleError);
+  }
+
   getCoursesByGroup(iCodGru: number): Promise<Course[]> {
     const url = `${this.courseUrl}/list/group/${iCodGru}`;
     return this.http.get(url)
@@ -170,6 +178,15 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  listAllByGroup(iCodGru: Number): Promise<User[]> {
+    console.log("oi " + iCodGru);
+    const url = `${this.usersUrl}/listAllGroup/${iCodGru}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as User[])
+      .catch(this.handleError);
+  }
+
   getGroupsByUser(iCodUser: number): Promise<Group[]> {
     const url = `${this.groupUrl}/listAll/${iCodUser}`;
     return this.http.get(url)
@@ -190,6 +207,14 @@ export class DataService {
 
   getActivitiesFromCourse(iCodCou: number) {
     const url = `${this.activityUrl}/list/${iCodCou}`;
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json() as Activity[])
+      .catch(this.handleError);
+  }
+
+  getActivitiesFromReview() {
+    const url = `${this.activityUrl}/listreview`;
     return this.http.get(url)
       .toPromise()
       .then(response => response.json() as Activity[])

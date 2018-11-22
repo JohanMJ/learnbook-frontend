@@ -70,14 +70,16 @@
                                         <li><a href="user/group/add" routerLink="group/add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar Grupo</a></li>
                                         <li><a href="user/group/update" routerLink="group/update"  role="button" routerLinkActive="active">Editar Grupo</a></li>
                                         <li><a href="user/group/remove" routerLink="group/remove"  role="button" routerLinkActive="active">Excluir Grupo</a></li>
-                                        <li><a href="user/group/list/all" routerLink="group/list/all"  role="button" routerLinkActive="active">Visualizar Grupos</a></li>
+                                        <li><a href="user/group/listAll" routerLink="group/listAll"  role="button" routerLinkActive="active">Visualizar Grupos</a></li>
                                     </ul>
                                 </div>
                             </li>
                             <li class="nav-item has-menu"><a href="#" class="nav-link">Perfil</a>
                                 <div class="sub-menu">          <!-- Sub Menu -->
                                     <ul class="menu-list">
-                                        <li><a href="user/update" routerLink="user/upate"  role="button" routerLinkActive="active">Editar Perfil</a></li>
+                                            <li><a href="user/update" routerLink="user/upate"  role="button" routerLinkActive="active">Editar Perfil</a></li>
+                                            <li><a href="listAll" routerLink="listAll"  role="button" routerLinkActive="active">Meus Perfis</a></li>
+                                            <li><a href="add" routerLink="add/"  role="button" routerLinkActive="active">Criar Perfil</a></li>
                                     </ul>
                                 </div>
                             </li>
@@ -86,54 +88,9 @@
                 </div>
             </nav>
         </header>
-    <!-- Slider Revolution -->
     <div class="rev_slider_wrapper fullwidthbanner-container">
-            <div id="slider" class="rev_slider fullwidthbanner" data-version="5.0.7">  
-                </div>
+        <div id="slider" class="rev_slider fullwidthbanner" data-version="5.0.7"></div>
     </div>
-    <!-- Revolution Slider Ends -->
-
-
-
-
-<!-- <section class="mt-120">
-    Fixed because of Angular 4
-    <div class="container mt-60 mb-60">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-7 mt-100">
-                <h3 class="heading">Who We <span class="color2">Are</span></h3>
-                Teste - Current User
-                <h1>Hi {{currentUser.sNamUser}}!</h1>
-                <p>Obrigado por trabalhar conosco, vamos crescer juntos.</p>
-                <p>Disponibilizamos os melhores cursos de ERP para preparar você para o mercado, apresentamos cursos
-                    com valores que cabe no seu bolso.</p>
-                <br />
-                 <ul class="list-styled pull-left">
-                    <li>Cenários Reais</li>
-                    <li>Preços justos </li>
-                </ul>
-                <div class="clearfix"></div>
-                <br />
-                 Define route to subscribe -->
-                <!-- <a routerLink="course/add" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar
-                    novo curso<i class="fa fa-long-arrow-right"></i></a>
-                 <br /> -->
-                <!-- <br> -->
-                 <!-- Define route to subscribe --> 
-                <!-- <a routerLink="add/group" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar
-                    Grupo<i class="fa fa-long-arrow-right"></i></a> -->
-                <!-- <br /> -->
-                <!-- <br> -->
-                <!-- Define route to subscribe -->
-                <!-- <a routerLink="add/activity" class="btn btn-primary btn-sm" role="button" routerLinkActive="active">Criar
-                    Atividade<i class="fa fa-long-arrow-right"></i></a>
-                <br />  
-            </div>
-        </div>
-    </div>
-    <br />
-</section> -->
 
 <br>
 <section class="container mt-120 mb-40">
@@ -169,37 +126,20 @@
 
 <section class="container mt-60 mb-100">
     <div class="row">
-        <a *ngFor="let course of courses | paginate: { itemsPerPage: 6, currentPage: pageNumber, totalItems: courses.length } | searchPipe: searchTerm; let i = index" class="col-lg-4">
-            <button class="btn btn-primary" (click)="addCourse(course.iCodCou)">  
+        <a *ngFor="let user of users | paginate: { itemsPerPage: 6, currentPage: pageNumber, totalItems: users.length } | searchPipe: searchTerm; let i = index" class="col-lg-4">
+            <button class="btn btn-primary" (click)="addStudent(user.iCodUser)">          
                 <div class="card course-card new">
-                    <div *ngIf="i == 0" class="course-head">
-                        <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
-                        <a [routerLink]="['/dinamic/course/', course.iCodCou]" class="course-link"><i class="fa fa-link"
-                                aria-hidden="true"></i></a>
-                    </div>
-                    <div *ngIf="i > 0" class="course-head">
-                        <img src="../assets/resources/images/grid_sap.jpg" class="img-fluid course-img" alt="">
-                        <a [routerLink]="['user/', course.iCodCou]" class="course-link"><i class="fa fa-link"
-                                aria-hidden="true"></i></a>
-                    </div>
-                    <div *ngIf="course.category.sNamCat == 'ORACLE'" class="course-head">
-                            <img src="../assets/resources/images/course-grid_oracle.jpg" class="img-fluid course-img" alt="">
-                            <a [routerLink]="['user/', course.iCodCou]" class="course-link"><i class="fa fa-link"
-                                    aria-hidden="true"></i></a>
+                    <div class="course-head">
+                            <img src="../assets/resources/images/horse_avatar.jpg" class="img-fluid course-img" alt="">
                         </div>
                     <div class="course-detail">
-                        <h4 class="heading">{{course.sNamCou}}</h4>
-                        <h5 class="brief">Valor total do curso de nível {{course.sDifCou}} R$ {{course.fPriCou}}</h5>
+                        <h4 class="heading">{{user.sNamUser}}</h4>
                         <ul class="course-features">
-                            <li><i class="fa fa-map-marker"></i>{{course.category.sNamCat}}</li>
-                            <!-- <li><i class="fa fa-map-marker"></i>{{course.sStaCou}}</li> -->
-                            <li><i class="fa fa-map-marker"></i>{{course.sDifCou}}</li>
-                            <!-- <li><i class="fa fa-clock-o"></i>{{course.dDatCou}}</li> -->
-                            <li><i class="fa fa-clock-o"></i> {{course.fHorCou}}</li>
+                            <li><i class="fa fa-map-marker"></i>horse</li>
                         </ul>
                     </div>
                 </div>
-            </button>
+            </button>  
         </a>
     </div>
     <div class="row mt-20">
@@ -215,25 +155,6 @@
                 screenReaderPageLabel="page"
                 screenReaderCurrentLabel="You're on page">
             </pagination-controls>
-            <!-- <nav>
-                <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#">Previous</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav> -->
         </div>
     </div>
 </section>

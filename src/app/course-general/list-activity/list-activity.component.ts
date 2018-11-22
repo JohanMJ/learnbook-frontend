@@ -5,25 +5,21 @@ import { DataService } from '../../data.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './paid.component.html',
-  styleUrls: ['./paid.component.css'],
+  templateUrl: './list-activity.component.html',
+  styleUrls: ['./list-activity.component.css'],
 })
 
-export class CoursesPaidComponent implements OnInit {
+export class ListActivityComponent implements OnInit {
   currentUser: User;
-  courses= [];
+  activities = [];
   searchTerm: any;
   pageNumber: number = 1;
   index: number = 0;
 
   constructor(private dataService: DataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.dataService.getCoursesFromUser(this.currentUser.iCodUser).then(courses => {
-      this.courses = courses;   
-    });
-
-    this.dataService.getCoursesFromUserGroup(this.currentUser.groupId).then(courses => {
-      this.courses = this.courses.concat(courses);   
+    this.dataService.getActivitiesFromReview().then(activities => {
+      this.activities = activities;   
     });
   }
 

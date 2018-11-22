@@ -91,6 +91,11 @@ import { DetailPaidCourseComponent } from './course-general/detail-paid-course/d
 import { CompanyCreateUserComponent } from './user-general/company-create-user/company-create-user.component';
 import { CompanyUsersComponent } from './user-general/company-user/company-user.component';
 import { DetailGroupComponent } from './course-general/detail-group/detail-group.component';
+import { AddUserComponent } from './user-general/add-user/add-user.component';
+import { RemoveUserComponent } from './user-general/remove-user/remove-user.component';
+import { AddCourseComponent } from './course-general/add-course/add-course.component';
+import { ListActivityComponent } from './course-general/list-activity/list-activity.component';
+import { DetailActivityComponent } from './course-general/detail-activity/detail-activity.component';
 
 @NgModule({
     imports: [
@@ -115,6 +120,9 @@ import { DetailGroupComponent } from './course-general/detail-group/detail-group
         HomeComponent,
         LoginComponent,
         CompanyUsersComponent,
+        AddUserComponent,
+        RemoveUserComponent,
+        AddCourseComponent,
        // RegisterComponent,
         CompanyCreateUserComponent,
         UserDetailsComponent,
@@ -133,6 +141,8 @@ import { DetailGroupComponent } from './course-general/detail-group/detail-group
         DetailCourseComponent,
         EqualValidator,
         SearchPipe,
+        DetailActivityComponent,
+        ListActivityComponent,
         DinamicCourseComponent
     ],
     providers: [DataService,

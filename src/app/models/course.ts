@@ -1,5 +1,6 @@
 import { User } from "./user";
 import { Category } from "./category";
+import { Group } from "./group";
 
 export class Course {
   iCodCou: number;
@@ -13,5 +14,5 @@ export class Course {
   sStaCou: String;
   users: Array<User>;
   category: Category;
-
+  group: Group;
 }

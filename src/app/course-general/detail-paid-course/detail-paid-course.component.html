@@ -234,13 +234,16 @@
                         <div *ngIf="x == 0"  >
                                 <p>{{activity.sDesAct}}</p>
                                     <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
+                                    <input type="file" (change)="handleUpload($event, activity)">
+                                    <img [src]="Logo" >
                             </div>
            
                   
                             <div *ngIf="x > 0"  >
                                 <p>{{activity.sDesAct}}</p>
                                 <button type="button" class="btn btn-success mt-20" (click)="accomplishTask(activity.iCodAct)">Success</button>
-    
+                                <input type="file" (change)="handleUpload($event, activity)">
+                                <img [src]="Logo" >
                             </div>
                         </form>
                         
