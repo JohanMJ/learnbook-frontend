@@ -40,3 +40,5 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+package-lock.json
+src/app/course-general/detail-course/detail-course.component.ts
